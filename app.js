@@ -1250,9 +1250,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const signInBtn = $("#signInSubmit");
   const signInInput = $("#signInPassword");
   const signOutBtn = $("#btnSignOut");
-  function submitPassword() {
+  async function submitPassword() {
     const pw = signInInput.value.trim();
     if (!pw) return;
+    // For remote backend, verify the password against the Worker before
+    // letting the user in. The Worker's /verify endpoint requires the same
+    // password gate as every other write endpoint, so a mismatch returns
+    // 401 immediately. Local server.py mode skips this — it doesn't auth.
+    if (REMOTE_BACKEND) {
+      $("#signInError").textContent = "";
+      signInBtn.disabled = true;
+      signInBtn.textContent = "Verifying…";
+      try {
+        const r = await fetch(API + "/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: pw }),
+        });
+        if (r.status === 401) {
+          $("#signInError").textContent = "Wrong password.";
+          return;
+        }
+        if (!r.ok) {
+          $("#signInError").textContent = `Server error (${r.status}).`;
+          return;
+        }
+      } catch (e) {
+        $("#signInError").textContent = "Couldn't reach server: " + e.message;
+        return;
+      } finally {
+        signInBtn.disabled = false;
+        signInBtn.textContent = "Sign in";
+      }
+    }
     setPassword(pw);
     hideSignIn();
     // Show the sign-out button once auth is established.

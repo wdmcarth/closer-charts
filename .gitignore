@@ -1,0 +1,23 @@
+# Python bytecode (regenerated whenever a .py is run)
+__pycache__/
+*.pyc
+*.pyo
+
+# Built artifacts
+dist/
+*.egg-info/
+
+# Derived exports (re-generatable from data/*.json + Copy of Closer Charts.xlsx)
+Closer Charts (export).xlsx
+
+# macOS / editor noise
+.DS_Store
+.vscode/
+.idea/
+
+# Claude Code preview launch config (local-only)
+.claude/
+
+# Local secrets — never commit
+worker/.dev.vars
+*.secret

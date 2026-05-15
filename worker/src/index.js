@@ -172,6 +172,10 @@ export default {
     }
 
     try {
+      // /verify is a no-op that just lets the editor confirm the password is
+      // good before showing the chart. Reaching here means the password
+      // already cleared the check above.
+      if (path === "/verify") return json({ ok: true });
       if (path === "/save") return await handleSave(body, env);
       if (path === "/refresh-stats")
         return await handleDispatch("refresh-stats.yml", env);

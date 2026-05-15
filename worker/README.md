@@ -30,11 +30,12 @@ All endpoints are POST with JSON body. All require `{ password: "..." }`.
 
 | Path                | Body                       | Effect                                                          |
 | ------------------- | -------------------------- | --------------------------------------------------------------- |
+| `/verify`           | `{password}`               | No-op gated by password check — returns `{ok:true}` if password matches; used by the editor's sign-in dialog to validate the password upfront |
 | `/save`             | `{password, chart, quickhits}` | Writes `data/chart.json` + `data/quickhits.json` as 2 commits   |
 | `/refresh-stats`    | `{password}`               | Triggers `refresh-stats.yml` via workflow_dispatch              |
 | `/refresh-rosters`  | `{password}`               | Triggers `refresh-rosters.yml`                                  |
 | `/refresh-dashboard`| `{password, days?}`        | Triggers `refresh-dashboard.yml` with optional `days` input     |
-| `/healthz`          | (GET)                      | Returns `{ok, repo, ref}` — sanity check                        |
+| `/healthz`          | (GET)                      | Returns `{ok, repo, ref}` — sanity check, not password-gated    |
 
 Responses:
 - `200 {ok: true, ...}` on success
