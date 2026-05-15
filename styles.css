@@ -1,0 +1,863 @@
+/* Closer Charts — local app styles */
+
+:root {
+  --bg: #14171c;
+  --panel: #1c2129;
+  --panel-2: #232934;
+  --border: #2c3340;
+  --text: #e8edf2;
+  --muted: #8c97a8;
+  --accent: #4f9dff;
+  --accent-2: #7bd389;
+  --warn: #f0b25e;
+  --danger: #ef6f6c;
+
+  --color-Blue:    #6fa8dc;
+  --color-Orange:  #f9cb9c;
+  --color-Yellow:  #ffd966;
+  --color-Magenta: #c27ba0;
+  --color-Green:   #93c47d;
+
+  --lev-5: #2e7d32;
+  --lev-4: #558b2f;
+  --lev-3: #b58900;
+  --lev-2: #d97706;
+  --lev-1: #b91c1c;
+
+  --row-h: 56px;
+  --chip-radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+
+button {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+button:hover { background: #2d3543; }
+button:active { transform: translateY(1px); }
+button.primary { background: var(--accent); border-color: var(--accent); }
+button.primary:hover { background: #3a86ee; }
+button.danger { color: var(--danger); }
+
+input, select, textarea {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font: inherit;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+textarea { resize: vertical; }
+
+/* Topbar -------------------------------------------------------------- */
+
+.topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; align-items: baseline; gap: 12px; }
+.brand h1 { margin: 0; font-size: 18px; }
+.subtle { color: var(--muted); font-size: 12px; }
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+.topbar-link {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-block;
+}
+.topbar-link:hover { background: #2d3543; color: var(--accent); border-color: var(--accent); }
+.save-status { color: var(--muted); font-size: 12px; min-width: 80px; text-align: right; }
+.view-mode .save-status { display: none; }
+
+/* Condensed landing-page layout. Tightens the chart so visitors see more
+   teams per screen without scrolling. Only applies to view.html via the
+   body.view-mode class set by app.js when CC_VIEW_MODE is true. */
+.view-mode {
+  --row-h: 40px;
+  --sticky-top: 78px;     /* topbar + tabs are slightly shorter in view mode */
+}
+.view-mode .topbar { padding: 6px 16px; }
+.view-mode .brand h1 { font-size: 16px; }
+.view-mode .tabs { padding: 4px 16px; gap: 2px; top: 38px; }
+.view-mode .tab { padding: 4px 10px; font-size: 12px; }
+.view-mode .legend { font-size: 10px; gap: 12px; }
+.view-mode .view { padding: 10px 12px; }
+
+.view-mode .league-block { margin-bottom: 14px; }
+.view-mode .league-block h2 {
+  font-size: 12px;
+  margin: 0 0 4px;
+  letter-spacing: 0.06em;
+}
+
+.view-mode .chart-grid {
+  grid-template-columns: 48px 200px repeat(5, minmax(140px, 1fr)) 220px;
+  border-radius: 6px;
+}
+.view-mode .chart-head-cell { padding: 4px 6px; font-size: 10px; }
+.view-mode .team-row > div { padding: 3px 6px; min-height: var(--row-h); gap: 3px; }
+
+.view-mode .cell-rating .lev-static { padding: 2px 6px; min-width: 22px; font-size: 12px; }
+.view-mode .cell-team { font-size: 12.5px; }
+.view-mode .cell-team .team-abbr { padding: 1px 4px; font-size: 9px; margin-right: 4px; }
+
+.view-mode .chip { padding: 1px 5px; font-size: 11px; gap: 3px; }
+.view-mode .chip .chip-name { font-weight: 500; }
+.view-mode .chip .chip-usage,
+.view-mode .chip .chip-status,
+.view-mode .chip .chip-other,
+.view-mode .chip .chip-level,
+.view-mode .chip .chip-notforty { font-size: 9px; padding: 0 3px; }
+
+.view-mode .cell-notes .notes-readonly { font-size: 11px; line-height: 1.35; }
+
+.view-mode .qh-list { gap: 10px; }
+.view-mode .qh-day { padding: 8px 10px; border-radius: 6px; }
+.view-mode .qh-day-head { margin-bottom: 6px; }
+.view-mode .qh-day-head .qh-date { font-size: 13px; }
+.view-mode .qh-rollup-readonly { font-size: 11px; margin-bottom: 6px; }
+.view-mode .qh-team-grid {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 6px;
+}
+.view-mode .qh-team-cell { padding: 4px 6px; border-radius: 4px; }
+.view-mode .qh-team-cell .qh-team-name { font-size: 10px; margin-bottom: 2px; }
+.view-mode .qh-team-readonly { font-size: 11px; line-height: 1.35; }
+.save-status.dirty { color: var(--warn); }
+.save-status.saving { color: var(--accent); }
+.save-status.saved { color: var(--accent-2); }
+.save-status.error { color: var(--danger); }
+
+/* Tabs --------------------------------------------------------------- */
+
+.tabs {
+  position: sticky; top: 49px; z-index: 25;
+  display: flex; align-items: center; gap: 4px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 6px 12px;
+  border-radius: 0;
+  color: var(--muted);
+}
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+.legend {
+  margin-left: auto;
+  display: flex; gap: 16px;
+  color: var(--muted);
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+.legend-group { display: inline-flex; align-items: center; gap: 6px; }
+.legend strong { color: var(--text); margin-right: 4px; }
+.color-swatch {
+  display: inline-block; width: 12px; height: 12px;
+  border-radius: 3px; vertical-align: middle;
+}
+.color-Blue    { background: var(--color-Blue); }
+.color-Orange  { background: var(--color-Orange); }
+.color-Yellow  { background: var(--color-Yellow); }
+.color-Magenta { background: var(--color-Magenta); }
+.color-Green   { background: var(--color-Green); }
+
+.lev-pill {
+  display: inline-block;
+  width: 18px; text-align: center;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  font-size: 11px;
+  margin-right: 2px;
+}
+.lev-5 { background: var(--lev-5); }
+.lev-4 { background: var(--lev-4); }
+.lev-3 { background: var(--lev-3); }
+.lev-2 { background: var(--lev-2); }
+.lev-1 { background: var(--lev-1); }
+
+/* Views -------------------------------------------------------------- */
+
+.view { display: none; padding: 16px; }
+.view.active { display: block; }
+
+.league-block { margin-bottom: 24px; }
+.league-block h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Chart grid --------------------------------------------------------- */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 56px 230px repeat(5, minmax(160px, 1fr)) 280px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  /* Note: no `overflow: hidden` here — it would create a scroll container
+     and scope `position: sticky` on header cells to the grid box instead of
+     the viewport. The trade-off is that cell backgrounds extend to the
+     grid's rounded corners; the rounding is mostly hidden by the border. */
+}
+/* Sticky column headers — pin below the topbar (sticky at top:0) and the
+   tabs bar. The header cells are direct grid items (no wrapper), so they
+   each have a real containing block for `position: sticky`. Each grid's
+   headers scope-stick to the bounds of their own .chart-grid, so the AL
+   headers disappear as the AL block scrolls past and NL headers take over.
+
+   `--sticky-top` is tuned per page (editor ≈ 100px after measuring
+   topbar+tabs, view-mode shrinks it). */
+.chart-head-cell {
+  position: sticky;
+  top: var(--sticky-top, 100px);
+  z-index: 10;
+  background: var(--panel-2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.team-row { display: contents; }
+.team-row > div {
+  border-bottom: 1px solid var(--border);
+  padding: 6px 8px;
+  min-height: var(--row-h);
+  display: flex; align-items: flex-start; flex-wrap: wrap;
+  gap: 4px;
+}
+.team-row:last-child > div { border-bottom: none; }
+.team-row > div.center { align-items: center; }
+
+.cell-rating {
+  background: var(--panel-2);
+  align-items: center !important;
+  justify-content: center;
+}
+.cell-rating select {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid transparent;
+  background: transparent;
+}
+.cell-rating select:hover { border-color: var(--border); }
+.cell-rating[data-lev="5"] select { color: white; background: var(--lev-5); }
+.cell-rating[data-lev="4"] select { color: white; background: var(--lev-4); }
+.cell-rating[data-lev="3"] select { color: white; background: var(--lev-3); }
+.cell-rating[data-lev="2"] select { color: white; background: var(--lev-2); }
+.cell-rating[data-lev="1"] select { color: white; background: var(--lev-1); }
+/* Static (read-only) LEVCON pill — view mode replacement for the <select>. */
+.lev-static {
+  display: inline-block;
+  min-width: 28px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg);
+}
+.cell-rating[data-lev="5"] .lev-static { color: white; background: var(--lev-5); }
+.cell-rating[data-lev="4"] .lev-static { color: white; background: var(--lev-4); }
+.cell-rating[data-lev="3"] .lev-static { color: white; background: var(--lev-3); }
+.cell-rating[data-lev="2"] .lev-static { color: white; background: var(--lev-2); }
+.cell-rating[data-lev="1"] .lev-static { color: white; background: var(--lev-1); }
+
+.cell-team {
+  align-items: center !important;
+  font-weight: 600;
+  background: var(--panel-2);
+  /* Keep the abbr badge and team name on one line; the column is sized so the
+     longest names ("Arizona Diamondbacks", "Philadelphia Phillies", etc.) fit. */
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+  min-width: 0;
+}
+.cell-team.clickable { cursor: pointer; user-select: none; }
+.cell-team.clickable:hover {
+  background: #2c3340;
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+.cell-team .team-abbr {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--muted);
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 10px;
+  margin-right: 6px;
+}
+
+.cell-role {
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 4px;
+}
+
+.cell-notes {
+  background: var(--panel-2);
+}
+.cell-notes textarea {
+  width: 100%;
+  min-height: 44px;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.cell-notes textarea:hover { border-color: var(--border); }
+.cell-notes textarea:focus { background: var(--panel); }
+.cell-notes .notes-readonly {
+  width: 100%;
+  font-size: 12px;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 2px 0;
+}
+.chip-empty {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 11px;
+  padding: 2px 4px;
+}
+
+/* Chips -------------------------------------------------------------- */
+
+.chip-list {
+  display: flex; flex-wrap: wrap; gap: 4px; width: 100%;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  padding: 2px 6px;
+  font-size: 12px;
+  max-width: 100%;
+  cursor: default;
+}
+/* "40-man" auto-tag with strike-through. Surfaces non-40-man players
+   (prospects, IL stash, or free-text names) without using a heavy border. */
+.chip .chip-notforty {
+  font-size: 10px;
+  color: var(--muted);
+  background: rgba(140,151,168,0.12);
+  border: 1px solid var(--border);
+  padding: 0 4px;
+  border-radius: 3px;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+/* Per-chip color (Blue/Orange/Yellow/Magenta/Green). The whole bubble
+   takes the palette color and we flip text to dark since the palette is
+   pastel. Badges inside switch to solid dark backgrounds so they stay
+   legible on top of the colored bubble. */
+.chip.color-Blue    { background: var(--color-Blue);    color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
+.chip.color-Orange  { background: var(--color-Orange);  color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
+.chip.color-Yellow  { background: var(--color-Yellow);  color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
+.chip.color-Magenta { background: var(--color-Magenta); color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
+.chip.color-Green   { background: var(--color-Green);   color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
+.chip[class*="color-"] .chip-remove { color: rgba(0,0,0,0.45); }
+.chip[class*="color-"] .chip-remove:hover { color: #1a1a1a; }
+/* Solid badge bg so the small tag pills don't blend into the bubble color. */
+/* When the chip has a color tag, switch badges to a solid white background
+   so they read cleanly on any pastel bubble. Keep each badge's semantic
+   text color (red for usage, dark amber for status, blue for other) so the
+   at-a-glance meaning isn't lost. Slightly heavier weight + a subtle outline
+   gives the pills clear edges against the colored bubble. */
+.chip[class*="color-"] .chip-usage,
+.chip[class*="color-"] .chip-status,
+.chip[class*="color-"] .chip-other,
+.chip[class*="color-"] .chip-level,
+.chip[class*="color-"] .chip-notforty {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.18);
+  font-weight: 600;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+.chip[class*="color-"] .chip-usage    { color: #c0392b; }   /* darker red — pops on white */
+.chip[class*="color-"] .chip-status   { color: #a4651c; }   /* darker amber — pops on white */
+.chip[class*="color-"] .chip-other    { color: #1f6bd4; }   /* darker blue */
+.chip[class*="color-"] .chip-level    { color: #1a1a1a; }
+.chip[class*="color-"] .chip-notforty { color: #1a1a1a; text-decoration: line-through; }
+
+.chip .chip-name { font-weight: 500; }
+.chip .chip-usage {
+  font-size: 10px;
+  color: var(--danger);
+  background: rgba(239,111,108,0.14);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.chip .chip-status {
+  font-size: 10px;
+  color: var(--warn);
+  background: rgba(240,178,94,0.14);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.chip .chip-other {
+  font-size: 10px;
+  color: var(--accent);
+  background: rgba(79,157,255,0.12);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+/* MILB level badge — shown only when the chip's pitcher is NOT MLB. */
+.chip .chip-level {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: rgba(140,151,168,0.15);
+  border: 1px solid var(--border);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+.chip .chip-remove {
+  cursor: pointer;
+  color: var(--muted);
+  padding: 0 2px;
+  font-size: 12px;
+  line-height: 1;
+}
+.chip .chip-remove:hover { color: var(--danger); }
+
+.chip-edit-popover {
+  position: absolute; z-index: 50;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex; flex-direction: column; gap: 6px;
+  width: 240px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.chip-edit-popover label {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.chip-edit-popover input,
+.chip-edit-popover select { font-size: 12px; }
+.chip-edit-popover .row { display: flex; gap: 6px; justify-content: flex-end; }
+.chip-edit-popover .field-readonly {
+  font-size: 12px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 6px;
+  min-height: 22px;
+}
+
+.chip-add {
+  width: 100%;
+}
+.chip-add-btn {
+  display: block; width: 100%;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  padding: 3px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.chip-add-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.chip-add-search {
+  position: absolute; z-index: 50;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 240px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  display: flex; flex-direction: column;
+}
+.chip-add-search input {
+  border: none; border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--panel);
+  padding: 6px 8px;
+}
+.chip-add-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+}
+.chip-add-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--muted);
+  padding: 6px 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.chip-add-tab:hover { color: var(--text); background: var(--panel-2); }
+.chip-add-tab.active {
+  color: var(--text);
+  background: var(--panel-2);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.chip-add-search ul {
+  list-style: none; margin: 0; padding: 0;
+  max-height: 220px; overflow-y: auto;
+}
+.chip-add-search li {
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex; justify-content: space-between; gap: 6px;
+}
+.chip-add-search li.active,
+.chip-add-search li:hover { background: var(--bg); }
+.chip-add-search .pitcher-meta {
+  color: var(--muted);
+  font-size: 10px;
+}
+.chip-add-search .empty {
+  padding: 8px; color: var(--muted); font-size: 12px;
+}
+.chip-add-search li.free-text {
+  border-top: 1px solid var(--border);
+  color: var(--warn);
+  font-style: italic;
+}
+.chip-add-search li.free-text .pitcher-meta { color: var(--warn); }
+.chip-add-search .pitcher-main { display: inline-flex; align-items: center; gap: 4px; }
+
+.level-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  vertical-align: 1px;
+}
+.level-badge.level-MLB { color: var(--accent-2); border-color: var(--accent-2); }
+.level-badge.level-AAA { color: var(--accent);   border-color: var(--accent); }
+.level-badge.level-AA  { color: var(--warn);     border-color: var(--warn); }
+.level-badge.level-Ap  { color: var(--muted); }    /* A+ */
+.level-badge.level-A   { color: var(--muted); }
+
+/* Stat tooltip ------------------------------------------------------- */
+
+.stat-tooltip {
+  position: absolute; z-index: 60;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  max-width: 280px;
+}
+.stat-tooltip table { border-collapse: collapse; }
+.stat-tooltip td {
+  padding: 1px 8px 1px 0;
+  vertical-align: top;
+}
+.stat-tooltip td.label { color: var(--muted); font-size: 11px; }
+.stat-tooltip .name {
+  font-weight: 600; margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+.stat-tooltip .usage-line {
+  color: var(--danger);
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.stat-tooltip .subtle {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+/* Quick Hits view ---------------------------------------------------- */
+
+.qh-controls {
+  display: flex; gap: 8px; align-items: center;
+  margin-bottom: 12px;
+}
+.qh-controls input[type=search] { flex: 1; }
+
+.qh-list { display: flex; flex-direction: column; gap: 18px; }
+.qh-day {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+.qh-day-placeholder {
+  min-height: 560px;
+}
+.qh-day-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.qh-day-head .qh-date {
+  font-weight: 600;
+  font-size: 14px;
+}
+.qh-day-head .qh-league {
+  font-size: 11px; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-left: 8px;
+}
+.qh-rollup {
+  margin-bottom: 10px;
+}
+.qh-rollup textarea {
+  width: 100%; min-height: 60px; font-size: 12px;
+}
+.qh-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.qh-team-cell {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px;
+}
+.qh-team-cell .qh-team-name {
+  font-size: 11px; font-weight: 600;
+  color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.qh-team-cell textarea {
+  width: 100%; min-height: 60px; font-size: 12px;
+  background: transparent; border: none;
+}
+.qh-team-cell textarea:focus { background: var(--panel); border: 1px solid var(--border); }
+.qh-team-readonly,
+.qh-rollup-readonly {
+  font-size: 12px;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.4;
+}
+.qh-rollup-readonly { margin-bottom: 10px; font-style: italic; color: var(--muted); }
+
+/* Toast -------------------------------------------------------------- */
+
+/* RP Dashboard modal ------------------------------------------------- */
+
+/* Apps Script colors — same hex values the Excel/Sheets dashboard uses so
+   the on-screen panel matches what the user sees in the spreadsheet. */
+:root {
+  --dash-li-high: #fde047;   /* leverageIndex > 2 */
+  --dash-li-med:  #fef08a;   /* leverageIndex > 1 */
+  --dash-clean:   #86efac;   /* 0 runs allowed */
+  --dash-runs:    #fca5a5;   /* >=1 run allowed */
+}
+
+.dashboard-backdrop {
+  position: fixed; inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+/* `display: flex` above wins over the HTML `hidden` attribute's default
+   `display: none`, so we have to re-assert hiding explicitly. */
+.dashboard-backdrop[hidden] { display: none; }
+.dashboard-card {
+  width: min(95vw, 1900px);
+  max-height: 92vh;
+  display: flex; flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.dashboard-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.dashboard-title {
+  display: flex; align-items: baseline; gap: 12px;
+  font-size: 16px; font-weight: 600;
+}
+.dashboard-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.dashboard-close:hover { color: var(--text); background: var(--panel-2); }
+
+.dashboard-body {
+  flex: 1; min-height: 0;
+  overflow: auto;
+  padding: 12px 16px 16px;
+}
+.dashboard-empty {
+  padding: 32px;
+  color: var(--muted);
+  text-align: center;
+}
+.dashboard-empty p { margin: 6px 0; }
+
+/* The grid itself — table is more accurate than CSS grid here because the
+   2-row-per-pitcher block needs rowspan for the name/hand columns. */
+.dash-grid-wrap {
+  width: max-content;       /* let the table push horizontal scroll */
+  min-width: 100%;
+}
+.dash-grid {
+  border-collapse: collapse;
+  font-family: "Roboto Condensed", -apple-system, system-ui, sans-serif;
+  font-size: 12px;
+  color: #1c2129;            /* dark text on light cells */
+}
+.dash-grid th,
+.dash-grid td {
+  border: 1px solid #1c2129;
+  padding: 4px 6px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.dash-grid thead th {
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 700;
+  min-width: 90px;
+}
+.dash-grid .dash-corner { background: var(--panel-2); border-color: var(--border); }
+.dash-name {
+  background: var(--panel-2);
+  color: var(--text);
+  text-align: left;
+  font-weight: 600;
+  min-width: 140px;
+  border-color: var(--border);
+}
+.dash-hand {
+  background: var(--panel-2);
+  color: var(--muted);
+  font-weight: 600;
+  width: 28px;
+  border-color: var(--border);
+}
+.dash-cell {
+  background: #f6f7f9;       /* default light cell so unused dates still pop */
+  min-width: 110px;
+}
+.dash-cell.li-high  { background: var(--dash-li-high); }
+.dash-cell.li-med   { background: var(--dash-li-med); }
+.dash-cell.runs-clean { background: var(--dash-clean); }
+.dash-cell.runs-bad   { background: var(--dash-runs); }
+/* Empty cells (no game that day) get a muted dark fill so they don't look
+   like a real outing with no text. */
+.dash-cell:empty { background: var(--panel); }
+
+.dash-cell-situation { border-bottom: none; }
+.dash-cell-result    { border-top: none; }
+
+/* Sign-in dialog (editor + remote backend only). Same visual treatment as the
+   dashboard modal: full-page backdrop, centered card. */
+.signin-backdrop {
+  position: fixed; inset: 0;
+  z-index: 250;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.signin-backdrop[hidden] { display: none; }
+.signin-card {
+  width: min(420px, 92vw);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.signin-card h2 { margin: 0 0 4px; font-size: 18px; }
+.signin-card p { margin: 0 0 16px; }
+.signin-card input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.signin-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px;
+}
+.signin-row #signInError { color: var(--danger); font-size: 12px; min-height: 16px; }
+
+.toast {
+  position: fixed; bottom: 16px; right: 16px;
+  z-index: 100;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  max-width: 380px;
+  font-size: 13px;
+}
+.toast.error { border-color: var(--danger); color: var(--danger); }
+.toast.ok    { border-color: var(--accent-2); color: var(--accent-2); }

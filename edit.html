@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Closer Charts — Editor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Closer Charts</h1>
+      <span class="subtle" id="seasonBadge"></span>
+    </div>
+    <div class="topbar-actions">
+      <span id="saveStatus" class="save-status">Loaded</span>
+      <button id="btnRefreshStats">Refresh stats</button>
+      <button id="btnRefreshDashboard">Refresh dashboard</button>
+      <button id="btnRefreshRosters">Refresh rosters</button>
+      <button id="btnSignOut" hidden>Sign out</button>
+      <a class="topbar-link" href="index.html" target="_blank" rel="noopener">View landing page</a>
+    </div>
+  </header>
+
+  <!-- Sign-in dialog (only used in remote/Pages mode; backdrop hidden in
+       local-server mode). Lives outside .topbar so it can full-page modal. -->
+  <div id="signInBackdrop" class="signin-backdrop" hidden>
+    <div class="signin-card" role="dialog" aria-modal="true">
+      <h2>Sign in to edit</h2>
+      <p class="subtle">Enter the editor password. It's stored only in your browser.</p>
+      <input id="signInPassword" type="password" autocomplete="current-password"
+             placeholder="password">
+      <div class="signin-row">
+        <span class="subtle" id="signInError"></span>
+        <button id="signInSubmit" class="primary">Sign in</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab active" data-view="chart">Chart</button>
+    <button class="tab" data-view="quickhits">Quick Hits</button>
+    <span class="legend">
+      <span class="legend-group">
+        <strong>LEVCON:</strong>
+        <span class="lev-pill lev-5">5</span> clear-cut
+        <span class="lev-pill lev-4">4</span> preferred/HLR
+        <span class="lev-pill lev-3">3</span> shared
+        <span class="lev-pill lev-2">2</span> on alert
+        <span class="lev-pill lev-1">1</span> committee
+      </span>
+      <span class="legend-group">
+        <strong>Chip color:</strong>
+        <span class="color-swatch color-Blue"></span> fluid bullpen
+        <span class="color-swatch color-Orange"></span> role at risk
+        <span class="color-swatch color-Yellow"></span> injury/shutdown
+        <span class="color-swatch color-Magenta"></span> workload/leave
+        <span class="color-swatch color-Green"></span> upside/stash
+      </span>
+    </span>
+  </nav>
+
+  <main id="chartView" class="view active">
+    <section class="league-block">
+      <h2>American League</h2>
+      <div id="alChart" class="chart-grid"></div>
+    </section>
+    <section class="league-block">
+      <h2>National League</h2>
+      <div id="nlChart" class="chart-grid"></div>
+    </section>
+  </main>
+
+  <main id="quickhitsView" class="view">
+    <div class="qh-controls">
+      <button id="btnAddQhDate">+ Add date</button>
+      <select id="qhLeagueFilter">
+        <option value="ALL">Both leagues</option>
+        <option value="AL">AL only</option>
+        <option value="NL">NL only</option>
+      </select>
+      <input id="qhSearch" type="search" placeholder="search text...">
+    </div>
+    <div id="qhList" class="qh-list"></div>
+  </main>
+
+  <!-- Tooltip layer for hover stats -->
+  <div id="statTooltip" class="stat-tooltip" hidden></div>
+
+  <!-- RP Dashboard modal (opens when a team name is clicked) -->
+  <div id="dashboardModal" class="dashboard-backdrop" hidden>
+    <div class="dashboard-card" role="dialog" aria-modal="true">
+      <div class="dashboard-head">
+        <div class="dashboard-title">
+          <span id="dashTeamName"></span>
+          <span class="subtle" id="dashWindow"></span>
+        </div>
+        <button id="dashClose" class="dashboard-close" aria-label="Close">&times;</button>
+      </div>
+      <div id="dashBody" class="dashboard-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast for save/export status -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>

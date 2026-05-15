@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Closer Charts — Reliever Recon</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>window.CC_VIEW_MODE = true;</script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Closer Charts</h1>
+      <span class="subtle" id="seasonBadge"></span>
+      <span class="subtle" id="lastUpdated"></span>
+    </div>
+    <div class="topbar-actions">
+      <a class="topbar-link" href="edit.html">Open editor</a>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-view="chart">Chart</button>
+    <button class="tab" data-view="quickhits">Quick Hits</button>
+    <span class="legend">
+      <span class="legend-group">
+        <strong>LEVCON:</strong>
+        <span class="lev-pill lev-5">5</span> clear-cut
+        <span class="lev-pill lev-4">4</span> preferred/HLR
+        <span class="lev-pill lev-3">3</span> shared
+        <span class="lev-pill lev-2">2</span> on alert
+        <span class="lev-pill lev-1">1</span> committee
+      </span>
+      <span class="legend-group">
+        <strong>Chip color:</strong>
+        <span class="color-swatch color-Blue"></span> fluid bullpen
+        <span class="color-swatch color-Orange"></span> role at risk
+        <span class="color-swatch color-Yellow"></span> injury/shutdown
+        <span class="color-swatch color-Magenta"></span> workload/leave
+        <span class="color-swatch color-Green"></span> upside/stash
+      </span>
+    </span>
+  </nav>
+
+  <main id="chartView" class="view active">
+    <section class="league-block">
+      <h2>American League</h2>
+      <div id="alChart" class="chart-grid"></div>
+    </section>
+    <section class="league-block">
+      <h2>National League</h2>
+      <div id="nlChart" class="chart-grid"></div>
+    </section>
+  </main>
+
+  <main id="quickhitsView" class="view">
+    <div class="qh-controls">
+      <select id="qhLeagueFilter">
+        <option value="ALL">Both leagues</option>
+        <option value="AL">AL only</option>
+        <option value="NL">NL only</option>
+      </select>
+      <input id="qhSearch" type="search" placeholder="search text...">
+    </div>
+    <div id="qhList" class="qh-list"></div>
+  </main>
+
+  <div id="statTooltip" class="stat-tooltip" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

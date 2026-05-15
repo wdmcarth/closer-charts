@@ -1,0 +1,9 @@
+name = "closer-charts-api"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+# No KV/D1 needed — the Worker is stateless. Secrets live in Cloudflare's
+# secret store and are populated via `wrangler secret put`:
+#   SHARED_PASSWORD
+#   BOT_PAT
+#   REPO   (e.g. "wdmcarth/closer-charts")
+#   REF    (e.g. "main")

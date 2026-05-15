@@ -1,0 +1,1819 @@
+{
+  "teams": [
+    {
+      "teamId": 110,
+      "teamName": "Baltimore Orioles",
+      "league": "AL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Rico Garcia",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 670329
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Anthony Nunez",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 689296
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Grant Wolfram",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 664991
+          }
+        ],
+        "upside": [],
+        "hybrid": [
+          {
+            "name": "Yennier Cano",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666974
+          },
+          {
+            "name": "Keegan Akin",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669211
+          }
+        ]
+      },
+      "notes": "**Ryan Helsley (elbow) was placed on the 15-day IL (4.29)"
+    },
+    {
+      "teamId": 111,
+      "teamName": "Boston Red Sox",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Aroldis Chapman",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 547973
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Garrett Whitlock",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676477
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Justin Slaten",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 686580
+          }
+        ],
+        "upside": [
+          {
+            "name": "Christian Foutch",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Zack Kelly",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 677161
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 145,
+      "teamName": "Chicago White Sox",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Seranthony Domínguez",
+            "statusTag": null,
+            "color": "Magenta",
+            "other": null,
+            "mlbamid": 622554
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Grant Taylor",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 691799
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Bryan Hudson",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663542
+          }
+        ],
+        "upside": [
+          {
+            "name": "Gabe Davis",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Jordan Hicks",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663855
+          }
+        ]
+      },
+      "notes": "**Mike Vasil will undergo TJS..."
+    },
+    {
+      "teamId": 114,
+      "teamName": "Cleveland Guardians",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Cade Smith",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 671922
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Erik Sabrowski",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 681870
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Colin Holdmerman",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670059
+          }
+        ],
+        "upside": [
+          {
+            "name": "Franco Aleman",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 680916
+          },
+          {
+            "name": "Daniel Espino",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 682982
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Hunter Gaddis",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 683769
+          },
+          {
+            "name": "Matt Festa",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670036
+          }
+        ]
+      },
+      "notes": "**Emmanuel Clase remains on non-disciplinary leave until his trial about gambling accusations..."
+    },
+    {
+      "teamId": 116,
+      "teamName": "Detroit Tigers",
+      "league": "AL",
+      "levcon": 2,
+      "roles": {
+        "closer": [
+          {
+            "name": "Kenley Jansen",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 445276
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Kyle Finnegan",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 640448
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Brant Hurter",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676428
+          }
+        ],
+        "upside": [
+          {
+            "name": "Kelvis Salcedo",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Tyler Holton",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663947
+          },
+          {
+            "name": "Drew Anderson",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 623454
+          }
+        ]
+      },
+      "notes": "**Placed Will Vest (forearm) on the 15-day IL (5.2)"
+    },
+    {
+      "teamId": 117,
+      "teamName": "Houston Astros",
+      "league": "AL",
+      "levcon": 1,
+      "roles": {
+        "closer": [
+          {
+            "name": "Bryan Abreu",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 650556
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Bryan King",
+            "statusTag": null,
+            "color": "Orange",
+            "other": null,
+            "mlbamid": 687911
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Enyel De Los Santos",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 660853
+          }
+        ],
+        "upside": [
+          {
+            "name": "Alimber Santa",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          },
+          {
+            "name": "Hudson Leach",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Bennett Sousa",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656986
+          },
+          {
+            "name": "A.J. Blubaugh",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 805123
+          }
+        ]
+      },
+      "notes": "**Josh Hader (shoulder/bicep) will not be ready for Opening Day and was placed on the IL (3.11)..."
+    },
+    {
+      "teamId": 118,
+      "teamName": "Kansas City Royals",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Lucas Erceg",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 668674
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Matt Strahm",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 621381
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Daniel Lynch IV",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663738
+          }
+        ],
+        "upside": [
+          {
+            "name": "Luinder Avila",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 679883
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "J Schreiber",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670167
+          },
+          {
+            "name": "Nick Mears",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 683232
+          }
+        ]
+      },
+      "notes": "**Placed Carlos Estévez on the IL (left foot contusion) backdated to 3.29..."
+    },
+    {
+      "teamId": 108,
+      "teamName": "Los Angeles Angels",
+      "league": "AL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Ryan Zeferjahn",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666171
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Sam Bachman",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 696147
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Kirby Yates",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 489446
+          }
+        ],
+        "upside": [
+          {
+            "name": "Walbert Ureña",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 700712
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Nick Sandlin",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          },
+          {
+            "name": "Chase Silseth",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 681217
+          }
+        ]
+      },
+      "notes": "**Ben Joyce (shoulder) is on his minor league rehab assignment, and Robert Stephenson (elbow) on the 60-day IL..."
+    },
+    {
+      "teamId": 142,
+      "teamName": "Minnesota Twins",
+      "league": "AL",
+      "levcon": 1,
+      "roles": {
+        "closer": [
+          {
+            "name": "Yoendrys Gómez",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 672782
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Luis García",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 472610
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Anthony Banda",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 607455
+          }
+        ],
+        "upside": [
+          {
+            "name": "Marco Raya",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 694397
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Eric Orze",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 679358
+          },
+          {
+            "name": "Taylor Rogers",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 573124
+          }
+        ]
+      },
+      "notes": "**Placed Cole Sands (forearm) on the 15-day IL (5.2)..."
+    },
+    {
+      "teamId": 147,
+      "teamName": "New York Yankees",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "David Bednar",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670280
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Camilo Doval",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666808
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Fernando Cruz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 518585
+          }
+        ],
+        "upside": [
+          {
+            "name": "Carlos Lagrange",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Paul Blackburn",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 621112
+          },
+          {
+            "name": "Jake Bird",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656234
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 136,
+      "teamName": "Seattle Mariners",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Andrés Muñoz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 662253
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Eduard Bazardo",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 660825
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Jose A. Ferrer",
+            "statusTag": "paternity",
+            "color": "Magenta",
+            "other": null,
+            "mlbamid": 678606
+          }
+        ],
+        "upside": [
+          {
+            "name": "Christian Little",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Cooper Criswell",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 681867
+          }
+        ]
+      },
+      "notes": "**Matt Brash was placed on the 15-day IL (4/30)"
+    },
+    {
+      "teamId": 139,
+      "teamName": "Tampa Bay Rays",
+      "league": "AL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Bryan Baker",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 641329
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Cole Sulser",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 642121
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Garrett Cleavinger",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 664076
+          }
+        ],
+        "upside": [
+          {
+            "name": "Ty Johnson",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Ian Seymour",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 693855
+          },
+          {
+            "name": "Kevin Kelly",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 687330
+          }
+        ]
+      },
+      "notes": "**Edwin Uceta (shoulder) was placed on the 60-day IL...Garrett Cleavinger (calf) was placed on the 15-day IL (4/3)..."
+    },
+    {
+      "teamId": 133,
+      "teamName": "The Athletics",
+      "league": "AL",
+      "levcon": 3,
+      "roles": {
+        "closer": [
+          {
+            "name": "Jack Perkins",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 678022
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Hogan Harris",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663687
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Joel Kuhnel",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669270
+          }
+        ],
+        "upside": [
+          {
+            "name": "Braden Nett",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 804556
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Justin Sterner",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 686993
+          },
+          {
+            "name": "Scott Barlow",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 605130
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 140,
+      "teamName": "Texas Rangers",
+      "league": "AL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Jacob Latz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656641
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Jakob Junis",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 596001
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Cole Winn",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 668390
+          }
+        ],
+        "upside": [
+          {
+            "name": "Emiliano Teodo",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 693713
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Cal Quantrill",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 615698
+          },
+          {
+            "name": "Jalen Beeks",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656222
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 141,
+      "teamName": "Toronto Blue Jays",
+      "league": "AL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Louis Varland",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 686973
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Tyler Rogers",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 643511
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Jeff Hoffman",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656546
+          }
+        ],
+        "upside": [
+          {
+            "name": "Yondrei Rojas",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Braydon Fisher",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 680755
+          },
+          {
+            "name": "M Fluharty",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ]
+      },
+      "notes": "**Yimi García (elbow) has progressed to throwing off a mound..."
+    },
+    {
+      "teamId": 109,
+      "teamName": "Arizona Diamondbacks",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Paul Sewald",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 623149
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Juan Morillo",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666661
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Taylor Clarke",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 664199
+          }
+        ],
+        "upside": [
+          {
+            "name": "Yilber Díaz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 700270
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Jonathan Loáisiga",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 642528
+          }
+        ]
+      },
+      "notes": "*Andrew Saafrank underwent shoulder surgery and will miss the 2026 season..."
+    },
+    {
+      "teamId": 144,
+      "teamName": "Atlanta Braves",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Raisel Iglesias",
+            "statusTag": null,
+            "color": "Magenta",
+            "other": null,
+            "mlbamid": 628452
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Robert Suarez",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663158
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Dylan Lee",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669276
+          },
+          {
+            "name": "Ty Kinley",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 641755
+          }
+        ],
+        "upside": [
+          {
+            "name": "Rolddy Muñoz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 691548
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Reynaldo López",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 625643
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 112,
+      "teamName": "Chicago Cubs",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Daniel Palencia",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 694037
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Phil Maton",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 664208
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Trent Thornton",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663423
+          }
+        ],
+        "upside": [
+          {
+            "name": "Jaxon Wiggins",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Jacob Webb",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 657097
+          },
+          {
+            "name": "Hoby Milner",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 571948
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 113,
+      "teamName": "Cincinnati Reds",
+      "league": "NL",
+      "levcon": 2,
+      "roles": {
+        "closer": [
+          {
+            "name": "Graham Ashcraft",
+            "statusTag": null,
+            "color": "Blue",
+            "other": "HLR",
+            "mlbamid": 668933
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Pierce Johnson",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 572955
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Tony Santillan",
+            "statusTag": null,
+            "color": "Orange",
+            "other": null,
+            "mlbamid": 663574
+          }
+        ],
+        "upside": [
+          {
+            "name": "Chase Petty",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 695534
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Brock Burke",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656271
+          },
+          {
+            "name": "Tejay Antone",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 622088
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 115,
+      "teamName": "Colorado Rockies",
+      "league": "NL",
+      "levcon": 3,
+      "roles": {
+        "closer": [
+          {
+            "name": "Victor Vodnik",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 680767
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Juan Mejia",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 675848
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Jaden Hill",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 677955
+          }
+        ],
+        "upside": [
+          {
+            "name": "Brody Brecht",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Antonio Senzatela",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 622608
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 119,
+      "teamName": "Los Angeles Dodgers",
+      "league": "NL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Tanner Scott",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656945
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Alex Vesia",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 681911
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Blake Treinen",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 595014
+          }
+        ],
+        "upside": [
+          {
+            "name": "Ronan Kopp",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 691947
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Edgardo Henriquez",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 683618
+          },
+          {
+            "name": "K Hurt",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669165
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 146,
+      "teamName": "Miami Marlins",
+      "league": "NL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Pete Fairbanks",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 664126
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Calvin Faucher",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676534
+          }
+        ],
+        "stealth": [
+          {
+            "name": "John King",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 667463
+          }
+        ],
+        "upside": [
+          {
+            "name": "Josh Eckness",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 694795
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Andrew Nardi",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 677053
+          },
+          {
+            "name": "Tyler Phillips",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 663969
+          }
+        ]
+      },
+      "notes": "**Pete Fairbanks was placed on the 15-day IL with a nerve issue (4/28)...Ronny Henriquez underwent an internal brace procedure and will be out until 2027..."
+    },
+    {
+      "teamId": 158,
+      "teamName": "Milwaukee Brewers",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Abner Uribe",
+            "statusTag": null,
+            "color": "Magenta",
+            "other": null,
+            "mlbamid": 682842
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Trevor Megill",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656730
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Aaron Ashby",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676879
+          }
+        ],
+        "upside": [
+          {
+            "name": "Craig Yoho",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 684974
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "DL Hall",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669084
+          },
+          {
+            "name": "Shane Drohan",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 675660
+          }
+        ]
+      },
+      "notes": "**Jared Koenig (UCL sprain) was placed on the 15-day IL on (4/6)..."
+    },
+    {
+      "teamId": 121,
+      "teamName": "New York Mets",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Devin Williams",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 642207
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Luke Weaver",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 596133
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Brooks Raley",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 548384
+          }
+        ],
+        "upside": [
+          {
+            "name": "Dylan Ross",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 697811
+          },
+          {
+            "name": "Ryan Lambert",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Huascar Brazobán",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 623211
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 143,
+      "teamName": "Philadelphia Phillies",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Jhoan Duran",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 661395
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Brad Keller",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 641745
+          }
+        ],
+        "stealth": [
+          {
+            "name": "José Alvarado",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 621237
+          }
+        ],
+        "upside": [
+          {
+            "name": "Alex McFarlane",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 686934
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "T Banks",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 621383
+          },
+          {
+            "name": "Orion Kerkering",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 689147
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 134,
+      "teamName": "Pittsburgh Pirates",
+      "league": "NL",
+      "levcon": 4,
+      "roles": {
+        "closer": [
+          {
+            "name": "Gregory Soto",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 642397
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Dennis Santana",
+            "statusTag": null,
+            "color": "Orange",
+            "other": null,
+            "mlbamid": 642701
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Mason Montgomery",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 682254
+          }
+        ],
+        "upside": [
+          {
+            "name": "Wilber Dotel",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 696062
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Yohan Ramírez",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670990
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 135,
+      "teamName": "San Diego Padres",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Mason Miller",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 695243
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Jason Adam",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 592094
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Jeremiah Estrada",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 669093
+          }
+        ],
+        "upside": [
+          {
+            "name": "Tucker Musgrove",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Adrian Morejon",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 670970
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 137,
+      "teamName": "San Francisco Giants",
+      "league": "NL",
+      "levcon": 1,
+      "roles": {
+        "closer": [
+          {
+            "name": "Caleb Kilian",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 668873
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Joel Peguero",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666711
+          }
+        ],
+        "stealth": [
+          {
+            "name": "Keaton Winn",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676775
+          }
+        ],
+        "upside": [
+          {
+            "name": "Gerelmi Maldonado",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Sam Hentges",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 656529
+          },
+          {
+            "name": "Matt Gage",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 657424
+          }
+        ]
+      },
+      "notes": "**Erik Miller (back) was placed on the 15-day IL (5.4)...Jason Foley (shoulder) could be ready by June..."
+    },
+    {
+      "teamId": 138,
+      "teamName": "St. Louis Cardinals",
+      "league": "NL",
+      "levcon": 5,
+      "roles": {
+        "closer": [
+          {
+            "name": "Riley O'Brien",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 676617
+          }
+        ],
+        "stopper": [
+          {
+            "name": "JoJo Romero",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 668941
+          }
+        ],
+        "stealth": [
+          {
+            "name": "George Soriano",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 666277
+          }
+        ],
+        "upside": [
+          {
+            "name": "Luis Gastelum",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          },
+          {
+            "name": "Max Rajcic",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Gordon Graceffo",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 700669
+          }
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "teamId": 120,
+      "teamName": "Washington Nationals",
+      "league": "NL",
+      "levcon": 3,
+      "roles": {
+        "closer": [
+          {
+            "name": "Gus Varland",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 681402
+          }
+        ],
+        "stopper": [
+          {
+            "name": "Richard Lovelady",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 663992
+          }
+        ],
+        "stealth": [
+          {
+            "name": "PJ Poulin",
+            "statusTag": null,
+            "color": "Blue",
+            "other": null,
+            "mlbamid": 676571
+          }
+        ],
+        "upside": [
+          {
+            "name": "Jarlin Susana",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ],
+        "hybrid": [
+          {
+            "name": "Paxton Schultz",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": 687606
+          },
+          {
+            "name": "Orl Ribalta",
+            "statusTag": null,
+            "color": null,
+            "other": null,
+            "mlbamid": null
+          }
+        ]
+      },
+      "notes": "**Placed Clayton Beeter (forearm) on the 15-day IL (4.26)..."
+    }
+  ],
+  "roleOrder": [
+    "closer",
+    "stopper",
+    "stealth",
+    "upside",
+    "hybrid"
+  ],
+  "roleLabels": {
+    "closer": "Closer (highest leverage)",
+    "stopper": "Stopper (unless fluid)",
+    "stealth": "Stealth Option",
+    "upside": "High Upside Future",
+    "hybrid": "Hybrid (IP+) or RP Pivot"
+  },
+  "colorMeanings": {
+    "Blue": "Fluid bullpen",
+    "Orange": "Role at risk",
+    "Yellow": "Injury Concern/Shutdown",
+    "Magenta": "Workload concern/on leave",
+    "Green": "Upside Reliever/Stash"
+  },
+  "levconLevels": {
+    "1": "Committee w/o clarity",
+    "2": "On alert (ratios/role)",
+    "3": "Shared saves",
+    "4": "Preferred/HLR",
+    "5": "Clear cut closer"
+  }
+}

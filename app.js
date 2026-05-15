@@ -1,0 +1,1279 @@
+// Closer Charts — app.js
+// State model:
+//   state.chart      = parsed chart.json (mutated as the user edits)
+//   state.quickhits  = parsed quickhits.json
+//   state.rosters    = rosters.json (read-only)
+//   state.stats      = stats.json (read-only; null if not yet refreshed)
+
+// Backend URL: CC_BACKEND_URL from config.js, or same-origin if empty. Local
+// dev → server.py (same origin); production → Cloudflare Worker URL.
+const API = (window.CC_BACKEND_URL || "").replace(/\/$/, "") || location.origin;
+// `true` when we're hitting a remote backend (Worker). Drives password auth.
+const REMOTE_BACKEND = !!(window.CC_BACKEND_URL && window.CC_BACKEND_URL.trim());
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+const state = {
+  chart: null,
+  quickhits: null,
+  rosters: null,
+  stats: null,
+  dashboard: null,         // {windowStart, windowEnd, fetchedAt, dates:[], byTeam:{ABBR:[reliever,...]}}
+  pitcherIndex: null,      // {mlbamid: {level, teamAbbr, name, hand, ...}} — covers MLB + all MILB affiliates
+  pitcherIndexByName: null, // lowercased name -> record (built once at load)
+  dirty: false,
+  saveTimer: null,
+};
+
+// View mode: when set, hides edit affordances (add buttons, chip popovers,
+// editable notes, save/refresh buttons). Set by index.html (landing) before
+// app.js loads. The editor page (edit.html) does not set this.
+const VIEW_MODE = !!window.CC_VIEW_MODE;
+
+// ===== Auth (editor + remote backend only) =====
+// Password lives in localStorage. When using a remote backend we POST it in
+// the body of every write request; the Worker validates and proxies to GitHub.
+
+const AUTH_KEY = "cc.editorPassword";
+
+function getPassword() {
+  try { return localStorage.getItem(AUTH_KEY) || ""; } catch { return ""; }
+}
+function setPassword(pw) {
+  try {
+    if (pw) localStorage.setItem(AUTH_KEY, pw);
+    else localStorage.removeItem(AUTH_KEY);
+  } catch { /* private mode etc. — ignore */ }
+}
+function needsSignIn() {
+  if (VIEW_MODE) return false;
+  if (!REMOTE_BACKEND && !window.CC_FORCE_AUTH) return false;
+  return !getPassword();
+}
+
+function showSignIn(errorMsg = "") {
+  const backdrop = $("#signInBackdrop");
+  if (!backdrop) return;
+  backdrop.hidden = false;
+  $("#signInError").textContent = errorMsg;
+  setTimeout(() => $("#signInPassword")?.focus(), 0);
+}
+function hideSignIn() {
+  const backdrop = $("#signInBackdrop");
+  if (backdrop) backdrop.hidden = true;
+}
+
+let qhObserver = null;
+
+// Per-chip color palette (matches build_data.COLOR_PALETTE + Excel legend).
+const CHIP_COLORS = ["Blue", "Orange", "Yellow", "Magenta", "Green"];
+
+// ===== load =====
+
+async function loadAll() {
+  const noCache = { cache: "no-store" };
+  const [chart, quickhits, rosters, statsRes, dashRes, pitcherIdx] = await Promise.all([
+    fetch("data/chart.json", noCache).then(r => r.json()),
+    fetch("data/quickhits.json", noCache).then(r => r.json()),
+    fetch("data/rosters.json", noCache).then(r => r.json()),
+    fetch("data/stats.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("data/dashboard.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("data/pitcher_index.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+  ]);
+  state.chart = chart;
+  state.quickhits = quickhits;
+  state.rosters = rosters;
+  state.stats = statsRes;
+  state.dashboard = dashRes;
+  state.pitcherIndex = pitcherIdx;
+  if (pitcherIdx) {
+    state.pitcherIndexByName = {};
+    for (const rec of Object.values(pitcherIdx)) {
+      if (rec.name) state.pitcherIndexByName[rec.name.toLowerCase()] = rec;
+    }
+  }
+  if (statsRes) {
+    $("#seasonBadge").textContent =
+      `season ${statsRes.season} · stats ${new Date(statsRes.fetchedAt).toLocaleString()}`;
+  }
+  // View page shows a "last updated" stamp derived from the most recent of
+  // chart/stats/pitcher_index fetches. Best-effort: chart.json has no embedded
+  // timestamp, so we lean on stats.json's fetchedAt as the canonical freshness.
+  const lu = $("#lastUpdated");
+  if (lu) {
+    const ts = statsRes?.fetchedAt;
+    lu.textContent = ts
+      ? `last updated ${new Date(ts).toLocaleString()}`
+      : "";
+  }
+  renderChart();
+  renderQuickHits();
+}
+
+// ===== chart render =====
+
+function renderChart() {
+  const al = state.chart.teams.filter(t => t.league === "AL");
+  const nl = state.chart.teams.filter(t => t.league === "NL");
+  $("#alChart").innerHTML = "";
+  appendHead($("#alChart"));
+  al.forEach(t => $("#alChart").appendChild(buildTeamRow(t)));
+  $("#nlChart").innerHTML = "";
+  appendHead($("#nlChart"));
+  nl.forEach(t => $("#nlChart").appendChild(buildTeamRow(t)));
+}
+
+// Append header cells directly to the grid (no wrapper). A wrapper with
+// `display: contents` would block `position: sticky` on the cells, since
+// sticky needs a real containing block.
+function appendHead(gridEl) {
+  ["LEV", "Team", ...state.chart.roleOrder.map(r => state.chart.roleLabels[r]), "Notes"]
+    .forEach(label => {
+      const d = document.createElement("div");
+      d.className = "chart-head-cell";
+      d.textContent = label;
+      gridEl.appendChild(d);
+    });
+}
+
+function buildTeamRow(team) {
+  const row = document.createElement("div");
+  row.className = "team-row";
+  row.dataset.teamId = team.teamId ?? "";
+
+  // 1. LEVCON rating
+  const cellRating = document.createElement("div");
+  cellRating.className = "cell-rating";
+  if (team.levcon) cellRating.dataset.lev = String(team.levcon);
+  if (VIEW_MODE) {
+    const pill = document.createElement("span");
+    pill.className = "lev-static";
+    pill.textContent = team.levcon ?? "—";
+    cellRating.appendChild(pill);
+  } else {
+    const levSel = document.createElement("select");
+    ["", "1", "2", "3", "4", "5"].forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = v; opt.textContent = v || "—";
+      if (String(team.levcon ?? "") === v) opt.selected = true;
+      levSel.appendChild(opt);
+    });
+    levSel.addEventListener("change", () => {
+      team.levcon = levSel.value ? Number(levSel.value) : null;
+      if (team.levcon) cellRating.dataset.lev = String(team.levcon);
+      else delete cellRating.dataset.lev;
+      markDirty();
+    });
+    cellRating.appendChild(levSel);
+  }
+  row.appendChild(cellRating);
+
+  // 2. Team name (with abbr). In editor mode, the cell is clickable to open
+  // the RP Dashboard modal. The view-only page omits the modal entirely.
+  const cellTeam = document.createElement("div");
+  cellTeam.className = "cell-team" + (VIEW_MODE ? "" : " clickable");
+  if (!VIEW_MODE) cellTeam.title = "Click to open the RP Dashboard for this team";
+  const abbr = team.teamId ? state.rosters[String(team.teamId)]?.abbr : "";
+  if (abbr) {
+    const ab = document.createElement("span");
+    ab.className = "team-abbr";
+    ab.textContent = abbr;
+    cellTeam.appendChild(ab);
+  }
+  cellTeam.appendChild(document.createTextNode(team.teamName));
+  if (!VIEW_MODE) cellTeam.addEventListener("click", () => openDashboardModal(team));
+  row.appendChild(cellTeam);
+
+  // 3-7. Role columns
+  state.chart.roleOrder.forEach(role => {
+    const cell = document.createElement("div");
+    cell.className = "cell-role";
+    cell.appendChild(buildChipList(team, role));
+    if (!VIEW_MODE) cell.appendChild(buildChipAdd(team, role));
+    row.appendChild(cell);
+  });
+
+  // 8. Notes
+  const cellNotes = document.createElement("div");
+  cellNotes.className = "cell-notes";
+  if (VIEW_MODE) {
+    const p = document.createElement("div");
+    p.className = "notes-readonly";
+    p.textContent = team.notes || "";
+    cellNotes.appendChild(p);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.value = team.notes || "";
+    ta.placeholder = "Injury / availability notes…";
+    ta.addEventListener("input", () => { team.notes = ta.value; markDirty(); });
+    cellNotes.appendChild(ta);
+  }
+  row.appendChild(cellNotes);
+
+  return row;
+}
+
+// ===== chips =====
+
+function buildChipList(team, role) {
+  const list = document.createElement("div");
+  list.className = "chip-list";
+  const chips = team.roles[role] || (team.roles[role] = []);
+  chips.forEach((chip, idx) => list.appendChild(buildChip(team, role, chip, idx, list)));
+  if (!chips.length && VIEW_MODE) {
+    const empty = document.createElement("span");
+    empty.className = "chip-empty";
+    empty.textContent = "—";
+    list.appendChild(empty);
+  }
+  return list;
+}
+
+function lookupPitcher(chip) {
+  if (!state.pitcherIndex) return null;
+  if (chip.mlbamid && state.pitcherIndex[String(chip.mlbamid)]) {
+    return state.pitcherIndex[String(chip.mlbamid)];
+  }
+  // Fallback: chip is unresolved (no mlbamid). Try exact name match against
+  // the full org index so prospects still get a level badge.
+  if (state.pitcherIndexByName && chip.name) {
+    return state.pitcherIndexByName[chip.name.toLowerCase()] || null;
+  }
+  return null;
+}
+
+function buildChip(team, role, chip, idx, listEl) {
+  const el = document.createElement("span");
+  el.className = "chip";
+  if (chip.color) el.classList.add("color-" + chip.color);
+
+  const pitcher = lookupPitcher(chip);
+  // "On the 40-man" = pitcher exists in pitcher_index AND level === MLB.
+  // Note: chip.mlbamid alone doesn't tell us 40-man status, because the chip
+  // could have been bound via the org-MILB search to a minor leaguer.
+  const onFortyMan = !!(pitcher && pitcher.level === "MLB");
+  if (!onFortyMan) el.title = "Not on the 40-man roster";
+
+  const nameSpan = document.createElement("span");
+  nameSpan.className = "chip-name";
+  nameSpan.textContent = chip.name;
+  el.appendChild(nameSpan);
+
+  // "40-man" badge with strike-through when the player isn't on the 40-man.
+  // Replaces the older dashed-yellow border on unresolved chips.
+  if (!onFortyMan) {
+    const nf = document.createElement("span");
+    nf.className = "chip-notforty";
+    nf.textContent = "40";
+    nf.title = "Not on the 40-man roster";
+    el.appendChild(nf);
+  }
+
+  // MILB level badge — only when the looked-up pitcher is not at the MLB level.
+  if (pitcher && pitcher.level && pitcher.level !== "MLB") {
+    const lvl = document.createElement("span");
+    lvl.className = "chip-level";
+    lvl.textContent = pitcher.level;
+    lvl.title = `${pitcher.teamAbbr || ""} (${pitcher.level})`;
+    el.appendChild(lvl);
+  }
+
+  // Derived usage badge from stats.json (auto-populated on Refresh Stats).
+  const usageTags = chip.mlbamid
+    ? (state.stats?.byPlayerId?.[String(chip.mlbamid)]?.usageTags || [])
+    : [];
+  if (usageTags.length) {
+    const u = document.createElement("span");
+    u.className = "chip-usage";
+    u.textContent = usageTags.join(", ");
+    u.title = "Auto from gameLog — refresh stats to update";
+    el.appendChild(u);
+  }
+
+  if (chip.statusTag) {
+    const t = document.createElement("span");
+    t.className = "chip-status";
+    t.textContent = chip.statusTag;
+    el.appendChild(t);
+  }
+  if (chip.other) {
+    const o = document.createElement("span");
+    o.className = "chip-other";
+    o.textContent = chip.other;
+    el.appendChild(o);
+  }
+
+  if (!VIEW_MODE) {
+    const x = document.createElement("span");
+    x.className = "chip-remove";
+    x.textContent = "×";
+    x.title = "Remove";
+    x.addEventListener("click", e => {
+      e.stopPropagation();
+      team.roles[role].splice(idx, 1);
+      rerenderRoleCell(team, role);
+      markDirty();
+    });
+    el.appendChild(x);
+  }
+
+  // hover -> stat tooltip (works in both edit and view modes)
+  if (chip.mlbamid) {
+    el.addEventListener("mouseenter", e => showStatTooltip(e, chip));
+    el.addEventListener("mouseleave", hideStatTooltip);
+    el.addEventListener("mousemove", e => moveStatTooltip(e));
+  }
+
+  // click -> edit popover (edit mode only)
+  if (!VIEW_MODE) {
+    el.addEventListener("click", e => {
+      e.stopPropagation();
+      openChipEditPopover(el, team, role, idx);
+    });
+  }
+
+  return el;
+}
+
+function rerenderRoleCell(team, role) {
+  const tr = $$(`.team-row[data-team-id="${team.teamId ?? ""}"]`)
+    .find(r => r.parentElement.id === (team.league === "AL" ? "alChart" : "nlChart"));
+  if (!tr) return;
+  const idx = state.chart.roleOrder.indexOf(role);
+  // tr uses display:contents — children of tr are the grid cells in order:
+  //   0(rating), 1(team), 2..6(roles), 7(notes)
+  const roleCellOffset = 2;
+  const cell = tr.children[roleCellOffset + idx];
+  if (!cell) return;
+  cell.innerHTML = "";
+  cell.appendChild(buildChipList(team, role));
+  cell.appendChild(buildChipAdd(team, role));
+}
+
+function buildChipAdd(team, role) {
+  const wrap = document.createElement("div");
+  wrap.className = "chip-add";
+  const btn = document.createElement("button");
+  btn.className = "chip-add-btn";
+  btn.textContent = "+ add pitcher";
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    openAddSearch(btn, team, role);
+  });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+// ===== popovers =====
+
+let openPopover = null;
+function closePopover() {
+  if (openPopover) { openPopover.remove(); openPopover = null; }
+}
+document.addEventListener("click", closePopover);
+
+function placeNear(el, anchor) {
+  const r = anchor.getBoundingClientRect();
+  el.style.left = `${window.scrollX + r.left}px`;
+  el.style.top = `${window.scrollY + r.bottom + 4}px`;
+  document.body.appendChild(el);
+}
+
+function openAddSearch(anchor, team, role) {
+  closePopover();
+  const popup = document.createElement("div");
+  popup.className = "chip-add-search";
+  popup.addEventListener("click", e => e.stopPropagation());
+
+  // mode tabs
+  const tabs = document.createElement("div");
+  tabs.className = "chip-add-tabs";
+  const modes = [
+    { key: "roster", label: "40-Man" },
+    { key: "org",    label: "Org (MILB)" },
+  ];
+  let mode = "roster";
+  modes.forEach(m => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip-add-tab" + (m.key === mode ? " active" : "");
+    b.textContent = m.label;
+    b.dataset.mode = m.key;
+    b.addEventListener("click", () => {
+      mode = m.key;
+      Array.from(tabs.children).forEach(c =>
+        c.classList.toggle("active", c.dataset.mode === mode));
+      activeIdx = 0;
+      render(input.value);
+    });
+    tabs.appendChild(b);
+  });
+  popup.appendChild(tabs);
+
+  const input = document.createElement("input");
+  input.type = "search";
+  input.placeholder = "search pitchers...";
+  popup.appendChild(input);
+
+  const list = document.createElement("ul");
+  popup.appendChild(list);
+
+  const roster = team.teamId ? state.rosters[String(team.teamId)] : null;
+  const rosterPitchers = roster ? roster.pitchers : [];
+
+  let activeIdx = 0;
+  let orgResults = [];
+  let orgLoading = false;
+  let orgQuery = null;        // last query we asked the server about
+  let orgReqSeq = 0;          // race-guard counter
+
+  async function fetchOrg(q) {
+    if (!team.teamId) { orgResults = []; return; }
+    const myReq = ++orgReqSeq;
+    orgLoading = true;
+    orgQuery = q;
+    render(input.value);
+    try {
+      const url = `${API}/org-pitchers?teamId=${team.teamId}`
+        + (q ? `&q=${encodeURIComponent(q)}` : "");
+      const r = await fetch(url);
+      const data = await r.json();
+      if (myReq !== orgReqSeq) return;  // a newer request superseded this one
+      orgResults = data.ok ? data.pitchers : [];
+    } catch (e) {
+      if (myReq !== orgReqSeq) return;
+      orgResults = [];
+      toast("Org search failed: " + e.message, "error");
+    } finally {
+      if (myReq === orgReqSeq) {
+        orgLoading = false;
+        render(input.value);
+      }
+    }
+  }
+
+  let orgDebounce = null;
+  function maybeFetchOrg(q) {
+    if (orgDebounce) clearTimeout(orgDebounce);
+    // First open or query change -> debounce a fetch.
+    orgDebounce = setTimeout(() => fetchOrg(q), q ? 220 : 0);
+  }
+
+  function makeRow(label, meta, onClick, extraClass) {
+    const li = document.createElement("li");
+    if (extraClass) li.classList.add(extraClass);
+    const main = document.createElement("span");
+    main.className = "pitcher-main";
+    if (typeof label === "string") main.textContent = label;
+    else main.appendChild(label);
+    li.appendChild(main);
+    if (meta) {
+      const m = document.createElement("span");
+      m.className = "pitcher-meta";
+      m.textContent = meta;
+      li.appendChild(m);
+    }
+    li.addEventListener("click", () => { onClick(); closePopover(); });
+    return li;
+  }
+
+  function render(filterText) {
+    list.innerHTML = "";
+    const q = (filterText || "").trim();
+    const qLower = q.toLowerCase();
+    let rows = [];
+
+    if (mode === "roster") {
+      const matches = rosterPitchers
+        .filter(p => !qLower || (p.name || "").toLowerCase().includes(qLower))
+        .slice(0, 25);
+      rows = matches.map(p => () => makeRow(
+        p.name,
+        [p.hand && `${p.hand}HP`, p.status].filter(Boolean).join(" · "),
+        () => addChip(team, role, { name: p.name, id: p.id }),
+      ));
+    } else if (mode === "org") {
+      if (orgLoading) {
+        const li = document.createElement("li");
+        li.className = "empty";
+        li.textContent = "searching org…";
+        list.appendChild(li);
+      } else {
+        rows = orgResults.map(p => () => {
+          const label = document.createElement("span");
+          const lvl = document.createElement("span");
+          lvl.className = "level-badge level-" + (p.level || "").replace("+", "p");
+          lvl.textContent = p.level || "?";
+          label.appendChild(lvl);
+          label.appendChild(document.createTextNode(" " + p.name));
+          const meta = [p.teamAbbr, p.hand && `${p.hand}HP`, p.status]
+            .filter(Boolean).join(" · ");
+          return makeRow(label, meta, () =>
+            addChip(team, role, { name: p.name, id: p.id }));
+        });
+      }
+    }
+
+    rows.forEach((make, i) => {
+      const li = make();
+      if (i === activeIdx) li.classList.add("active");
+      list.appendChild(li);
+    });
+
+    if (!rows.length && !orgLoading) {
+      const li = document.createElement("li");
+      li.className = "empty";
+      li.textContent = q
+        ? (mode === "org" ? "no org matches" : "no roster matches")
+        : (mode === "org" ? "type to search org" : "type to filter");
+      list.appendChild(li);
+    }
+
+    // Free-text footer: always show when there is typed text, regardless of mode.
+    if (q) {
+      const li = makeRow(
+        `Add as free text: "${q}"`,
+        "unresolved",
+        () => addChip(team, role, { name: q, id: null }),
+        "free-text",
+      );
+      // free-text is selectable as the last row
+      if (activeIdx === rows.length) li.classList.add("active");
+      list.appendChild(li);
+    }
+  }
+
+  input.addEventListener("input", () => {
+    activeIdx = 0;
+    if (mode === "org") maybeFetchOrg(input.value.trim());
+    render(input.value);
+  });
+  input.addEventListener("keydown", e => {
+    const max = list.children.length - 1;
+    if (e.key === "ArrowDown") {
+      activeIdx = Math.min(activeIdx + 1, max);
+      // mark active without rebuilding list
+      Array.from(list.children).forEach((c, i) =>
+        c.classList.toggle("active", i === activeIdx));
+      e.preventDefault();
+    } else if (e.key === "ArrowUp") {
+      activeIdx = Math.max(activeIdx - 1, 0);
+      Array.from(list.children).forEach((c, i) =>
+        c.classList.toggle("active", i === activeIdx));
+      e.preventDefault();
+    } else if (e.key === "Enter") {
+      const li = list.children[activeIdx];
+      if (li && !li.classList.contains("empty")) li.click();
+      e.preventDefault();
+    } else if (e.key === "Escape") {
+      closePopover();
+    }
+  });
+
+  // Re-route the tab click handler to also kick the initial org fetch.
+  Array.from(tabs.children).forEach(b => {
+    b.addEventListener("click", () => {
+      if (mode === "org" && !orgResults.length && !orgLoading) {
+        maybeFetchOrg(input.value.trim());
+      }
+    });
+  });
+
+  render("");
+  placeNear(popup, anchor);
+  openPopover = popup;
+  setTimeout(() => input.focus(), 10);
+}
+
+function addChip(team, role, pitcher) {
+  team.roles[role].push({
+    name: pitcher.name,
+    mlbamid: pitcher.id ?? null,
+    statusTag: null,
+    color: null,
+    other: null,
+  });
+  rerenderRoleCell(team, role);
+  markDirty();
+}
+
+function openChipEditPopover(anchor, team, role, idx) {
+  closePopover();
+  const chip = team.roles[role][idx];
+  const popup = document.createElement("div");
+  popup.className = "chip-edit-popover";
+  popup.addEventListener("click", e => e.stopPropagation());
+
+  // Usage tag (read-only, derived from stats.json) — shown for context.
+  const usageTags = chip.mlbamid
+    ? (state.stats?.byPlayerId?.[String(chip.mlbamid)]?.usageTags || [])
+    : [];
+  const lblUsage = document.createElement("label");
+  lblUsage.textContent = "Usage Tag (auto — Refresh Stats to update)";
+  const usageVal = document.createElement("div");
+  usageVal.className = "field-readonly";
+  usageVal.textContent = usageTags.length ? usageTags.join(", ") : "—";
+  lblUsage.appendChild(usageVal);
+  popup.appendChild(lblUsage);
+
+  // Status (IL/Paternity/Suspension/etc.)
+  const lblStatus = document.createElement("label");
+  lblStatus.textContent = "Injury / IL / Paternity / Suspension";
+  const inpStatus = document.createElement("input");
+  inpStatus.type = "text"; inpStatus.value = chip.statusTag || "";
+  inpStatus.placeholder = "e.g. IL, paternity, suspended";
+  lblStatus.appendChild(inpStatus);
+  popup.appendChild(lblStatus);
+
+  // Color (per-chip — replaces former per-team color)
+  const lblColor = document.createElement("label");
+  lblColor.textContent = "Color";
+  const selColor = document.createElement("select");
+  const noneOpt = document.createElement("option");
+  noneOpt.value = ""; noneOpt.textContent = "—";
+  selColor.appendChild(noneOpt);
+  const colorLabels = state.chart.colorMeanings || {};
+  CHIP_COLORS.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c + (colorLabels[c] ? ` (${colorLabels[c]})` : "");
+    if ((chip.color || "") === c) opt.selected = true;
+    selColor.appendChild(opt);
+  });
+  lblColor.appendChild(selColor);
+  popup.appendChild(lblColor);
+
+  // Other (free text — HLR / FROOP / etc.)
+  const lblOther = document.createElement("label");
+  lblOther.textContent = "Other (free text)";
+  const inpOther = document.createElement("input");
+  inpOther.type = "text"; inpOther.value = chip.other || "";
+  inpOther.placeholder = "e.g. HLR, FROOP";
+  lblOther.appendChild(inpOther);
+  popup.appendChild(lblOther);
+
+  const row = document.createElement("div");
+  row.className = "row";
+  const cancel = document.createElement("button");
+  cancel.textContent = "Cancel";
+  cancel.addEventListener("click", closePopover);
+  const save = document.createElement("button");
+  save.className = "primary";
+  save.textContent = "Save";
+  save.addEventListener("click", () => {
+    chip.statusTag = inpStatus.value.trim() || null;
+    chip.color = selColor.value || null;
+    chip.other = inpOther.value.trim() || null;
+    rerenderRoleCell(team, role);
+    closePopover();
+    markDirty();
+  });
+  row.appendChild(cancel); row.appendChild(save);
+  popup.appendChild(row);
+
+  placeNear(popup, anchor);
+  openPopover = popup;
+  setTimeout(() => inpStatus.focus(), 10);
+}
+
+// ===== stat tooltip =====
+
+const tooltip = $("#statTooltip");
+
+function showStatTooltip(e, chip) {
+  if (!state.stats) return;
+  const row = state.stats.byPlayerId[String(chip.mlbamid)];
+  if (!row) {
+    tooltip.innerHTML = `<div class="name">${escapeHtml(chip.name)}</div><div class="subtle">no stats yet</div>`;
+  } else {
+    const fmt = v => (v === null || v === undefined ? "—" : v);
+    const usage = (row.usageTags || []).join(", ");
+    const lg = row.lastGame;
+    const lastGameLine = lg
+      ? `<div class="subtle">last: ${lg.date} · ${fmt(lg.ip)} IP · ${fmt(lg.pitches)} pitches</div>`
+      : "";
+    const usageLine = usage
+      ? `<div class="usage-line">usage: ${escapeHtml(usage)}</div>`
+      : "";
+    tooltip.innerHTML = `
+      <div class="name">${escapeHtml(chip.name)} <span class="subtle">${row.teamAbbrev || ""}</span></div>
+      ${usageLine}
+      ${lastGameLine}
+      <table>
+        <tr><td class="label">G/GF</td><td>${fmt(row.gamesPitched)}/${fmt(row.gamesFinished)}</td>
+            <td class="label">IP</td><td>${fmt(row.inningsPitched)}</td></tr>
+        <tr><td class="label">SV/SVO/BS</td><td>${fmt(row.saves)}/${fmt(row.saveOpportunities)}/${fmt(row.blownSaves)}</td>
+            <td class="label">HLD</td><td>${fmt(row.holds)}</td></tr>
+        <tr><td class="label">ERA</td><td>${fmt(row.era)}</td>
+            <td class="label">WHIP</td><td>${fmt(row.whip)}</td></tr>
+        <tr><td class="label">K/9</td><td>${fmt(row.strikeoutsPer9)}</td>
+            <td class="label">BB/9</td><td>${fmt(row.baseOnBallsPer9)}</td></tr>
+        <tr><td class="label">K-BB%</td><td>${fmt(row.strikeoutsMinusWalksPercentage)}</td>
+            <td class="label">SwStr%</td><td>${fmt(row.whiffPercentage)}</td></tr>
+      </table>`;
+  }
+  tooltip.hidden = false;
+  moveStatTooltip(e);
+}
+function moveStatTooltip(e) {
+  if (tooltip.hidden) return;
+  const x = e.clientX + window.scrollX + 12;
+  const y = e.clientY + window.scrollY + 12;
+  tooltip.style.left = `${x}px`;
+  tooltip.style.top = `${y}px`;
+}
+function hideStatTooltip() { tooltip.hidden = true; }
+
+// ===== quick hits =====
+
+function renderQuickHits() {
+  const list = $("#qhList");
+  list.innerHTML = "";
+
+  if (qhObserver) { qhObserver.disconnect(); qhObserver = null; }
+
+  const leagueFilter = $("#qhLeagueFilter").value;
+  const search = $("#qhSearch").value.toLowerCase().trim();
+
+  const teamsByLeague = {
+    AL: state.chart.teams.filter(t => t.league === "AL"),
+    NL: state.chart.teams.filter(t => t.league === "NL"),
+  };
+
+  const filtered = state.quickhits.filter(q => {
+    if (leagueFilter !== "ALL" && q.league !== leagueFilter) return false;
+    if (search) {
+      const blob = JSON.stringify(q.entries).toLowerCase();
+      if (!blob.includes(search)) return false;
+    }
+    return true;
+  });
+
+  // Lazy-hydrate cards: render skeleton placeholders for every filtered day
+  // so the scrollbar reflects total content, then swap each placeholder for
+  // the full ~15-textarea card as it nears the viewport. Avoids building
+  // ~14k textareas up front. Cards stay hydrated once built (data lives in
+  // state.quickhits so re-render never loses edits).
+  qhObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      const placeholder = entry.target;
+      qhObserver.unobserve(placeholder);
+      const q = placeholder._qhRef;
+      placeholder.replaceWith(buildQhDay(q, teamsByLeague[q.league] || []));
+    }
+  }, { rootMargin: "600px 0px" });
+
+  filtered.forEach(q => {
+    const placeholder = buildQhPlaceholder(q);
+    placeholder._qhRef = q;
+    list.appendChild(placeholder);
+    qhObserver.observe(placeholder);
+  });
+}
+
+function buildQhPlaceholder(q) {
+  const card = document.createElement("div");
+  card.className = "qh-day qh-day-placeholder";
+  const head = document.createElement("div");
+  head.className = "qh-day-head";
+  const date = document.createElement("span");
+  date.className = "qh-date";
+  date.textContent = q.date;
+  head.appendChild(date);
+  const lg = document.createElement("span");
+  lg.className = "qh-league";
+  lg.textContent = q.league;
+  head.appendChild(lg);
+  card.appendChild(head);
+  return card;
+}
+
+function buildQhDay(q, teams) {
+  const card = document.createElement("div");
+  card.className = "qh-day";
+
+  const head = document.createElement("div");
+  head.className = "qh-day-head";
+  if (VIEW_MODE) {
+    const dateEl = document.createElement("span");
+    dateEl.className = "qh-date";
+    dateEl.textContent = q.date;
+    head.appendChild(dateEl);
+  } else {
+    const dateEl = document.createElement("input");
+    dateEl.type = "date";
+    dateEl.className = "qh-date";
+    dateEl.value = q.date;
+    dateEl.addEventListener("change", () => { q.date = dateEl.value; markDirty(); });
+    head.appendChild(dateEl);
+  }
+  const lg = document.createElement("span");
+  lg.className = "qh-league";
+  lg.textContent = q.league;
+  head.appendChild(lg);
+  if (!VIEW_MODE) {
+    const del = document.createElement("button");
+    del.className = "danger";
+    del.textContent = "Delete date";
+    del.style.marginLeft = "auto";
+    del.addEventListener("click", () => {
+      if (!confirm(`Delete Quick Hits for ${q.date} (${q.league})?`)) return;
+      const idx = state.quickhits.indexOf(q);
+      if (idx >= 0) state.quickhits.splice(idx, 1);
+      renderQuickHits();
+      markDirty();
+    });
+    head.appendChild(del);
+  }
+  card.appendChild(head);
+
+  // rollup
+  const rollupText = q.entries["__rollup__"] || "";
+  if (VIEW_MODE) {
+    if (rollupText) {
+      const rollup = document.createElement("div");
+      rollup.className = "qh-rollup-readonly";
+      rollup.textContent = rollupText;
+      card.appendChild(rollup);
+    }
+  } else {
+    const rollup = document.createElement("div");
+    rollup.className = "qh-rollup";
+    const rollupTa = document.createElement("textarea");
+    rollupTa.placeholder = `Rollup "Quick Hits..." line for ${q.date}`;
+    rollupTa.value = rollupText;
+    rollupTa.addEventListener("input", () => {
+      if (rollupTa.value.trim()) q.entries["__rollup__"] = rollupTa.value;
+      else delete q.entries["__rollup__"];
+      markDirty();
+    });
+    rollup.appendChild(rollupTa);
+    card.appendChild(rollup);
+  }
+
+  // per-team grid
+  const grid = document.createElement("div");
+  grid.className = "qh-team-grid";
+  teams.forEach(t => {
+    const tid = String(t.teamId);
+    const text = q.entries[tid] || q.entries[t.teamName] || "";
+    // In view mode, skip teams with no entry to keep the grid tight.
+    if (VIEW_MODE && !text) return;
+
+    const cell = document.createElement("div");
+    cell.className = "qh-team-cell";
+    const name = document.createElement("div");
+    name.className = "qh-team-name";
+    name.textContent = t.teamName;
+    cell.appendChild(name);
+    if (VIEW_MODE) {
+      const body = document.createElement("div");
+      body.className = "qh-team-readonly";
+      body.textContent = text;
+      cell.appendChild(body);
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.placeholder = "—";
+      ta.addEventListener("input", () => {
+        if (ta.value.trim()) q.entries[tid] = ta.value;
+        else { delete q.entries[tid]; delete q.entries[t.teamName]; }
+        markDirty();
+      });
+      cell.appendChild(ta);
+    }
+    grid.appendChild(cell);
+  });
+  card.appendChild(grid);
+
+  return card;
+}
+
+// ===== save / refresh =====
+
+function setSaveStatus(label, cls) {
+  const el = $("#saveStatus");
+  el.textContent = label;
+  el.className = "save-status " + (cls || "");
+}
+
+function markDirty() {
+  if (VIEW_MODE) return;  // no-op in read-only mode
+  state.dirty = true;
+  setSaveStatus("Unsaved", "dirty");
+  if (state.saveTimer) clearTimeout(state.saveTimer);
+  state.saveTimer = setTimeout(saveAll, 1200);
+}
+
+async function backendPost(path, body = {}) {
+  // Inject password in the body for remote backend. Local server.py ignores it.
+  const payload = REMOTE_BACKEND
+    ? { password: getPassword(), ...body }
+    : body;
+  const r = await fetch(API + path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (r.status === 401) {
+    setPassword("");
+    showSignIn("Wrong password. Try again.");
+    throw new Error("unauthorized");
+  }
+  let data = null;
+  try { data = await r.json(); } catch { /* may have empty body */ }
+  if (!r.ok) throw new Error((data && (data.error || data.stderr)) || `HTTP ${r.status}`);
+  return data || {};
+}
+
+async function saveAll() {
+  setSaveStatus("Saving…", "saving");
+  try {
+    await backendPost("/save", { chart: state.chart, quickhits: state.quickhits });
+    state.dirty = false;
+    setSaveStatus("Saved " + new Date().toLocaleTimeString(), "saved");
+  } catch (e) {
+    if (e.message === "unauthorized") {
+      setSaveStatus("Sign in to save", "error");
+    } else {
+      setSaveStatus("Save error", "error");
+      toast("Save failed: " + e.message, "error");
+    }
+  }
+}
+
+async function refreshStats() {
+  toast("Refreshing stats…");
+  try {
+    await backendPost("/refresh-stats");
+  } catch (e) {
+    if (e.message !== "unauthorized") toast("Refresh failed: " + e.message, "error");
+    return;
+  }
+  if (REMOTE_BACKEND) {
+    // GitHub Action runs asynchronously — show a "queued" message and let
+    // the user reload manually after the workflow finishes.
+    toast("Stats refresh queued — page will pick up new data after the workflow commits (~30–60s).", "ok");
+    return;
+  }
+  state.stats = await fetch("data/stats.json", { cache: "no-store" }).then(r => r.json());
+  $("#seasonBadge").textContent =
+    `season ${state.stats.season} · stats ${new Date(state.stats.fetchedAt).toLocaleString()}`;
+  renderChart();
+  toast("Stats refreshed (" + Object.keys(state.stats.byPlayerId).length + " pitchers)", "ok");
+}
+
+async function refreshDashboard() {
+  if (!confirm("Refresh RP Dashboard? Fetches ~14 days of completed games (~30–60s).")) return;
+  toast("Refreshing dashboard…");
+  try {
+    await backendPost("/refresh-dashboard", { days: 14 });
+  } catch (e) {
+    if (e.message !== "unauthorized") toast("Dashboard refresh failed: " + e.message, "error");
+    return;
+  }
+  if (REMOTE_BACKEND) {
+    toast("Dashboard refresh queued — reload the page after the workflow commits (~60s).", "ok");
+    return;
+  }
+  state.dashboard = await fetch("data/dashboard.json", { cache: "no-store" }).then(r => r.json());
+  toast("Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
+  if (!$("#dashboardModal").hidden) renderDashboardModal(currentDashboardTeam);
+}
+
+async function refreshRosters() {
+  if (!confirm("Refresh rosters? This re-pulls 40-man for all 30 teams (~30s).")) return;
+  toast("Refreshing rosters…");
+  try {
+    await backendPost("/refresh-rosters");
+  } catch (e) {
+    if (e.message !== "unauthorized") toast("Refresh failed: " + e.message, "error");
+    return;
+  }
+  if (REMOTE_BACKEND) {
+    toast("Roster refresh queued — reload the page after the workflow commits (~30s).", "ok");
+    return;
+  }
+  state.rosters = await fetch("data/rosters.json", { cache: "no-store" }).then(r => r.json());
+  renderChart();
+  toast("Rosters refreshed", "ok");
+}
+
+async function exportXlsx() {
+  if (state.dirty) await saveAll();
+  toast("Exporting .xlsx…");
+  const r = await fetch(API + "/export-xlsx", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ inPlace: false }),
+  });
+  const data = await r.json();
+  if (!data.ok) { toast("Export failed: " + (data.stderr || data.error), "error"); return; }
+  toast("Exported to Closer Charts (export).xlsx", "ok");
+}
+
+// ===== RP Dashboard modal =====
+// Click a team name in the chart -> opens a large overlay showing that team's
+// reliever appearance grid for the last ~14 days. Data comes from
+// data/dashboard.json (built by dashboard_data.py).
+
+let currentDashboardTeam = null;
+
+function teamAbbrFromTeam(team) {
+  if (!team) return null;
+  if (team.teamId) return state.rosters?.[String(team.teamId)]?.abbr || null;
+  return null;
+}
+
+function fmtSituation(g) {
+  if (!g || g.inning == null) return "—";
+  const ord = n => ({1:"1st",2:"2nd",3:"3rd"}[n] || `${n}th`);
+  return `${ord(g.inning)} (${g.teamScore}-${g.opponentScore})`;
+}
+
+function fmtResult(g) {
+  if (!g) return "";
+  let s = `${g.IP ?? "?"} (${g.BF ?? "?"}b ${g.PT ?? "?"}p)`;
+  if (g.R) s += ` ${g.R}R`;
+  if (g.W) s += " W";
+  else if (g.L) s += " L";
+  else if (g.SV) s += " SV";
+  else if (g.HLD) s += " HLD";
+  if (g.BS) s += " BS";
+  return s;
+}
+
+function classForSituation(li) {
+  if (li == null) return "";
+  if (li > 2) return "li-high";
+  if (li > 1) return "li-med";
+  return "";
+}
+
+function fmtDateLabel(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${months[m - 1]} ${d}`;
+}
+
+function openDashboardModal(team) {
+  currentDashboardTeam = team;
+  renderDashboardModal(team);
+  const modal = $("#dashboardModal");
+  modal.hidden = false;
+  // Focus close button so ESC works immediately.
+  setTimeout(() => $("#dashClose")?.focus(), 0);
+}
+
+function closeDashboardModal() {
+  $("#dashboardModal").hidden = true;
+  currentDashboardTeam = null;
+}
+
+function renderDashboardModal(team) {
+  const abbr = teamAbbrFromTeam(team);
+  $("#dashTeamName").textContent =
+    `${abbr ? abbr + " · " : ""}${team.teamName}`;
+
+  const body = $("#dashBody");
+  body.innerHTML = "";
+
+  if (!state.dashboard) {
+    $("#dashWindow").textContent = "no dashboard data yet";
+    const empty = document.createElement("div");
+    empty.className = "dashboard-empty";
+    empty.innerHTML = `
+      <p>No dashboard data on disk.</p>
+      <p class="subtle">Click <strong>Refresh dashboard</strong> in the topbar to fetch the last 14 days of completed games. This takes ~30–60 seconds.</p>`;
+    body.appendChild(empty);
+    return;
+  }
+
+  const d = state.dashboard;
+  $("#dashWindow").textContent =
+    `${d.windowStart} → ${d.windowEnd} · pulled ${new Date(d.fetchedAt).toLocaleString()}`;
+
+  const relievers = (abbr && d.byTeam[abbr]) ? d.byTeam[abbr] : [];
+  if (!relievers.length) {
+    const empty = document.createElement("div");
+    empty.className = "dashboard-empty";
+    empty.textContent = abbr
+      ? `No reliever appearances for ${abbr} in this window.`
+      : "Team not bound to an MLB org — no dashboard data.";
+    body.appendChild(empty);
+    return;
+  }
+
+  body.appendChild(buildDashboardGrid(d.dates, relievers));
+}
+
+function buildDashboardGrid(dates, relievers) {
+  const wrap = document.createElement("div");
+  wrap.className = "dash-grid-wrap";
+
+  const table = document.createElement("table");
+  table.className = "dash-grid";
+
+  // Header row
+  const thead = document.createElement("thead");
+  const headTr = document.createElement("tr");
+  const blank = document.createElement("th");
+  blank.colSpan = 2;
+  blank.className = "dash-corner";
+  headTr.appendChild(blank);
+  dates.forEach(iso => {
+    const th = document.createElement("th");
+    th.textContent = fmtDateLabel(iso);
+    th.title = iso;
+    headTr.appendChild(th);
+  });
+  thead.appendChild(headTr);
+  table.appendChild(thead);
+
+  // Body rows: each reliever gets a name+hand cell (rowspan=2) and two rows of
+  // 14 date cells (situation on top, result on bottom).
+  const tbody = document.createElement("tbody");
+  relievers.forEach(r => {
+    const sitTr = document.createElement("tr");
+    sitTr.className = "row-situation";
+    const nameTd = document.createElement("td");
+    nameTd.rowSpan = 2;
+    nameTd.className = "dash-name";
+    nameTd.textContent = r.name;
+    sitTr.appendChild(nameTd);
+    const handTd = document.createElement("td");
+    handTd.rowSpan = 2;
+    handTd.className = "dash-hand";
+    handTd.textContent = r.hand || "";
+    sitTr.appendChild(handTd);
+
+    const resTr = document.createElement("tr");
+    resTr.className = "row-result";
+
+    dates.forEach(iso => {
+      const g = r.games[iso];
+      const sit = document.createElement("td");
+      sit.className = "dash-cell dash-cell-situation";
+      const res = document.createElement("td");
+      res.className = "dash-cell dash-cell-result";
+      if (g) {
+        sit.textContent = fmtSituation(g);
+        sit.title = `LI: ${g.leverageIndex ?? "—"}`;
+        const liCls = classForSituation(g.leverageIndex);
+        if (liCls) sit.classList.add(liCls);
+        res.textContent = fmtResult(g);
+        res.classList.add(g.R ? "runs-bad" : "runs-clean");
+      }
+      sitTr.appendChild(sit);
+      resTr.appendChild(res);
+    });
+
+    tbody.appendChild(sitTr);
+    tbody.appendChild(resTr);
+  });
+  table.appendChild(tbody);
+
+  wrap.appendChild(table);
+  return wrap;
+}
+
+// ===== misc =====
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  })[c]);
+}
+
+let toastTimer = null;
+function toast(msg, cls) {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.className = "toast " + (cls || "");
+  t.hidden = false;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.hidden = true; }, 4000);
+}
+
+// ===== wiring =====
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (VIEW_MODE) document.body.classList.add("view-mode");
+
+  // Edit-mode-only button wiring. The view page omits these buttons entirely;
+  // we still guard with `?.` so a stale DOM doesn't crash.
+  if (!VIEW_MODE) {
+    $("#btnRefreshStats")?.addEventListener("click", refreshStats);
+    $("#btnRefreshDashboard")?.addEventListener("click", refreshDashboard);
+    $("#btnRefreshRosters")?.addEventListener("click", refreshRosters);
+    $("#btnAddQhDate")?.addEventListener("click", () => {
+      const today = new Date().toISOString().slice(0, 10);
+      state.quickhits.unshift({ date: today, league: "AL", entries: {} });
+      state.quickhits.unshift({ date: today, league: "NL", entries: {} });
+      renderQuickHits();
+      markDirty();
+    });
+  }
+
+  // Dashboard modal close handlers — both modes (modal is read-only-friendly).
+  $("#dashClose")?.addEventListener("click", closeDashboardModal);
+  $("#dashboardModal")?.addEventListener("click", e => {
+    if (e.target.id === "dashboardModal") closeDashboardModal();
+  });
+
+  $$(".tab").forEach(tab => tab.addEventListener("click", () => {
+    $$(".tab").forEach(t => t.classList.toggle("active", t === tab));
+    const view = tab.dataset.view;
+    $$(".view").forEach(v => v.classList.remove("active"));
+    $("#" + view + "View").classList.add("active");
+  }));
+
+  $("#qhLeagueFilter")?.addEventListener("change", renderQuickHits);
+  $("#qhSearch")?.addEventListener("input", renderQuickHits);
+
+  // Save on Cmd/Ctrl+S (edit only); ESC closes dashboard modal in any mode.
+  window.addEventListener("keydown", e => {
+    if (!VIEW_MODE && (e.metaKey || e.ctrlKey) && e.key === "s") {
+      e.preventDefault(); saveAll();
+    }
+    if (e.key === "Escape" && !$("#dashboardModal").hidden) closeDashboardModal();
+  });
+  // Warn on unload if dirty (edit only).
+  window.addEventListener("beforeunload", e => {
+    if (!VIEW_MODE && state.dirty) { e.preventDefault(); e.returnValue = ""; }
+  });
+
+  // Sign-in dialog (editor + remote backend). Wire it before loadAll so a
+  // mis-typed password doesn't lose data — the editor doesn't render until
+  // we have a password to send with /save.
+  const signInBtn = $("#signInSubmit");
+  const signInInput = $("#signInPassword");
+  const signOutBtn = $("#btnSignOut");
+  function submitPassword() {
+    const pw = signInInput.value.trim();
+    if (!pw) return;
+    setPassword(pw);
+    hideSignIn();
+    // Show the sign-out button once auth is established.
+    if (signOutBtn) signOutBtn.hidden = false;
+  }
+  signInBtn?.addEventListener("click", submitPassword);
+  signInInput?.addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); submitPassword(); }
+  });
+  signOutBtn?.addEventListener("click", () => {
+    setPassword("");
+    showSignIn("Signed out.");
+  });
+
+  if (needsSignIn()) {
+    showSignIn();
+  } else if (REMOTE_BACKEND && signOutBtn) {
+    signOutBtn.hidden = false;
+  }
+
+  loadAll().catch(e => {
+    document.body.innerHTML = `<pre style="padding:24px;color:#ef6f6c">load failed: ${e.message}\n\nIf running locally, did you run python3 build_data.py first, then start server.py?</pre>`;
+  });
+});
