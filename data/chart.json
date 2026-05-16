@@ -549,7 +549,9 @@
           {
             "name": "Taylor Rogers",
             "mlbamid": 573124,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
