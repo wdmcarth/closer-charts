@@ -49,5 +49,9 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Refresh RP Dashboard ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "Push race on attempt $i; retrying..."
+              sleep 2
+            done
           fi
