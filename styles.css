@@ -79,7 +79,10 @@ textarea { resize: vertical; }
 
 .topbar {
   position: sticky; top: 0; z-index: 30;
-  display: flex; justify-content: space-between; align-items: center;
+  /* Left-anchor everything so it stays visible at default scroll. body is
+     content-wide on narrow viewports — anything right-anchored would slide
+     off-screen until horizontal scroll. */
+  display: flex; align-items: center; gap: 16px;
   padding: 10px 16px;
   background: var(--panel);
   border-bottom: 1px solid var(--border);
@@ -186,7 +189,8 @@ textarea { resize: vertical; }
 }
 .tab.active { color: var(--text); border-bottom-color: var(--accent); }
 .legend {
-  margin-left: auto;
+  /* Left-anchored — sits right after the Chart / Quick Hits tabs so it
+     stays visible at default horizontal scroll position. */
   display: flex; gap: 16px;
   color: var(--muted);
   font-size: 11px;
