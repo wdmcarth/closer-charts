@@ -309,9 +309,12 @@
           {
             "name": "Bryan King",
             "statusTag": null,
-            "color": "Orange",
             "other": null,
-            "mlbamid": 687911
+            "mlbamid": 687911,
+            "colors": [
+              "Orange",
+              "Blue"
+            ]
           }
         ],
         "stealth": [
