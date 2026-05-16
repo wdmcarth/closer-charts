@@ -852,7 +852,7 @@
         "name": "Jordan Wicks",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 657006,
@@ -1469,7 +1469,7 @@
         "name": "Brenan Hanifee",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 572143,
@@ -1483,7 +1483,7 @@
         "name": "Casey Mize",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 657756,
@@ -1844,7 +1844,7 @@
         "name": "Bailey Falter",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 695667,
@@ -1935,7 +1935,7 @@
         "name": "Matt Strahm",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 608379,
@@ -3531,13 +3531,6 @@
         "status": "Reassigned to Minors"
       },
       {
-        "id": 694363,
-        "name": "Jared Shuster",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Active"
-      },
-      {
         "id": 668941,
         "name": "JoJo Romero",
         "posAbbr": "P",
@@ -3563,7 +3556,7 @@
         "name": "Matt Pushard",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 694335,
@@ -4753,7 +4746,7 @@
         "name": "Brandon Eisert",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 663542,
@@ -4921,7 +4914,7 @@
         "name": "Tyler Schweitzer",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 682790,
@@ -5177,7 +5170,7 @@
         "name": "Elmer Rodríguez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 518585,
@@ -5219,7 +5212,7 @@
         "name": "Max Fried",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 621112,
