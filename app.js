@@ -1513,19 +1513,6 @@ async function refreshRosters() {
   await pollWorkflowAndReload("refresh-rosters.yml", triggeredAt, "Refresh rosters");
 }
 
-async function exportXlsx() {
-  if (state.dirty) await saveAll();
-  toast("Exporting .xlsx…");
-  const r = await fetch(API + "/export-xlsx", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ inPlace: false }),
-  });
-  const data = await r.json();
-  if (!data.ok) { toast("Export failed: " + (data.stderr || data.error), "error"); return; }
-  toast("Exported to Closer Charts (export).xlsx", "ok");
-}
-
 // ===== RP Dashboard modal =====
 // Click a team name in the chart -> opens a large overlay showing that team's
 // reliever appearance grid for the last ~14 days. Data comes from

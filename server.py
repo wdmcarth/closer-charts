@@ -6,7 +6,6 @@
     POST /save             body: {chart, quickhits}  -> writes data/chart.json + data/quickhits.json
     POST /refresh-stats                                -> runs refresh_stats.py and re-reads stats.json
     POST /refresh-rosters                              -> runs refresh_stats.py --rosters
-    POST /export-xlsx                                  -> runs export_xlsx.py, returns output path
 
 Usage:
   python3 server.py [--port 8765] [--no-open]
@@ -203,17 +202,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
             if path == "/refresh-rosters":
                 rc, out, err = self._run(["refresh_stats.py", "--rosters"])
-                self._send_json(200 if rc == 0 else 500, {
-                    "ok": rc == 0, "stdout": out, "stderr": err,
-                })
-                return
-
-            if path == "/export-xlsx":
-                body = self._read_body() if self.headers.get("Content-Length") else {}
-                args = ["export_xlsx.py"]
-                if body.get("inPlace"):
-                    args.append("--in-place")
-                rc, out, err = self._run(args)
                 self._send_json(200 if rc == 0 else 500, {
                     "ok": rc == 0, "stdout": out, "stderr": err,
                 })
