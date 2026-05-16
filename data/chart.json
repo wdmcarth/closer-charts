@@ -540,7 +540,9 @@
           {
             "name": "Eric Orze",
             "mlbamid": 679358,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           },
