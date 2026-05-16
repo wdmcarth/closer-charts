@@ -1349,9 +1349,13 @@ function setSaveStatus(label, cls) {
   if (!el) return;
   el.textContent = label;
   el.className = "save-status " + (cls || "");
-  // Apply-saves button reflects the dirty state too.
+  // Apply-changes button: hidden when there's nothing to save; visible
+  // (and disabled mid-save) when there are pending edits.
   const btn = $("#btnApplySaves");
-  if (btn) btn.disabled = !state.dirty || _saveInFlight;
+  if (btn) {
+    btn.hidden = !state.dirty && !_saveInFlight;
+    btn.disabled = !state.dirty || _saveInFlight;
+  }
 }
 
 // Mark the chart dirty. NO autosave — the user clicks "Apply saves" (or
