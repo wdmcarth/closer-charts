@@ -370,7 +370,8 @@
             "statusTag": null,
             "color": null,
             "other": null,
-            "mlbamid": 668674
+            "mlbamid": 668674,
+            "noMagenta": true
           }
         ],
         "stopper": [
