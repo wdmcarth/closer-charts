@@ -98,7 +98,9 @@ textarea { resize: vertical; }
    body.view-mode class set by app.js when CC_VIEW_MODE is true. */
 .view-mode {
   --row-h: 40px;
-  --sticky-top: 78px;     /* topbar + tabs are slightly shorter in view mode */
+  /* --sticky-top is computed in JS (recomputeStickyTop) for both modes so the
+     chart's column headers always pin just below whatever height the topbar +
+     tabs ended up at, including when the legend wraps to multiple lines. */
 }
 .view-mode .topbar { padding: 6px 16px; }
 .view-mode .brand h1 { font-size: 16px; }

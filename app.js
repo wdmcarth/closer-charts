@@ -104,6 +104,9 @@ async function loadAll() {
   }
   renderChart();
   renderQuickHits();
+  // The topbar + tabs heights can change after the chart finishes rendering
+  // (legend wrap depends on viewport width). Measure once layout is done.
+  recomputeStickyTop();
 }
 
 // ===== chart render =====
@@ -130,6 +133,22 @@ function appendHead(gridEl) {
       d.textContent = label;
       gridEl.appendChild(d);
     });
+}
+
+// Set the --sticky-top CSS variable to the combined height of topbar + tabs
+// so the chart's column headers always pin RIGHT BELOW the tabs bar,
+// regardless of how much the legend wraps (tabs height grows when the
+// legend wraps to 2+ lines on narrower viewports). Called on load and on
+// resize.
+function recomputeStickyTop() {
+  const topbar = document.querySelector(".topbar");
+  const tabs = document.querySelector(".tabs");
+  if (!topbar || !tabs) return;
+  const topbarH = topbar.getBoundingClientRect().height;
+  const tabsH = tabs.getBoundingClientRect().height;
+  // 2px gap so the sticky header has a hairline of breathing room.
+  document.documentElement.style.setProperty(
+    "--sticky-top", `${Math.ceil(topbarH + tabsH + 2)}px`);
 }
 
 function buildTeamRow(team) {
@@ -1691,6 +1710,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Warn on unload if dirty (edit only).
   window.addEventListener("beforeunload", e => {
     if (!VIEW_MODE && state.dirty) { e.preventDefault(); e.returnValue = ""; }
+  });
+
+  // Re-measure --sticky-top whenever the viewport changes width (legend
+  // wrapping changes the tabs height). Debounced via rAF so we don't thrash.
+  let _stickyRAF = null;
+  window.addEventListener("resize", () => {
+    if (_stickyRAF) cancelAnimationFrame(_stickyRAF);
+    _stickyRAF = requestAnimationFrame(recomputeStickyTop);
   });
 
   // Sign-in dialog (editor + remote backend). Wire it before loadAll so a
