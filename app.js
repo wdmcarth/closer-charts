@@ -1349,14 +1349,19 @@ function setSaveStatus(label, cls) {
   if (!el) return;
   el.textContent = label;
   el.className = "save-status " + (cls || "");
+  // Apply-saves button reflects the dirty state too.
+  const btn = $("#btnApplySaves");
+  if (btn) btn.disabled = !state.dirty || _saveInFlight;
 }
 
+// Mark the chart dirty. NO autosave — the user clicks "Apply saves" (or
+// hits Cmd/Ctrl+S) when they're ready to push the batch as one commit.
+// This avoids a flurry of small commits and dodges the SHA-race that
+// rapid autosaves used to trigger.
 function markDirty() {
   if (VIEW_MODE) return;  // no-op in read-only mode
   state.dirty = true;
   setSaveStatus("Unsaved", "dirty");
-  if (state.saveTimer) clearTimeout(state.saveTimer);
-  state.saveTimer = setTimeout(saveAll, 1200);
 }
 
 async function backendPost(path, body = {}) {
@@ -1388,6 +1393,7 @@ let _saveInFlight = false;
 let _savePending = false;
 
 async function saveAll() {
+  if (!state.dirty) return;            // nothing to push
   if (_saveInFlight) { _savePending = true; return; }
   _saveInFlight = true;
   setSaveStatus("Saving…", "saving");
@@ -1404,10 +1410,11 @@ async function saveAll() {
     }
   } finally {
     _saveInFlight = false;
-    if (_savePending) {
+    if (_savePending && state.dirty) {
       _savePending = false;
-      // Flush whatever changed during the previous save.
       setTimeout(saveAll, 50);
+    } else {
+      _savePending = false;
     }
   }
 }
@@ -1929,6 +1936,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Edit-mode-only button wiring. The view page omits these buttons entirely;
   // we still guard with `?.` so a stale DOM doesn't crash.
   if (!VIEW_MODE) {
+    $("#btnApplySaves")?.addEventListener("click", saveAll);
     $("#btnRefreshAll")?.addEventListener("click", refreshAll);
     // Legacy individual-refresh buttons are no longer in the topbar but the
     // handlers stay defined for code reuse (refreshAll calls them in local
