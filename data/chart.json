@@ -740,7 +740,10 @@
             "statusTag": null,
             "color": null,
             "other": null,
-            "mlbamid": 678022
+            "mlbamid": 678022,
+            "colors": [
+              "Blue"
+            ]
           }
         ],
         "stopper": [
@@ -749,7 +752,10 @@
             "statusTag": null,
             "color": null,
             "other": null,
-            "mlbamid": 663687
+            "mlbamid": 663687,
+            "colors": [
+              "Blue"
+            ]
           }
         ],
         "stealth": [
