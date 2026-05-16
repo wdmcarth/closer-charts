@@ -745,7 +745,9 @@
           {
             "name": "Jack Perkins",
             "mlbamid": 678022,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -754,7 +756,9 @@
           {
             "name": "Hogan Harris",
             "mlbamid": 663687,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -763,7 +767,9 @@
           {
             "name": "Luis Medina",
             "mlbamid": 665622,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -1129,7 +1135,7 @@
             "name": "Tony Santillan",
             "mlbamid": 663574,
             "colors": [
-              "Orange"
+              "Blue"
             ],
             "statusTag": null,
             "other": null
@@ -1171,28 +1177,28 @@
       "roles": {
         "closer": [
           {
-            "name": "Juan Mejia",
-            "mlbamid": 675848,
-            "colors": [],
+            "name": "Antonio Senzatela",
+            "mlbamid": 622608,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Victor Vodnik",
-            "mlbamid": 680767,
-            "colors": [],
+            "name": "Jaden Hill",
+            "mlbamid": 677955,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Jaden Hill",
-            "mlbamid": 677955,
-            "colors": [],
+            "name": "Juan Mejia",
+            "mlbamid": 675848,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1207,10 +1213,10 @@
         ],
         "hybrid": [
           {
-            "name": "Antonio Senzatela",
-            "mlbamid": 622608,
-            "colors": [],
+            "name": "Zach Agnos",
+            "mlbamid": 688642,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1554,7 +1560,9 @@
           {
             "name": "Mason Montgomery",
             "mlbamid": 682254,
-            "colors": [],
+            "colors": [
+              "Green"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -1572,7 +1580,9 @@
           {
             "name": "Brandan Bidois",
             "mlbamid": 684049,
-            "colors": [],
+            "colors": [
+              "Green"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -1644,7 +1654,9 @@
           {
             "name": "Caleb Kilian",
             "mlbamid": 668873,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -1653,7 +1665,9 @@
           {
             "name": "Erik Miller",
             "mlbamid": 669062,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
             "other": null
           }
