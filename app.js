@@ -988,7 +988,10 @@ function renderQhEntries(cell, q, tid, teamName, entries) {
 // ===== save / refresh =====
 
 function setSaveStatus(label, cls) {
+  // Landing page topbar doesn't have a save-status element — guard so a
+  // stale-cache pairing of new HTML + old JS can't crash the page.
   const el = $("#saveStatus");
+  if (!el) return;
   el.textContent = label;
   el.className = "save-status " + (cls || "");
 }
