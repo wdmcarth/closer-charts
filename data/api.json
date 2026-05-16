@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-16T20:49:58+00:00",
-  "pitcherCount": 174,
+  "generatedAt": "2026-05-16T20:50:43+00:00",
+  "pitcherCount": 175,
   "pitchers": [
     {
       "league": "AL",
@@ -377,6 +377,31 @@
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-15"
+    },
+    {
+      "league": "AL",
+      "lev": 5,
+      "team": "Chicago White Sox",
+      "team_abbr": "CWS",
+      "team_id": 145,
+      "team_notes": "**Mike Vasil will undergo TJS...",
+      "role": "hybrid",
+      "role_label": "Hybrid (IP+) or RP Pivot",
+      "role_position": 2,
+      "player": "Sean Newcomb",
+      "mlbamid": 656794,
+      "level": "MLB",
+      "on_40_man": true,
+      "hand": "L",
+      "blue": false,
+      "orange": false,
+      "yellow": false,
+      "magenta": false,
+      "green": false,
+      "usage_tag": null,
+      "injury_tag": null,
+      "other_tag": null,
+      "last_game": null
     },
     {
       "league": "AL",
