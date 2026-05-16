@@ -629,8 +629,8 @@
         "stealth": [
           {
             "name": "Jose A. Ferrer",
-            "statusTag": "paternity",
-            "color": "Magenta",
+            "statusTag": null,
+            "color": null,
             "other": null,
             "mlbamid": 678606
           }
