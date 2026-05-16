@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-16T20:37:52+00:00",
+  "generatedAt": "2026-05-16T20:49:58+00:00",
   "pitcherCount": 174,
   "pitchers": [
     {
@@ -18,7 +18,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": true,
+      "blue": false,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -601,7 +601,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-16"
     },
     {
       "league": "AL",
@@ -676,7 +676,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-14"
+      "last_game": "2026-05-16"
     },
     {
       "league": "AL",
@@ -746,7 +746,7 @@
       "blue": true,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
       "usage_tag": "1.2 IP",
       "injury_tag": null,
@@ -896,7 +896,7 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
       "usage_tag": "b2b",
       "injury_tag": null,
@@ -1293,7 +1293,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -1318,7 +1318,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "L",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -1768,7 +1768,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -1793,7 +1793,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "L",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -2076,7 +2076,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-16"
     },
     {
       "league": "AL",
@@ -2101,7 +2101,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-16"
     },
     {
       "league": "AL",
