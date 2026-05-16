@@ -92,13 +92,9 @@ async function loadAll() {
       if (rec.name) state.pitcherIndexByName[rec.name.toLowerCase()] = rec;
     }
   }
-  if (statsRes) {
-    $("#seasonBadge").textContent =
-      `season ${statsRes.season} · stats ${new Date(statsRes.fetchedAt).toLocaleString()}`;
-  }
-  // View page shows a "last updated" stamp derived from the most recent of
-  // chart/stats/pitcher_index fetches. Best-effort: chart.json has no embedded
-  // timestamp, so we lean on stats.json's fetchedAt as the canonical freshness.
+  // Show only the "last updated" stamp — both pages have the same element.
+  // Best-effort: chart.json has no embedded timestamp, so we lean on
+  // stats.json's fetchedAt as the canonical freshness.
   const lu = $("#lastUpdated");
   if (lu) {
     const ts = statsRes?.fetchedAt;
@@ -1323,7 +1319,8 @@ async function refreshStats() {
     try { await backendPost("/refresh-stats"); }
     catch (e) { toast("Refresh failed: " + e.message, "error"); return; }
     state.stats = await fetch("data/stats.json", { cache: "no-store" }).then(r => r.json());
-    $("#seasonBadge").textContent = `season ${state.stats.season} · stats ${new Date(state.stats.fetchedAt).toLocaleString()}`;
+    const lu = $("#lastUpdated");
+    if (lu) lu.textContent = `last updated ${new Date(state.stats.fetchedAt).toLocaleString()}`;
     renderChart();
     toast("Stats refreshed (" + Object.keys(state.stats.byPlayerId).length + " pitchers)", "ok");
     return;
