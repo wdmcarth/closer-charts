@@ -2445,7 +2445,7 @@
         "name": "Clay Holmes",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 518886,
@@ -2501,7 +2501,7 @@
         "name": "Joey Gerber",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 804636,
@@ -5326,7 +5326,7 @@
         "name": "Coleman Crow",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 684974,
@@ -5387,6 +5387,13 @@
       {
         "id": 701656,
         "name": "Logan Henderson",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
+        "id": 657265,
+        "name": "Peter Strzelecki",
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
