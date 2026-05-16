@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-16T21:05:17+00:00",
+  "generatedAt": "2026-05-16T21:17:37+00:00",
   "pitcherCount": 174,
   "pitchers": [
     {
@@ -1293,7 +1293,7 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
@@ -2649,7 +2649,7 @@
       "magenta": false,
       "green": false,
       "usage_tag": null,
-      "injury_tag": "HLR",
+      "injury_tag": null,
       "other_tag": "HLR",
       "last_game": "2026-05-15"
     },
