@@ -135,20 +135,26 @@ function appendHead(gridEl) {
     });
 }
 
-// Set the --sticky-top CSS variable to the combined height of topbar + tabs
-// so the chart's column headers always pin RIGHT BELOW the tabs bar,
-// regardless of how much the legend wraps (tabs height grows when the
-// legend wraps to 2+ lines on narrower viewports). Called on load and on
-// resize.
+// Set the --sticky-top CSS variable to the y-coordinate where the tabs bar
+// ends when stuck (i.e. its sticky `top` offset + its rendered height).
+// The chart's column headers then pin FLUSH against that, eliminating the
+// gap that previously let scrolling content show between the tabs and the
+// headers. Adapts automatically when the legend wraps to multiple lines.
+//
+// Using tabs.style.top instead of getBoundingClientRect().bottom because
+// the latter reports different values depending on whether the tabs is
+// currently stuck or in its natural document position — we want the stuck
+// value at all times.
 function recomputeStickyTop() {
-  const topbar = document.querySelector(".topbar");
   const tabs = document.querySelector(".tabs");
-  if (!topbar || !tabs) return;
-  const topbarH = topbar.getBoundingClientRect().height;
-  const tabsH = tabs.getBoundingClientRect().height;
-  // 2px gap so the sticky header has a hairline of breathing room.
+  if (!tabs) return;
+  const cs = getComputedStyle(tabs);
+  const tabsStickyTop = parseFloat(cs.top) || 0;
+  const tabsHeight = tabs.getBoundingClientRect().height;
+  // Math.floor gives a hairline overlap with the tabs bar's bottom edge;
+  // the tabs' higher z-index covers it cleanly with no visible seam.
   document.documentElement.style.setProperty(
-    "--sticky-top", `${Math.ceil(topbarH + tabsH + 2)}px`);
+    "--sticky-top", `${Math.floor(tabsStickyTop + tabsHeight)}px`);
 }
 
 function buildTeamRow(team) {
