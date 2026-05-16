@@ -9,45 +9,47 @@
         "closer": [
           {
             "name": "Rico Garcia",
-            "statusTag": null,
-            "other": null,
             "mlbamid": 670329,
-            "colors": []
+            "colors": [
+              "Blue"
+            ],
+            "statusTag": null,
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Anthony Nunez",
+            "mlbamid": 689296,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 689296
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Grant Wolfram",
+            "mlbamid": 664991,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 664991
+            "other": null
           }
         ],
         "upside": [],
         "hybrid": [
           {
             "name": "Yennier Cano",
+            "mlbamid": 666974,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666974
+            "other": null
           },
           {
             "name": "Keegan Akin",
+            "mlbamid": 669211,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669211
+            "other": null
           }
         ]
       },
@@ -62,46 +64,46 @@
         "closer": [
           {
             "name": "Aroldis Chapman",
+            "mlbamid": 547973,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 547973
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Garrett Whitlock",
+            "mlbamid": 676477,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676477
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Justin Slaten",
+            "mlbamid": 686580,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 686580
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Christian Foutch",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Zack Kelly",
+            "mlbamid": 677161,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 677161
+            "other": null
           }
         ]
       },
@@ -116,52 +118,52 @@
         "closer": [
           {
             "name": "Seranthony Domínguez",
-            "statusTag": null,
-            "other": null,
             "mlbamid": 622554,
-            "colors": []
+            "colors": [],
+            "statusTag": null,
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Grant Taylor",
+            "mlbamid": 691799,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 691799
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Bryan Hudson",
+            "mlbamid": 663542,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663542
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Gabe Davis",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Jordan Hicks",
+            "mlbamid": 663855,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663855
+            "other": null
           },
           {
             "name": "Sean Newcomb",
             "mlbamid": 656794,
-            "statusTag": null,
             "colors": [],
+            "statusTag": null,
             "other": null
           }
         ]
@@ -172,65 +174,65 @@
       "teamId": 114,
       "teamName": "Cleveland Guardians",
       "league": "AL",
-      "levcon": 4,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
             "name": "Cade Smith",
+            "mlbamid": 671922,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 671922
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Erik Sabrowski",
+            "mlbamid": 681870,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 681870
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Colin Holdmerman",
+            "mlbamid": 670059,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670059
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Franco Aleman",
+            "mlbamid": 680916,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 680916
+            "other": null
           },
           {
             "name": "Daniel Espino",
+            "mlbamid": 682982,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 682982
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Hunter Gaddis",
+            "mlbamid": 683769,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 683769
+            "other": null
           },
           {
             "name": "Matt Festa",
+            "mlbamid": 670036,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670036
+            "other": null
           }
         ]
       },
@@ -245,53 +247,53 @@
         "closer": [
           {
             "name": "Kenley Jansen",
+            "mlbamid": 445276,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 445276
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Kyle Finnegan",
+            "mlbamid": 640448,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 640448
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Brant Hurter",
+            "mlbamid": 676428,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676428
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Kelvis Salcedo",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Tyler Holton",
+            "mlbamid": 663947,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663947
+            "other": null
           },
           {
             "name": "Drew Anderson",
+            "mlbamid": 623454,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 623454
+            "other": null
           }
         ]
       },
@@ -301,68 +303,71 @@
       "teamId": 117,
       "teamName": "Houston Astros",
       "league": "AL",
-      "levcon": 1,
+      "levcon": 3,
       "roles": {
         "closer": [
           {
             "name": "Bryan Abreu",
+            "mlbamid": 650556,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 650556
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Bryan King",
-            "statusTag": null,
-            "other": null,
             "mlbamid": 687911,
             "colors": [
               "Blue"
             ],
-            "noMagenta": true
+            "statusTag": null,
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Enyel De Los Santos",
+            "mlbamid": 660853,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 660853
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Alimber Santa",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           },
           {
             "name": "Hudson Leach",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Bennett Sousa",
+            "mlbamid": 656986,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656986
+            "other": null
           },
           {
             "name": "A.J. Blubaugh",
+            "mlbamid": 805123,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 805123
+            "other": null
           }
         ]
       },
@@ -377,55 +382,55 @@
         "closer": [
           {
             "name": "Lucas Erceg",
-            "statusTag": null,
-            "color": null,
-            "other": null,
             "mlbamid": 668674,
-            "colors": [],
-            "noMagenta": true
+            "colors": [
+              "Magenta"
+            ],
+            "statusTag": null,
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Matt Strahm",
+            "mlbamid": 621381,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 621381
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Daniel Lynch IV",
+            "mlbamid": 663738,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663738
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Luinder Avila",
+            "mlbamid": 679883,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 679883
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "J Schreiber",
+            "mlbamid": 670167,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670167
+            "other": null
           },
           {
             "name": "Nick Mears",
+            "mlbamid": 683232,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 683232
+            "other": null
           }
         ]
       },
@@ -440,53 +445,46 @@
         "closer": [
           {
             "name": "Ryan Zeferjahn",
+            "mlbamid": 666171,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666171
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Sam Bachman",
+            "mlbamid": 696147,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 696147
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Kirby Yates",
+            "mlbamid": 489446,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 489446
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Walbert Ureña",
+            "mlbamid": 700712,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 700712
+            "other": null
           }
         ],
         "hybrid": [
           {
-            "name": "Nick Sandlin",
-            "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
-          },
-          {
             "name": "Chase Silseth",
+            "mlbamid": 681217,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 681217
+            "other": null
           }
         ]
       },
@@ -501,59 +499,59 @@
         "closer": [
           {
             "name": "Yoendrys Gómez",
+            "mlbamid": 672782,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 672782
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Luis García",
+            "mlbamid": 472610,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 472610
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Anthony Banda",
+            "mlbamid": 607455,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 607455
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Marco Raya",
+            "mlbamid": 694397,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 694397
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Eric Orze",
-            "statusTag": null,
-            "color": null,
-            "other": null,
             "mlbamid": 679358,
-            "colors": [
-              "Blue"
-            ]
+            "colors": [],
+            "statusTag": null,
+            "other": null
           },
           {
             "name": "Taylor Rogers",
-            "statusTag": null,
-            "color": null,
-            "other": null,
             "mlbamid": 573124,
-            "colors": [
-              "Blue"
-            ]
+            "colors": [],
+            "statusTag": null,
+            "other": null
           }
         ]
       },
@@ -568,53 +566,53 @@
         "closer": [
           {
             "name": "David Bednar",
+            "mlbamid": 670280,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670280
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Camilo Doval",
+            "mlbamid": 666808,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666808
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Fernando Cruz",
+            "mlbamid": 518585,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 518585
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Carlos Lagrange",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Paul Blackburn",
+            "mlbamid": 621112,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 621112
+            "other": null
           },
           {
             "name": "Jake Bird",
+            "mlbamid": 656234,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656234
+            "other": null
           }
         ]
       },
@@ -629,46 +627,46 @@
         "closer": [
           {
             "name": "Andrés Muñoz",
+            "mlbamid": 662253,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 662253
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Eduard Bazardo",
+            "mlbamid": 660825,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 660825
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Jose A. Ferrer",
+            "mlbamid": 678606,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 678606
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Christian Little",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Cooper Criswell",
+            "mlbamid": 681867,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 681867
+            "other": null
           }
         ]
       },
@@ -683,57 +681,57 @@
         "closer": [
           {
             "name": "Bryan Baker",
+            "mlbamid": 641329,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 641329
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Cole Sulser",
+            "mlbamid": 642121,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 642121
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Garrett Cleavinger",
+            "mlbamid": 664076,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 664076
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Ty Johnson",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Ian Seymour",
+            "mlbamid": 693855,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 693855
+            "other": null
           },
           {
             "name": "Kevin Kelly",
+            "mlbamid": 687330,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 687330
+            "other": null
           }
         ]
       },
-      "notes": "**Edwin Uceta (shoulder) was placed on the 60-day IL...Garrett Cleavinger (calf) was placed on the 15-day IL (4/3)..."
+      "notes": "**Edwin Uceta (shoulder) was placed on the 60-day IL..."
     },
     {
       "teamId": 133,
@@ -744,59 +742,53 @@
         "closer": [
           {
             "name": "Jack Perkins",
-            "statusTag": null,
-            "color": null,
-            "other": null,
             "mlbamid": 678022,
-            "colors": [
-              "Blue"
-            ]
+            "colors": [],
+            "statusTag": null,
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Hogan Harris",
-            "statusTag": null,
-            "color": null,
-            "other": null,
             "mlbamid": 663687,
-            "colors": [
-              "Blue"
-            ]
+            "colors": [],
+            "statusTag": null,
+            "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Joel Kuhnel",
+            "name": "Luis Medina",
+            "mlbamid": 665622,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669270
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Braden Nett",
+            "mlbamid": 804556,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 804556
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Justin Sterner",
+            "mlbamid": 686993,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 686993
+            "other": null
           },
           {
             "name": "Scott Barlow",
+            "mlbamid": 605130,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 605130
+            "other": null
           }
         ]
       },
@@ -811,53 +803,53 @@
         "closer": [
           {
             "name": "Jacob Latz",
+            "mlbamid": 656641,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656641
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Jakob Junis",
+            "mlbamid": 596001,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 596001
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Cole Winn",
+            "mlbamid": 668390,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 668390
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Emiliano Teodo",
+            "mlbamid": 693713,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 693713
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Cal Quantrill",
+            "mlbamid": 615698,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 615698
+            "other": null
           },
           {
             "name": "Jalen Beeks",
+            "mlbamid": 656222,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656222
+            "other": null
           }
         ]
       },
@@ -872,53 +864,53 @@
         "closer": [
           {
             "name": "Louis Varland",
+            "mlbamid": 686973,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 686973
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Tyler Rogers",
+            "mlbamid": 643511,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 643511
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Jeff Hoffman",
+            "mlbamid": 656546,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656546
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Yondrei Rojas",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Braydon Fisher",
+            "mlbamid": 680755,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 680755
+            "other": null
           },
           {
             "name": "M Fluharty",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ]
       },
@@ -933,46 +925,46 @@
         "closer": [
           {
             "name": "Paul Sewald",
+            "mlbamid": 623149,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 623149
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Juan Morillo",
+            "mlbamid": 666661,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666661
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Taylor Clarke",
+            "mlbamid": 664199,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 664199
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Yilber Díaz",
+            "mlbamid": 700270,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 700270
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Jonathan Loáisiga",
+            "mlbamid": 642528,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 642528
+            "other": null
           }
         ]
       },
@@ -987,53 +979,55 @@
         "closer": [
           {
             "name": "Raisel Iglesias",
+            "mlbamid": 628452,
+            "colors": [
+              "Magenta"
+            ],
             "statusTag": null,
-            "color": "Magenta",
-            "other": null,
-            "mlbamid": 628452
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Robert Suarez",
+            "mlbamid": 663158,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663158
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Dylan Lee",
+            "mlbamid": 669276,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669276
+            "other": null
           },
           {
             "name": "Ty Kinley",
+            "mlbamid": 641755,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 641755
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Rolddy Muñoz",
+            "mlbamid": 691548,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 691548
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Reynaldo López",
+            "mlbamid": 625643,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 625643
+            "other": null
           }
         ]
       },
@@ -1048,53 +1042,53 @@
         "closer": [
           {
             "name": "Daniel Palencia",
+            "mlbamid": 694037,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 694037
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Phil Maton",
+            "mlbamid": 664208,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 664208
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Trent Thornton",
+            "mlbamid": 663423,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663423
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Jaxon Wiggins",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Jacob Webb",
+            "mlbamid": 657097,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 657097
+            "other": null
           },
           {
             "name": "Hoby Milner",
+            "mlbamid": 571948,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 571948
+            "other": null
           }
         ]
       },
@@ -1109,53 +1103,59 @@
         "closer": [
           {
             "name": "Graham Ashcraft",
-            "statusTag": null,
-            "color": "Blue",
-            "other": "HLR",
-            "mlbamid": 668933
+            "mlbamid": 668933,
+            "colors": [
+              "Blue"
+            ],
+            "statusTag": "HLR",
+            "other": "HLR"
           }
         ],
         "stopper": [
           {
             "name": "Pierce Johnson",
+            "mlbamid": 572955,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 572955
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Tony Santillan",
+            "mlbamid": 663574,
+            "colors": [
+              "Orange"
+            ],
             "statusTag": null,
-            "color": "Orange",
-            "other": null,
-            "mlbamid": 663574
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Chase Petty",
+            "mlbamid": 695534,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 695534
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Brock Burke",
+            "mlbamid": 656271,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656271
+            "other": null
           },
           {
             "name": "Tejay Antone",
+            "mlbamid": 622088,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 622088
+            "other": null
           }
         ]
       },
@@ -1169,47 +1169,47 @@
       "roles": {
         "closer": [
           {
-            "name": "Victor Vodnik",
+            "name": "Juan Mejia",
+            "mlbamid": 675848,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 680767
+            "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Juan Mejia",
+            "name": "Victor Vodnik",
+            "mlbamid": 680767,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 675848
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Jaden Hill",
+            "mlbamid": 677955,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 677955
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Brody Brecht",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Antonio Senzatela",
+            "mlbamid": 622608,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 622608
+            "other": null
           }
         ]
       },
@@ -1224,53 +1224,53 @@
         "closer": [
           {
             "name": "Tanner Scott",
+            "mlbamid": 656945,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656945
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Alex Vesia",
+            "mlbamid": 681911,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 681911
+            "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Blake Treinen",
+            "name": "Kyle Hurt",
+            "mlbamid": 669165,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 595014
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Ronan Kopp",
+            "mlbamid": 691947,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 691947
+            "other": null
           }
         ],
         "hybrid": [
           {
-            "name": "Edgardo Henriquez",
+            "name": "Blake Treinen",
+            "mlbamid": 595014,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 683618
+            "other": null
           },
           {
-            "name": "K Hurt",
+            "name": "Will Klien",
+            "mlbamid": 694361,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669165
+            "other": null
           }
         ]
       },
@@ -1285,53 +1285,53 @@
         "closer": [
           {
             "name": "Pete Fairbanks",
+            "mlbamid": 664126,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 664126
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Calvin Faucher",
+            "mlbamid": 676534,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676534
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "John King",
+            "mlbamid": 667463,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 667463
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Josh Eckness",
+            "mlbamid": 694795,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 694795
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Andrew Nardi",
+            "mlbamid": 677053,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 677053
+            "other": null
           },
           {
             "name": "Tyler Phillips",
+            "mlbamid": 663969,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 663969
+            "other": null
           }
         ]
       },
@@ -1341,58 +1341,60 @@
       "teamId": 158,
       "teamName": "Milwaukee Brewers",
       "league": "NL",
-      "levcon": 5,
+      "levcon": 3,
       "roles": {
         "closer": [
           {
             "name": "Abner Uribe",
+            "mlbamid": 682842,
+            "colors": [
+              "Magenta"
+            ],
             "statusTag": null,
-            "color": "Magenta",
-            "other": null,
-            "mlbamid": 682842
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Trevor Megill",
+            "mlbamid": 656730,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656730
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Aaron Ashby",
+            "mlbamid": 676879,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676879
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Craig Yoho",
+            "mlbamid": 684974,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 684974
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "DL Hall",
+            "mlbamid": 669084,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669084
+            "other": null
           },
           {
             "name": "Shane Drohan",
+            "mlbamid": 675660,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 675660
+            "other": null
           }
         ]
       },
@@ -1407,53 +1409,53 @@
         "closer": [
           {
             "name": "Devin Williams",
+            "mlbamid": 642207,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 642207
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Luke Weaver",
+            "mlbamid": 596133,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 596133
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Brooks Raley",
+            "mlbamid": 548384,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 548384
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Dylan Ross",
+            "mlbamid": 697811,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 697811
+            "other": null
           },
           {
             "name": "Ryan Lambert",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Huascar Brazobán",
+            "mlbamid": 623211,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 623211
+            "other": null
           }
         ]
       },
@@ -1468,53 +1470,53 @@
         "closer": [
           {
             "name": "Jhoan Duran",
+            "mlbamid": 661395,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 661395
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Brad Keller",
+            "mlbamid": 641745,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 641745
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "José Alvarado",
+            "mlbamid": 621237,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 621237
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Alex McFarlane",
+            "mlbamid": 686934,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 686934
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "T Banks",
+            "mlbamid": 621383,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 621383
+            "other": null
           },
           {
             "name": "Orion Kerkering",
+            "mlbamid": 689147,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 689147
+            "other": null
           }
         ]
       },
@@ -1529,46 +1531,48 @@
         "closer": [
           {
             "name": "Gregory Soto",
+            "mlbamid": 642397,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 642397
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Dennis Santana",
+            "mlbamid": 642701,
+            "colors": [
+              "Orange"
+            ],
             "statusTag": null,
-            "color": "Orange",
-            "other": null,
-            "mlbamid": 642701
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Mason Montgomery",
+            "mlbamid": 682254,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 682254
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Wilber Dotel",
+            "mlbamid": 696062,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 696062
+            "other": null
           }
         ],
         "hybrid": [
           {
-            "name": "Yohan Ramírez",
+            "name": "Brandan Bidois",
+            "mlbamid": 684049,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670990
+            "other": null
           }
         ]
       },
@@ -1583,46 +1587,46 @@
         "closer": [
           {
             "name": "Mason Miller",
+            "mlbamid": 695243,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 695243
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Jason Adam",
+            "mlbamid": 592094,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 592094
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Jeremiah Estrada",
+            "mlbamid": 669093,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 669093
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Tucker Musgrove",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Adrian Morejon",
+            "mlbamid": 670970,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 670970
+            "other": null
           }
         ]
       },
@@ -1637,53 +1641,53 @@
         "closer": [
           {
             "name": "Caleb Kilian",
+            "mlbamid": 668873,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 668873
+            "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Joel Peguero",
+            "name": "Erik Miller",
+            "mlbamid": 669062,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666711
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "Keaton Winn",
+            "mlbamid": 676775,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676775
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Gerelmi Maldonado",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
-            "name": "Sam Hentges",
+            "name": "Joel Peguero",
+            "mlbamid": 666711,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 656529
+            "other": null
           },
           {
-            "name": "Matt Gage",
+            "name": "S Hentges",
+            "mlbamid": 656529,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 657424
+            "other": null
           }
         ]
       },
@@ -1698,53 +1702,53 @@
         "closer": [
           {
             "name": "Riley O'Brien",
+            "mlbamid": 676617,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 676617
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "JoJo Romero",
+            "mlbamid": 668941,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 668941
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "George Soriano",
+            "mlbamid": 666277,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 666277
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Luis Gastelum",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           },
           {
             "name": "Max Rajcic",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Gordon Graceffo",
+            "mlbamid": 700669,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 700669
+            "other": null
           }
         ]
       },
@@ -1759,53 +1763,59 @@
         "closer": [
           {
             "name": "Gus Varland",
+            "mlbamid": 681402,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 681402
+            "other": null
           }
         ],
         "stopper": [
           {
             "name": "Richard Lovelady",
+            "mlbamid": 663992,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 663992
+            "other": null
           }
         ],
         "stealth": [
           {
             "name": "PJ Poulin",
+            "mlbamid": 676571,
+            "colors": [
+              "Blue"
+            ],
             "statusTag": null,
-            "color": "Blue",
-            "other": null,
-            "mlbamid": 676571
+            "other": null
           }
         ],
         "upside": [
           {
             "name": "Jarlin Susana",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ],
         "hybrid": [
           {
             "name": "Paxton Schultz",
+            "mlbamid": 687606,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": 687606
+            "other": null
           },
           {
             "name": "Orl Ribalta",
+            "mlbamid": null,
+            "colors": [],
             "statusTag": null,
-            "color": null,
-            "other": null,
-            "mlbamid": null
+            "other": null
           }
         ]
       },
