@@ -1106,14 +1106,21 @@ function getPlayerMatcher() {
   return _playerMatcher;
 }
 
+function playerMlbUrl(pid) {
+  return `https://www.mlb.com/player/${pid}?stats=gamelogs-r-pitching-mlb`;
+}
+
 // Walk the text nodes inside `rootEl` and wrap any pitcher-name matches in
-// <strong class="player-link" data-pid="X">. Skips text already inside a
-// .player-link span so we don't double-wrap. Idempotent.
+// <a class="player-link" data-pid="X" href="MLB-stats-URL">.
+//   - Skips text already inside a .player-link (no double-wrap).
+//   - Skips text inside a .no-link span (user explicitly removed the link
+//     via alt-click; respect their choice on re-scan).
+// Idempotent.
 function wrapPlayerNames(rootEl) {
   const matcher = getPlayerMatcher();
   if (!matcher) return;
   const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
-    acceptNode: n => n.parentElement && n.parentElement.closest(".player-link")
+    acceptNode: n => n.parentElement && n.parentElement.closest(".player-link, .no-link")
       ? NodeFilter.FILTER_REJECT
       : NodeFilter.FILTER_ACCEPT,
   });
@@ -1130,11 +1137,15 @@ function wrapPlayerNames(rootEl) {
     let m;
     while ((m = matcher.pattern.exec(text))) {
       if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
-      const span = document.createElement("strong");
-      span.className = "player-link";
-      span.dataset.pid = matcher.nameToId.get(m[0]);
-      span.textContent = m[0];
-      frag.appendChild(span);
+      const pid = matcher.nameToId.get(m[0]);
+      const a = document.createElement("a");
+      a.className = "player-link";
+      a.dataset.pid = pid;
+      a.href = playerMlbUrl(pid);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = m[0];
+      frag.appendChild(a);
       last = matcher.pattern.lastIndex;
     }
     if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
@@ -1143,7 +1154,23 @@ function wrapPlayerNames(rootEl) {
   attachPlayerLinkHandlers(rootEl);
 }
 
+// Replace a player-link with a .no-link span so wrapPlayerNames stops
+// auto-detecting this occurrence on re-scan. The reverse (re-enabling) is
+// just unwrapping the .no-link span back to a text node; the next blur
+// re-detects the name.
+function unlinkPlayer(linkEl) {
+  const span = document.createElement("span");
+  span.className = "no-link";
+  span.textContent = linkEl.textContent;
+  span.title = "Player auto-link disabled — Alt+click to re-enable";
+  linkEl.replaceWith(span);
+}
+function relinkPlayer(noLinkEl) {
+  noLinkEl.replaceWith(document.createTextNode(noLinkEl.textContent));
+}
+
 function attachPlayerLinkHandlers(rootEl) {
+  // Always-on: stats tooltip on hover.
   rootEl.querySelectorAll(".player-link").forEach(link => {
     if (link.dataset.bound) return;
     link.dataset.bound = "1";
@@ -1154,7 +1181,49 @@ function attachPlayerLinkHandlers(rootEl) {
     link.addEventListener("mouseenter", e => showStatTooltip(e, chipLike()));
     link.addEventListener("mouseleave", hideStatTooltip);
     link.addEventListener("mousemove", e => moveStatTooltip(e));
+    link.title = "Open MLB stats — Alt+click to unlink";
+
+    // Edit mode: intercept click so:
+    //   - Alt+click  → unlink this occurrence (writes .no-link wrapper)
+    //   - Plain click → open MLB page in a new tab (the default <a> click
+    //     behavior is unreliable inside contenteditable, so we explicitly
+    //     call window.open and stop the cursor-positioning side effect)
+    if (!VIEW_MODE) {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        if (e.altKey) {
+          unlinkPlayer(link);
+          hideStatTooltip();
+          // Save the new HTML state.
+          const editor = link.closest(".qh-editor");
+          editor?.dispatchEvent(new Event("input"));
+        } else {
+          window.open(link.href, "_blank", "noopener,noreferrer");
+        }
+      });
+    }
   });
+
+  // Edit mode: alt-click on a .no-link span re-enables auto-detection
+  // (which fires on the next blur of the containing editor).
+  if (!VIEW_MODE) {
+    rootEl.querySelectorAll(".no-link").forEach(nl => {
+      if (nl.dataset.bound) return;
+      nl.dataset.bound = "1";
+      nl.title = "Player auto-link disabled — Alt+click to re-enable";
+      nl.addEventListener("click", e => {
+        if (!e.altKey) return;
+        e.preventDefault();
+        relinkPlayer(nl);
+        const editor = nl.closest(".qh-editor");
+        if (editor) {
+          // Trigger an immediate re-wrap and save.
+          wrapPlayerNames(editor);
+          editor.dispatchEvent(new Event("input"));
+        }
+      });
+    });
+  }
 }
 
 // Detects whether a saved entry string looks like HTML (contains a tag) or
@@ -1162,7 +1231,7 @@ function attachPlayerLinkHandlers(rootEl) {
 // plain text. When rendering, plain text is set via textContent (safe) and
 // HTML via innerHTML.
 function entryLooksLikeHtml(s) {
-  return typeof s === "string" && /<\/?(strong|em|b|i|span|br)\b/i.test(s);
+  return typeof s === "string" && /<\/?(a|strong|em|b|i|span|br)\b/i.test(s);
 }
 
 function setQhCellBody(el, text) {

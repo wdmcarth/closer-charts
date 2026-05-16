@@ -824,9 +824,14 @@ textarea { resize: vertical; }
    compete with the prose. Manual <strong> the user typed by hand looks
    the same (just bold) — only the auto-detected ones get the data-pid
    and the hover tooltip. */
+/* Auto-detected player names. Anchor tag so clicking opens MLB.com stats
+   in a new tab (in edit mode JS intercepts to call window.open since
+   contenteditable swallows native <a> clicks). Dotted underline + accent
+   color mirrors the previous <strong> treatment so the look doesn't jump. */
 .qh-editor .player-link,
 .qh-team-readonly .player-link {
   color: var(--accent);
+  font-weight: 600;
   cursor: pointer;
   text-decoration: underline dotted rgba(79,157,255,0.5);
   text-underline-offset: 2px;
@@ -834,6 +839,19 @@ textarea { resize: vertical; }
 .qh-editor .player-link:hover,
 .qh-team-readonly .player-link:hover {
   text-decoration-style: solid;
+}
+
+/* "Unlinked" span — written by alt-click on a player-link. Subtle gray
+   dotted underline tells the user the auto-link was opted out for this
+   word; alt-click re-enables. Only shown in edit mode; view mode renders
+   the span with no visible treatment so visitors don't see opt-out marks. */
+.qh-editor .no-link {
+  text-decoration: underline dotted rgba(140,151,168,0.35);
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.qh-editor .no-link:hover {
+  text-decoration-color: var(--muted);
 }
 .qh-team-readonly,
 .qh-rollup-readonly {
