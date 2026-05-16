@@ -312,9 +312,9 @@
             "other": null,
             "mlbamid": 687911,
             "colors": [
-              "Blue",
-              "Magenta"
-            ]
+              "Blue"
+            ],
+            "noMagenta": true
           }
         ],
         "stealth": [
