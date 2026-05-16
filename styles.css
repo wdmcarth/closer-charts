@@ -881,16 +881,29 @@ textarea { resize: vertical; }
   letter-spacing: 0.04em;
 }
 .dashboard-close {
-  background: transparent;
-  border: none;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
   color: var(--muted);
-  font-size: 24px;
+  width: 28px; height: 28px;
+  padding: 0;
+  font-size: 18px;
   line-height: 1;
-  padding: 0 8px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  /* Override the browser's default focus outline (which renders as the
+     rounded blue ring you saw) with one that matches our design. */
+  outline: none;
 }
-.dashboard-close:hover { color: var(--text); background: var(--panel-2); }
+.dashboard-close:hover {
+  color: var(--text);
+  background: #2d3543;
+  border-color: var(--accent);
+}
+.dashboard-close:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(79,157,255,0.25);
+}
 
 .dashboard-body {
   flex: 1; min-height: 0;
