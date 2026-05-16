@@ -371,7 +371,9 @@
             "color": null,
             "other": null,
             "mlbamid": 668674,
-            "noMagenta": true
+            "colors": [
+              "Magenta"
+            ]
           }
         ],
         "stopper": [
