@@ -10,9 +10,9 @@
           {
             "name": "Rico Garcia",
             "statusTag": null,
-            "color": "Blue",
             "other": null,
-            "mlbamid": 670329
+            "mlbamid": 670329,
+            "colors": []
           }
         ],
         "stopper": [
