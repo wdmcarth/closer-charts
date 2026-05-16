@@ -819,7 +819,7 @@ textarea { resize: vertical; }
 .qh-editor .player-link,
 .qh-team-readonly .player-link {
   color: var(--accent);
-  cursor: help;
+  cursor: pointer;
   text-decoration: underline dotted rgba(79,157,255,0.5);
   text-underline-offset: 2px;
 }
