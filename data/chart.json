@@ -534,14 +534,20 @@
             "statusTag": null,
             "color": null,
             "other": null,
-            "mlbamid": 679358
+            "mlbamid": 679358,
+            "colors": [
+              "Blue"
+            ]
           },
           {
             "name": "Taylor Rogers",
             "statusTag": null,
             "color": null,
             "other": null,
-            "mlbamid": 573124
+            "mlbamid": 573124,
+            "colors": [
+              "Blue"
+            ]
           }
         ]
       },
