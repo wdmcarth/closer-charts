@@ -424,13 +424,6 @@
         "status": "Active"
       },
       {
-        "id": 685005,
-        "name": "Christian Roa",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 681882,
         "name": "Colin Selby",
         "posAbbr": "P",
@@ -450,6 +443,13 @@
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
+      },
+      {
+        "id": 674384,
+        "name": "Eduarniel Núñez",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 642585,
@@ -1299,7 +1299,7 @@
         "name": "Chase Dollander",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 687312,
@@ -1383,7 +1383,7 @@
         "name": "Sammy Peralta",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 678020,
@@ -1490,7 +1490,7 @@
         "name": "Connor Seabold",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 623454,
@@ -1581,7 +1581,7 @@
         "name": "Ricky Vanasco",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 687830,
@@ -2028,7 +2028,7 @@
         "name": "Blake Snell",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 595014,
@@ -2063,7 +2063,7 @@
         "name": "Charlie Barnes",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 694646,
@@ -2233,7 +2233,7 @@
         "name": "Andrew Alvarez",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 695418,
@@ -2394,7 +2394,7 @@
         "name": "Zak Kent",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -2692,7 +2692,7 @@
         "name": "José Suarez",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Not Yet Reported"
+        "status": "Active"
       },
       {
         "id": 686993,
@@ -2734,7 +2734,7 @@
         "name": "Mason Barnett",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 547184,
@@ -2927,7 +2927,7 @@
         "name": "Alek Jacob",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 699134,
@@ -3032,7 +3032,7 @@
         "name": "Matt Waldron",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 650633,
@@ -3638,13 +3638,6 @@
     "division": "American League East",
     "pitchers": [
       {
-        "id": 605156,
-        "name": "Aaron Brooks",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
         "id": 702047,
         "name": "Alex Cook",
         "posAbbr": "P",
@@ -3817,7 +3810,7 @@
         "name": "Trevor Martin",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       }
     ]
   },
@@ -5319,7 +5312,7 @@
         "name": "Brian Fitzpatrick",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 692230,
@@ -5340,7 +5333,7 @@
         "name": "Coleman Crow",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 684974,
