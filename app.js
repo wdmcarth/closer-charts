@@ -886,7 +886,11 @@ function renderQuickHits() {
       const placeholder = entry.target;
       qhObserver.unobserve(placeholder);
       const q = placeholder._qhRef;
-      placeholder.replaceWith(buildQhDay(q, teamsByLeague[q.league] || []));
+      try {
+        placeholder.replaceWith(buildQhDay(q, teamsByLeague[q.league] || []));
+      } catch (err) {
+        console.error("[qh-hydrate]", q?.date, q?.league, err);
+      }
     }
   }, { rootMargin: "600px 0px" });
 
@@ -1060,38 +1064,159 @@ function renderQhTeamCell(cell, q, tid, teamName) {
   renderQhEntries(cell, q, tid, teamName, arr);
 }
 
+// Player-name auto-highlight machinery for Quick Hits.
+//
+// Builds a single regex from every pitcher name in state.pitcherIndex and
+// uses it to wrap matches in <strong class="player-link" data-pid="X">.
+// The same chip hover tooltip fires on these spans.
+//
+// Cached lazily; recomputed when state.pitcherIndex changes (rare).
+let _playerMatcher = null;
+function getPlayerMatcher() {
+  if (_playerMatcher && _playerMatcher.size === Object.keys(state.pitcherIndex || {}).length) {
+    return _playerMatcher;
+  }
+  if (!state.pitcherIndex) return null;
+  const records = Object.values(state.pitcherIndex);
+  const nameToId = new Map();
+  for (const p of records) {
+    if (p.name && p.id) nameToId.set(p.name, p.id);
+  }
+  // Sort by length descending so longer names (e.g. "Aroldis Chapman") match
+  // before any name they contain (e.g. "Aroldis").
+  const names = Array.from(nameToId.keys()).sort((a, b) => b.length - a.length);
+  if (!names.length) return null;
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // Word-boundary aware; the unicode \p{L} would be ideal but \b works for
+  // ASCII/accented chars handled via NFKD normalization in MLB statsapi.
+  const pattern = new RegExp(`\\b(${names.map(esc).join("|")})\\b`, "g");
+  _playerMatcher = { pattern, nameToId, size: records.length };
+  return _playerMatcher;
+}
+
+// Walk the text nodes inside `rootEl` and wrap any pitcher-name matches in
+// <strong class="player-link" data-pid="X">. Skips text already inside a
+// .player-link span so we don't double-wrap. Idempotent.
+function wrapPlayerNames(rootEl) {
+  const matcher = getPlayerMatcher();
+  if (!matcher) return;
+  const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement && n.parentElement.closest(".player-link")
+      ? NodeFilter.FILTER_REJECT
+      : NodeFilter.FILTER_ACCEPT,
+  });
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+  for (const node of nodes) {
+    const text = node.nodeValue;
+    matcher.pattern.lastIndex = 0;
+    if (!matcher.pattern.test(text)) continue;
+    matcher.pattern.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0;
+    let m;
+    while ((m = matcher.pattern.exec(text))) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const span = document.createElement("strong");
+      span.className = "player-link";
+      span.dataset.pid = matcher.nameToId.get(m[0]);
+      span.textContent = m[0];
+      frag.appendChild(span);
+      last = matcher.pattern.lastIndex;
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  }
+  attachPlayerLinkHandlers(rootEl);
+}
+
+function attachPlayerLinkHandlers(rootEl) {
+  rootEl.querySelectorAll(".player-link").forEach(link => {
+    if (link.dataset.bound) return;
+    link.dataset.bound = "1";
+    const chipLike = () => ({
+      mlbamid: Number(link.dataset.pid) || link.dataset.pid,
+      name: link.textContent,
+    });
+    link.addEventListener("mouseenter", e => showStatTooltip(e, chipLike()));
+    link.addEventListener("mouseleave", hideStatTooltip);
+    link.addEventListener("mousemove", e => moveStatTooltip(e));
+  });
+}
+
+// Detects whether a saved entry string looks like HTML (contains a tag) or
+// plain text. New saves always emit HTML; legacy quickhits.json entries are
+// plain text. When rendering, plain text is set via textContent (safe) and
+// HTML via innerHTML.
+function entryLooksLikeHtml(s) {
+  return typeof s === "string" && /<\/?(strong|em|b|i|span|br)\b/i.test(s);
+}
+
+function setQhCellBody(el, text) {
+  if (entryLooksLikeHtml(text)) {
+    el.innerHTML = text;
+  } else {
+    el.textContent = text || "";
+  }
+}
+
 function renderQhEntries(cell, q, tid, teamName, entries) {
   entries.forEach((value, idx) => {
     if (VIEW_MODE) {
       const body = document.createElement("div");
       body.className = "qh-team-readonly";
-      body.textContent = value || "";
+      setQhCellBody(body, value);
       cell.appendChild(body);
+      // Auto-highlight player names on the read-only view too.
+      wrapPlayerNames(body);
       return;
     }
 
     const wrap = document.createElement("div");
     wrap.className = "qh-entry";
-    const ta = document.createElement("textarea");
-    ta.value = value || "";
-    ta.placeholder = "—";
-    ta.addEventListener("input", () => {
+    const editor = document.createElement("div");
+    editor.className = "qh-editor";
+    editor.contentEditable = "true";
+    editor.spellcheck = true;
+    // Empty entries get an explicit placeholder hint via CSS (see styles).
+    editor.dataset.placeholder = "—";
+    setQhCellBody(editor, value);
+    // Player-name auto-bold on initial render so existing names show up
+    // highlighted without waiting for the user to blur.
+    wrapPlayerNames(editor);
+
+    // Save on every keystroke (markDirty handles the debounce).
+    editor.addEventListener("input", () => {
       const list = ensureQhArray(q, tid, teamName);
-      list[idx] = ta.value;
-      // Auto-clean: if the user wiped the entry AND there's more than one,
-      // leave the empty slot; if it's the only entry, fall back to deleting
-      // the team key entirely so the cell shows as empty on next render.
-      const allEmpty = list.every(e => !e || !e.trim());
+      list[idx] = editor.innerHTML;
+      const allEmpty = list.every(e => !e || !stripTags(e).trim());
       if (allEmpty) {
         delete q.entries[tid];
         delete q.entries[teamName];
       }
       markDirty();
     });
-    wrap.appendChild(ta);
 
-    // Remove button for non-first entries (or first entry if there's only one
-    // empty? Keep it simple: any entry can be removed if there's >1 entry.)
+    // On blur, re-run player-name wrap to catch newly-typed names. Cursor
+    // is leaving anyway so we don't worry about preserving its position.
+    editor.addEventListener("blur", () => {
+      wrapPlayerNames(editor);
+      const list = ensureQhArray(q, tid, teamName);
+      list[idx] = editor.innerHTML;
+      markDirty();
+    });
+
+    // Paste-as-plain-text: stops users from importing styles/fonts/links
+    // from Word, web pages, etc. Manual Cmd+B / Cmd+I after paste still works.
+    editor.addEventListener("paste", e => {
+      e.preventDefault();
+      const text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertText", false, text);
+    });
+
+    wrap.appendChild(editor);
+
     if (entries.length > 1) {
       const rm = document.createElement("button");
       rm.type = "button";
@@ -1113,6 +1238,12 @@ function renderQhEntries(cell, q, tid, teamName, entries) {
 
     cell.appendChild(wrap);
   });
+}
+
+// Quick tag-stripper for the "is this entry empty" check.
+function stripTags(s) {
+  if (!s) return "";
+  return String(s).replace(/<[^>]*>/g, "");
 }
 
 // ===== save / refresh =====

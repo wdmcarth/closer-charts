@@ -755,18 +755,33 @@ textarea { resize: vertical; }
 }
 .qh-team-add:hover { color: var(--accent); border-color: var(--accent); }
 
-/* An individual entry slot: textarea + optional × remove button. */
+/* An individual entry slot: contenteditable editor + optional × remove. */
 .qh-entry {
   position: relative;
   margin-bottom: 4px;
 }
 .qh-entry:last-child { margin-bottom: 0; }
-.qh-entry textarea {
+.qh-editor {
   width: 100%; min-height: 60px; font-size: 12px;
-  background: transparent; border: none;
-  padding-right: 18px;   /* leave room for × button */
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 18px 4px 6px;   /* room for × button on the right */
+  line-height: 1.45;
+  cursor: text;
+  outline: none;               /* we use our own focus ring */
+  white-space: pre-wrap;       /* preserve newlines from contenteditable */
+  word-break: break-word;
+  color: var(--text);
 }
-.qh-entry textarea:focus { background: var(--panel); border: 1px solid var(--border); }
+.qh-editor:hover { border-color: var(--border); }
+.qh-editor:focus { background: var(--panel); border-color: var(--accent); }
+/* Placeholder for empty contenteditable cells. */
+.qh-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+  pointer-events: none;
+}
 .qh-entry-remove {
   position: absolute; top: 2px; right: 2px;
   background: transparent;
@@ -776,9 +791,27 @@ textarea { resize: vertical; }
   padding: 0 4px;
   cursor: pointer;
   opacity: 0.4;
+  z-index: 2;
 }
 .qh-entry:hover .qh-entry-remove { opacity: 1; }
 .qh-entry-remove:hover { color: var(--danger); }
+
+/* Auto-bolded player names with hover stats. Subtle accent color so they
+   read as a "link" you can hover for more info, but not so loud that they
+   compete with the prose. Manual <strong> the user typed by hand looks
+   the same (just bold) — only the auto-detected ones get the data-pid
+   and the hover tooltip. */
+.qh-editor .player-link,
+.qh-team-readonly .player-link {
+  color: var(--accent);
+  cursor: help;
+  text-decoration: underline dotted rgba(79,157,255,0.5);
+  text-underline-offset: 2px;
+}
+.qh-editor .player-link:hover,
+.qh-team-readonly .player-link:hover {
+  text-decoration-style: solid;
+}
 .qh-team-readonly,
 .qh-rollup-readonly {
   font-size: 12px;
