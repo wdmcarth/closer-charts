@@ -1026,7 +1026,16 @@ async function backendPost(path, body = {}) {
   return data || {};
 }
 
+// Concurrency guard: at most one /save round-trip in flight. If new edits
+// happen while a save is running, we defer them — the post-save check fires
+// one more save to flush. Prevents the editor from racing its own writes,
+// which would surface as a 409 SHA conflict from GitHub.
+let _saveInFlight = false;
+let _savePending = false;
+
 async function saveAll() {
+  if (_saveInFlight) { _savePending = true; return; }
+  _saveInFlight = true;
   setSaveStatus("Saving…", "saving");
   try {
     await backendPost("/save", { chart: state.chart, quickhits: state.quickhits });
@@ -1038,6 +1047,13 @@ async function saveAll() {
     } else {
       setSaveStatus("Save error", "error");
       toast("Save failed: " + e.message, "error");
+    }
+  } finally {
+    _saveInFlight = false;
+    if (_savePending) {
+      _savePending = false;
+      // Flush whatever changed during the previous save.
+      setTimeout(saveAll, 50);
     }
   }
 }

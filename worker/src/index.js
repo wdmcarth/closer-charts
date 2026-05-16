@@ -65,35 +65,60 @@ function b64encodeUtf8(s) {
 }
 
 async function putFile(env, path, contentString, message) {
-  // 1. Look up the current file's SHA. Required by the Contents API for
-  //    updates. If the file doesn't exist yet, GET returns 404 and we omit
-  //    `sha` to create it.
-  let sha = null;
-  const head = await gh(env, `/repos/${env.REPO}/contents/${path}?ref=${env.REF}`);
-  if (head.ok) {
-    const cur = await head.json();
-    sha = cur.sha;
-  } else if (head.status !== 404) {
-    return { ok: false, status: head.status, error: await head.text() };
+  // GitHub's Contents API is fetch-then-PUT with a SHA guard. If a concurrent
+  // writer (another editor, a workflow, or the user's own rapid autosaves)
+  // changes the file between our GET and PUT, the PUT fails with 409. Last
+  // write wins is the agreed semantics — so we just re-fetch the SHA and
+  // retry.
+  const MAX_ATTEMPTS = 4;
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    // 1. Look up the current file's SHA. If the file doesn't exist yet,
+    //    GET returns 404 and we omit `sha` to create it.
+    let sha = null;
+    const head = await gh(env, `/repos/${env.REPO}/contents/${path}?ref=${env.REF}`);
+    if (head.ok) {
+      const cur = await head.json();
+      sha = cur.sha;
+    } else if (head.status !== 404) {
+      return { ok: false, status: head.status, error: await head.text() };
+    }
+
+    const body = {
+      message,
+      content: b64encodeUtf8(contentString),
+      branch: env.REF,
+      ...(sha ? { sha } : {}),
+    };
+
+    const put = await gh(env, `/repos/${env.REPO}/contents/${path}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (put.ok) {
+      const data = await put.json();
+      return {
+        ok: true,
+        commitSha: data.commit?.sha,
+        contentSha: data.content?.sha,
+        attempts: attempt,
+      };
+    }
+
+    // 409 is the SHA-conflict case — re-fetch and retry. Anything else is a
+    // hard failure (auth, rate limit, bad request, etc.).
+    if (put.status !== 409) {
+      return { ok: false, status: put.status, error: await put.text() };
+    }
+    lastError = await put.text();
+    // Brief backoff so a same-editor double-save serializes naturally.
+    await new Promise(r => setTimeout(r, 150 * attempt));
   }
 
-  const body = {
-    message,
-    content: b64encodeUtf8(contentString),
-    branch: env.REF,
-    ...(sha ? { sha } : {}),
-  };
-
-  const put = await gh(env, `/repos/${env.REPO}/contents/${path}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!put.ok) {
-    return { ok: false, status: put.status, error: await put.text() };
-  }
-  const data = await put.json();
-  return { ok: true, commitSha: data.commit?.sha, contentSha: data.content?.sha };
+  return { ok: false, status: 409, error: lastError, attempts: MAX_ATTEMPTS };
 }
 
 async function handleSave(body, env) {
