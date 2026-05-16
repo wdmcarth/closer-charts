@@ -36,6 +36,15 @@ html, body {
   color: var(--text);
   font: 14px/1.4 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
 }
+body {
+  /* On narrow viewports the chart grid is wider than the window (~1366px
+     minimum), triggering horizontal scroll. By default body stays
+     viewport-wide so the sticky topbar/tabs (width: 100%) only cover the
+     original viewport span — the chart bleeds out from under them on
+     the right. Growing body to its content width makes the full-width
+     sticky elements stretch across the whole scrollable area. */
+  min-width: max-content;
+}
 
 button {
   background: var(--panel-2);
