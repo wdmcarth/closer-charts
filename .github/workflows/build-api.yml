@@ -1,0 +1,53 @@
+name: Build api.json
+
+# Regenerates data/api.json (flat per-pitcher JSON for external consumers)
+# whenever any of the source data changes. Fires after every editor save
+# (which commits chart.json) and after every refresh-* workflow commits new
+# stats/rosters/pitcher_index.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/chart.json'
+      - 'data/stats.json'
+      - 'data/pitcher_index.json'
+      - 'data/rosters.json'
+      - 'build_api.py'
+      - '.github/workflows/build-api.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-api
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run build_api.py
+        run: python3 build_api.py
+
+      - name: Commit api.json (if changed)
+        run: |
+          git config user.name "closer-charts-bot"
+          git config user.email "closer-charts-bot@users.noreply.github.com"
+          git add data/api.json
+          if git diff --staged --quiet; then
+            echo "No changes to api.json."
+          else
+            git commit -m "Build api.json ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+            git push
+          fi
