@@ -673,17 +673,57 @@ textarea { resize: vertical; }
   border-radius: 6px;
   padding: 6px;
 }
+/* Header row inside each per-team cell: team name + (edit mode only) + button. */
+.qh-team-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 4px;
+  gap: 6px;
+}
 .qh-team-cell .qh-team-name {
   font-size: 11px; font-weight: 600;
   color: var(--muted); text-transform: uppercase;
   letter-spacing: 0.05em;
+  flex: 1; min-width: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.qh-team-add {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 3px;
+  width: 18px; height: 18px;
+  padding: 0;
+  font-size: 13px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.qh-team-add:hover { color: var(--accent); border-color: var(--accent); }
+
+/* An individual entry slot: textarea + optional × remove button. */
+.qh-entry {
+  position: relative;
   margin-bottom: 4px;
 }
-.qh-team-cell textarea {
+.qh-entry:last-child { margin-bottom: 0; }
+.qh-entry textarea {
   width: 100%; min-height: 60px; font-size: 12px;
   background: transparent; border: none;
+  padding-right: 18px;   /* leave room for × button */
 }
-.qh-team-cell textarea:focus { background: var(--panel); border: 1px solid var(--border); }
+.qh-entry textarea:focus { background: var(--panel); border: 1px solid var(--border); }
+.qh-entry-remove {
+  position: absolute; top: 2px; right: 2px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 14px; line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+  opacity: 0.4;
+}
+.qh-entry:hover .qh-entry-remove { opacity: 1; }
+.qh-entry-remove:hover { color: var(--danger); }
 .qh-team-readonly,
 .qh-rollup-readonly {
   font-size: 12px;
@@ -815,6 +855,68 @@ textarea { resize: vertical; }
 
 .dash-cell-situation { border-bottom: none; }
 .dash-cell-result    { border-top: none; }
+
+/* Refresh-progress modal (editor only, shown during a /refresh-* round trip). */
+.progress-backdrop {
+  position: fixed; inset: 0;
+  z-index: 240;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.progress-backdrop[hidden] { display: none; }
+.progress-card {
+  width: min(460px, 92vw);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 24px 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  text-align: center;
+}
+.progress-spinner {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  margin: 0 auto 12px;
+  animation: cc-spin 0.9s linear infinite;
+}
+.progress-spinner.done {
+  border-color: var(--accent-2);
+  border-top-color: var(--accent-2);
+  animation: none;
+}
+.progress-spinner.error {
+  border-color: var(--danger);
+  border-top-color: var(--danger);
+  animation: none;
+}
+@keyframes cc-spin { to { transform: rotate(360deg); } }
+.progress-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.progress-status { font-size: 13px; color: var(--text); margin-bottom: 4px; }
+.progress-detail { font-size: 11px; min-height: 14px; margin-bottom: 14px; }
+.progress-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px;
+}
+.progress-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 12px;
+}
+.progress-link:hover { text-decoration: underline; }
+.progress-link[hidden] { display: none; }
+.progress-cancel {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.progress-cancel:hover { color: var(--text); border-color: var(--text); }
 
 /* Sign-in dialog (editor + remote backend only). Same visual treatment as the
    dashboard modal: full-page backdrop, centered card. */

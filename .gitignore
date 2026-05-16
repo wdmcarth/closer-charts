@@ -21,3 +21,8 @@ Closer Charts (export).xlsx
 # Local secrets — never commit
 worker/.dev.vars
 *.secret
+
+# Node tooling for the Cloudflare Worker
+node_modules/
+worker/node_modules/
+# (We do commit worker/package-lock.json for reproducible installs.)

@@ -857,37 +857,136 @@ function buildQhDay(q, teams) {
   grid.className = "qh-team-grid";
   teams.forEach(t => {
     const tid = String(t.teamId);
-    const text = q.entries[tid] || q.entries[t.teamName] || "";
-    // In view mode, skip teams with no entry to keep the grid tight.
-    if (VIEW_MODE && !text) return;
+    // Read existing entry as either string (legacy) or string[] (new). The
+    // canonical in-memory shape is always an array.
+    const raw = q.entries[tid] !== undefined ? q.entries[tid] : q.entries[t.teamName];
+    const entries = normalizeQhEntries(raw);
+
+    // In view mode, skip teams with no non-empty entries to keep the grid tight.
+    const visibleEntries = entries.filter(e => e && e.trim());
+    if (VIEW_MODE && !visibleEntries.length) return;
 
     const cell = document.createElement("div");
     cell.className = "qh-team-cell";
+
+    // Header row: team name + (edit mode) + button
+    const head = document.createElement("div");
+    head.className = "qh-team-head";
     const name = document.createElement("div");
     name.className = "qh-team-name";
     name.textContent = t.teamName;
-    cell.appendChild(name);
-    if (VIEW_MODE) {
-      const body = document.createElement("div");
-      body.className = "qh-team-readonly";
-      body.textContent = text;
-      cell.appendChild(body);
-    } else {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.placeholder = "—";
-      ta.addEventListener("input", () => {
-        if (ta.value.trim()) q.entries[tid] = ta.value;
-        else { delete q.entries[tid]; delete q.entries[t.teamName]; }
+    head.appendChild(name);
+    if (!VIEW_MODE) {
+      const add = document.createElement("button");
+      add.type = "button";
+      add.className = "qh-team-add";
+      add.title = "Add another entry for this team";
+      add.textContent = "+";
+      add.addEventListener("click", () => {
+        const list = ensureQhArray(q, tid, t.teamName);
+        list.push("");
+        renderQhTeamCell(cell, q, tid, t.teamName);
+        // focus the new (last) textarea
+        const tas = cell.querySelectorAll("textarea");
+        tas[tas.length - 1]?.focus();
         markDirty();
       });
-      cell.appendChild(ta);
+      head.appendChild(add);
     }
+    cell.appendChild(head);
+
+    // Body: render entries
+    renderQhEntries(cell, q, tid, t.teamName, VIEW_MODE ? visibleEntries : entries);
+
     grid.appendChild(cell);
   });
   card.appendChild(grid);
 
   return card;
+}
+
+// Coerce a raw entry value (string | string[] | undefined) into an array of
+// strings. Editing always operates on arrays; legacy quickhits.json with
+// string values is handled transparently.
+function normalizeQhEntries(raw) {
+  if (Array.isArray(raw)) return raw.slice();
+  if (typeof raw === "string") return raw ? [raw] : [""];
+  return [""];
+}
+
+// Ensure the in-memory state for (qDay, teamId) is an array, mutating
+// q.entries[tid] from string -> [string] on first edit. Returns the array.
+function ensureQhArray(q, tid, teamName) {
+  let cur = q.entries[tid] !== undefined ? q.entries[tid] : q.entries[teamName];
+  if (!Array.isArray(cur)) cur = normalizeQhEntries(cur);
+  q.entries[tid] = cur;
+  // If the legacy key (team name) existed, clean it up so we don't write back two.
+  if (q.entries[teamName] !== undefined && tid !== teamName) delete q.entries[teamName];
+  return cur;
+}
+
+function renderQhTeamCell(cell, q, tid, teamName) {
+  // Re-render just the entries portion (everything after .qh-team-head).
+  const head = cell.querySelector(".qh-team-head");
+  // Remove anything after head.
+  while (cell.lastChild && cell.lastChild !== head) cell.removeChild(cell.lastChild);
+  const arr = ensureQhArray(q, tid, teamName);
+  renderQhEntries(cell, q, tid, teamName, arr);
+}
+
+function renderQhEntries(cell, q, tid, teamName, entries) {
+  entries.forEach((value, idx) => {
+    if (VIEW_MODE) {
+      const body = document.createElement("div");
+      body.className = "qh-team-readonly";
+      body.textContent = value || "";
+      cell.appendChild(body);
+      return;
+    }
+
+    const wrap = document.createElement("div");
+    wrap.className = "qh-entry";
+    const ta = document.createElement("textarea");
+    ta.value = value || "";
+    ta.placeholder = "—";
+    ta.addEventListener("input", () => {
+      const list = ensureQhArray(q, tid, teamName);
+      list[idx] = ta.value;
+      // Auto-clean: if the user wiped the entry AND there's more than one,
+      // leave the empty slot; if it's the only entry, fall back to deleting
+      // the team key entirely so the cell shows as empty on next render.
+      const allEmpty = list.every(e => !e || !e.trim());
+      if (allEmpty) {
+        delete q.entries[tid];
+        delete q.entries[teamName];
+      }
+      markDirty();
+    });
+    wrap.appendChild(ta);
+
+    // Remove button for non-first entries (or first entry if there's only one
+    // empty? Keep it simple: any entry can be removed if there's >1 entry.)
+    if (entries.length > 1) {
+      const rm = document.createElement("button");
+      rm.type = "button";
+      rm.className = "qh-entry-remove";
+      rm.title = "Remove this entry";
+      rm.textContent = "×";
+      rm.addEventListener("click", () => {
+        const list = ensureQhArray(q, tid, teamName);
+        list.splice(idx, 1);
+        if (list.length === 0) {
+          delete q.entries[tid];
+          delete q.entries[teamName];
+        }
+        renderQhTeamCell(cell, q, tid, teamName);
+        markDirty();
+      });
+      wrap.appendChild(rm);
+    }
+
+    cell.appendChild(wrap);
+  });
 }
 
 // ===== save / refresh =====
@@ -943,61 +1042,181 @@ async function saveAll() {
   }
 }
 
+// ===== Workflow polling + progress modal =====
+// After dispatching a refresh-* GitHub Action, watch its run via the
+// public GitHub API and auto-reload the page once the commit lands.
+
+const WORKFLOW_POLL_MS = 3000;
+const WORKFLOW_TIMEOUT_MS = 4 * 60 * 1000;   // 4 minutes max
+const PAGES_REBUILD_WAIT_MS = 12000;          // give Pages time to publish after commit
+let _progressCancelled = false;
+
+function showProgress(title, status) {
+  _progressCancelled = false;
+  const card = $("#progressBackdrop");
+  if (!card) return;
+  card.hidden = false;
+  $("#progressTitle").textContent = title;
+  $("#progressStatus").textContent = status || "";
+  $("#progressDetail").textContent = "";
+  $("#progressOpenAction").hidden = true;
+  $(".progress-spinner").classList.remove("done", "error");
+}
+function updateProgress(status, detail, opts = {}) {
+  if (_progressCancelled) return;
+  if (status) $("#progressStatus").textContent = status;
+  if (detail !== undefined) $("#progressDetail").textContent = detail;
+  if (opts.actionUrl) {
+    const a = $("#progressOpenAction");
+    a.href = opts.actionUrl;
+    a.hidden = false;
+  }
+  if (opts.state === "done") $(".progress-spinner").classList.add("done");
+  if (opts.state === "error") $(".progress-spinner").classList.add("error");
+}
+function hideProgress() { $("#progressBackdrop").hidden = true; }
+
+// One-shot poller. workflowFile is e.g. "refresh-stats.yml".
+// triggeredAt is a JS timestamp (Date.now()) captured right before dispatch.
+async function pollWorkflowAndReload(workflowFile, triggeredAt, friendlyTitle) {
+  if (!window.CC_REPO) {
+    // No repo configured — fall back to the old "queued" toast.
+    toast(`${friendlyTitle} queued — reload manually after the workflow commits (~30–60s).`, "ok");
+    return;
+  }
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const start = Date.now();
+  const runsUrl = `https://api.github.com/repos/${window.CC_REPO}/actions/workflows/${workflowFile}/runs?per_page=10`;
+
+  let run = null;
+  // Phase 1: find the run created by our dispatch. workflow_dispatch can take
+  // a moment to materialize a run, so we patiently retry.
+  while (Date.now() - start < WORKFLOW_TIMEOUT_MS && !_progressCancelled) {
+    try {
+      const r = await fetch(runsUrl, { cache: "no-store" });
+      const data = await r.json();
+      // Find the most recent workflow_dispatch run created at or after our trigger.
+      const candidate = (data.workflow_runs || []).find(w =>
+        w.event === "workflow_dispatch" &&
+        new Date(w.created_at).getTime() >= triggeredAt - 5000);
+      if (candidate) { run = candidate; break; }
+      updateProgress("Waiting for run to spawn…",
+        `${Math.round((Date.now() - start) / 1000)}s elapsed`);
+    } catch (e) {
+      updateProgress("Polling…", "Couldn't reach GitHub API: " + e.message);
+    }
+    await sleep(WORKFLOW_POLL_MS);
+  }
+
+  if (_progressCancelled) return;
+  if (!run) {
+    updateProgress("Timed out waiting for the run to start.", "", { state: "error" });
+    return;
+  }
+
+  updateProgress("Running…", "", { actionUrl: run.html_url });
+
+  // Phase 2: poll the run's status until completed.
+  const runUrl = `https://api.github.com/repos/${window.CC_REPO}/actions/runs/${run.id}`;
+  while (Date.now() - start < WORKFLOW_TIMEOUT_MS && !_progressCancelled) {
+    await sleep(WORKFLOW_POLL_MS);
+    let cur;
+    try {
+      cur = await fetch(runUrl, { cache: "no-store" }).then(r => r.json());
+    } catch (e) {
+      updateProgress("Running…", "Couldn't reach GitHub: " + e.message);
+      continue;
+    }
+    const elapsed = Math.round((Date.now() - new Date(run.created_at).getTime()) / 1000);
+    if (cur.status === "completed") {
+      if (cur.conclusion === "success") {
+        updateProgress(`Workflow succeeded in ${elapsed}s. Waiting for Pages to publish…`, "");
+        await sleep(PAGES_REBUILD_WAIT_MS);
+        if (_progressCancelled) return;
+        updateProgress("Reloading…", "", { state: "done" });
+        location.reload();
+      } else {
+        updateProgress(`Workflow ended: ${cur.conclusion}`,
+          "Open the GitHub link above to inspect logs.",
+          { state: "error" });
+      }
+      return;
+    }
+    updateProgress(`Status: ${cur.status} (${elapsed}s)`, "");
+  }
+
+  if (!_progressCancelled) {
+    updateProgress("Timed out waiting for workflow to finish.",
+      "It may still be running — check the GitHub link above.",
+      { state: "error", actionUrl: run.html_url });
+  }
+}
+
 async function refreshStats() {
-  toast("Refreshing stats…");
+  if (!REMOTE_BACKEND) {
+    // Local server.py mode — original behavior (synchronous fetch + render).
+    toast("Refreshing stats…");
+    try { await backendPost("/refresh-stats"); }
+    catch (e) { toast("Refresh failed: " + e.message, "error"); return; }
+    state.stats = await fetch("data/stats.json", { cache: "no-store" }).then(r => r.json());
+    $("#seasonBadge").textContent = `season ${state.stats.season} · stats ${new Date(state.stats.fetchedAt).toLocaleString()}`;
+    renderChart();
+    toast("Stats refreshed (" + Object.keys(state.stats.byPlayerId).length + " pitchers)", "ok");
+    return;
+  }
+  const triggeredAt = Date.now();
+  showProgress("Refresh stats", "Triggering GitHub Action…");
   try {
     await backendPost("/refresh-stats");
   } catch (e) {
-    if (e.message !== "unauthorized") toast("Refresh failed: " + e.message, "error");
+    if (e.message !== "unauthorized") updateProgress("Couldn't dispatch", e.message, { state: "error" });
     return;
   }
-  if (REMOTE_BACKEND) {
-    // GitHub Action runs asynchronously — show a "queued" message and let
-    // the user reload manually after the workflow finishes.
-    toast("Stats refresh queued — page will pick up new data after the workflow commits (~30–60s).", "ok");
-    return;
-  }
-  state.stats = await fetch("data/stats.json", { cache: "no-store" }).then(r => r.json());
-  $("#seasonBadge").textContent =
-    `season ${state.stats.season} · stats ${new Date(state.stats.fetchedAt).toLocaleString()}`;
-  renderChart();
-  toast("Stats refreshed (" + Object.keys(state.stats.byPlayerId).length + " pitchers)", "ok");
+  await pollWorkflowAndReload("refresh-stats.yml", triggeredAt, "Refresh stats");
 }
 
 async function refreshDashboard() {
   if (!confirm("Refresh RP Dashboard? Fetches ~14 days of completed games (~30–60s).")) return;
-  toast("Refreshing dashboard…");
+  if (!REMOTE_BACKEND) {
+    toast("Refreshing dashboard…");
+    try { await backendPost("/refresh-dashboard", { days: 14 }); }
+    catch (e) { toast("Dashboard refresh failed: " + e.message, "error"); return; }
+    state.dashboard = await fetch("data/dashboard.json", { cache: "no-store" }).then(r => r.json());
+    toast("Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
+    if (!$("#dashboardModal").hidden) renderDashboardModal(currentDashboardTeam);
+    return;
+  }
+  const triggeredAt = Date.now();
+  showProgress("Refresh dashboard", "Triggering GitHub Action…");
   try {
     await backendPost("/refresh-dashboard", { days: 14 });
   } catch (e) {
-    if (e.message !== "unauthorized") toast("Dashboard refresh failed: " + e.message, "error");
+    if (e.message !== "unauthorized") updateProgress("Couldn't dispatch", e.message, { state: "error" });
     return;
   }
-  if (REMOTE_BACKEND) {
-    toast("Dashboard refresh queued — reload the page after the workflow commits (~60s).", "ok");
-    return;
-  }
-  state.dashboard = await fetch("data/dashboard.json", { cache: "no-store" }).then(r => r.json());
-  toast("Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
-  if (!$("#dashboardModal").hidden) renderDashboardModal(currentDashboardTeam);
+  await pollWorkflowAndReload("refresh-dashboard.yml", triggeredAt, "Refresh dashboard");
 }
 
 async function refreshRosters() {
   if (!confirm("Refresh rosters? This re-pulls 40-man for all 30 teams (~30s).")) return;
-  toast("Refreshing rosters…");
+  if (!REMOTE_BACKEND) {
+    toast("Refreshing rosters…");
+    try { await backendPost("/refresh-rosters"); }
+    catch (e) { toast("Refresh failed: " + e.message, "error"); return; }
+    state.rosters = await fetch("data/rosters.json", { cache: "no-store" }).then(r => r.json());
+    renderChart();
+    toast("Rosters refreshed", "ok");
+    return;
+  }
+  const triggeredAt = Date.now();
+  showProgress("Refresh rosters", "Triggering GitHub Action…");
   try {
     await backendPost("/refresh-rosters");
   } catch (e) {
-    if (e.message !== "unauthorized") toast("Refresh failed: " + e.message, "error");
+    if (e.message !== "unauthorized") updateProgress("Couldn't dispatch", e.message, { state: "error" });
     return;
   }
-  if (REMOTE_BACKEND) {
-    toast("Roster refresh queued — reload the page after the workflow commits (~30s).", "ok");
-    return;
-  }
-  state.rosters = await fetch("data/rosters.json", { cache: "no-store" }).then(r => r.json());
-  renderChart();
-  toast("Rosters refreshed", "ok");
+  await pollWorkflowAndReload("refresh-rosters.yml", triggeredAt, "Refresh rosters");
 }
 
 async function exportXlsx() {
@@ -1222,6 +1441,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.id === "dashboardModal") closeDashboardModal();
   });
 
+  // Progress modal: Hide button stops polling and dismisses the dialog. The
+  // workflow keeps running in GitHub — user can use the "View on GitHub" link
+  // to watch it there instead.
+  $("#progressCancel")?.addEventListener("click", () => {
+    _progressCancelled = true;
+    hideProgress();
+    toast("Hidden — workflow continues running on GitHub. Reload manually to pick up new data.", "ok");
+  });
+
   $$(".tab").forEach(tab => tab.addEventListener("click", () => {
     $$(".tab").forEach(t => t.classList.toggle("active", t === tab));
     const view = tab.dataset.view;
@@ -1238,6 +1466,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault(); saveAll();
     }
     if (e.key === "Escape" && !$("#dashboardModal").hidden) closeDashboardModal();
+    if (e.key === "Escape" && !$("#progressBackdrop").hidden) {
+      _progressCancelled = true;
+      hideProgress();
+    }
   });
   // Warn on unload if dirty (edit only).
   window.addEventListener("beforeunload", e => {

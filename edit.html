@@ -102,9 +102,25 @@
     </div>
   </div>
 
+  <!-- Refresh-progress modal: shown while a /refresh-* GitHub Action is in
+       flight. Polls the workflow's most recent run and auto-reloads the
+       page once the commit lands. -->
+  <div id="progressBackdrop" class="progress-backdrop" hidden>
+    <div class="progress-card" role="dialog" aria-modal="true">
+      <div class="progress-spinner"></div>
+      <div id="progressTitle" class="progress-title">Refreshing…</div>
+      <div id="progressStatus" class="progress-status">Triggering workflow…</div>
+      <div id="progressDetail" class="progress-detail subtle"></div>
+      <div class="progress-row">
+        <a id="progressOpenAction" class="progress-link" href="#" target="_blank" rel="noopener" hidden>View on GitHub →</a>
+        <button id="progressCancel" class="progress-cancel">Hide</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast for save/export status -->
   <div id="toast" class="toast" hidden></div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
