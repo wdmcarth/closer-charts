@@ -53,11 +53,18 @@ def chip_to_text(chip: dict) -> str:
     Refresh Stats runs.
     """
     parts = [chip.get("name", "").strip()]
-    color = chip.get("color")
+    # Colors: new shape is chip.colors (array); legacy chip.color (string)
+    # still supported for older exports.
+    colors = chip.get("colors")
+    if not colors and chip.get("color"):
+        colors = [chip.get("color")]
+    colors = [c for c in (colors or []) if c]
     status = chip.get("statusTag")
     other = chip.get("other")
-    if color:
-        parts.append(f"[{color}]")
+    if colors:
+        # "[Blue, Magenta]" for multi; "[Blue]" for single — keeps Excel
+        # round-trip parseable as a comma-separated list inside brackets.
+        parts.append(f"[{', '.join(colors)}]")
     if status:
         parts.append(f"({status})")
     if other:

@@ -404,6 +404,14 @@ textarea { resize: vertical; }
   /* Counter-shift the border so the outline doesn't push other squares */
   border-color: transparent;
 }
+/* Auto-magenta: same "selected" outline but dashed, so the user can tell at
+   a glance that this color came from the auto-default rather than an
+   explicit pick. Clicking it dismisses (sets chip.noMagenta=true). */
+.chip-color-sq.selected.auto {
+  box-shadow: 0 0 0 2px var(--text);
+  outline: 1px dashed var(--text);
+  outline-offset: 2px;
+}
 .chip {
   display: inline-flex; align-items: center; gap: 4px;
   background: var(--bg);
@@ -426,38 +434,44 @@ textarea { resize: vertical; }
   text-decoration: line-through;
   text-decoration-thickness: 1px;
 }
-/* Per-chip color (Blue/Orange/Yellow/Magenta/Green). The whole bubble
-   takes the palette color and we flip text to dark since the palette is
-   pastel. Badges inside switch to solid dark backgrounds so they stay
-   legible on top of the colored bubble. */
-.chip.color-Blue    { background: var(--color-Blue);    color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
-.chip.color-Orange  { background: var(--color-Orange);  color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
-.chip.color-Yellow  { background: var(--color-Yellow);  color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
-.chip.color-Magenta { background: var(--color-Magenta); color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
-.chip.color-Green   { background: var(--color-Green);   color: #1a1a1a; border-color: rgba(0,0,0,0.25); }
-.chip[class*="color-"] .chip-remove { color: rgba(0,0,0,0.45); }
-.chip[class*="color-"] .chip-remove:hover { color: #1a1a1a; }
+/* Per-chip color. Any chip with one or more color tags gets `.has-color`,
+   which flips the text to dark for legibility on the pastel palette. The
+   actual color is applied either via:
+     - .chip.color-X    (single color → CSS class with palette variable)
+     - inline style     (multi-color → JS-set linear-gradient of N stripes)
+*/
+.chip.has-color {
+  color: #1a1a1a;
+  border-color: rgba(0,0,0,0.25);
+}
+.chip.color-Blue    { background: var(--color-Blue); }
+.chip.color-Orange  { background: var(--color-Orange); }
+.chip.color-Yellow  { background: var(--color-Yellow); }
+.chip.color-Magenta { background: var(--color-Magenta); }
+.chip.color-Green   { background: var(--color-Green); }
+.chip.has-color .chip-remove { color: rgba(0,0,0,0.45); }
+.chip.has-color .chip-remove:hover { color: #1a1a1a; }
 /* Solid badge bg so the small tag pills don't blend into the bubble color. */
 /* When the chip has a color tag, switch badges to a solid white background
    so they read cleanly on any pastel bubble. Keep each badge's semantic
    text color (red for usage, dark amber for status, blue for other) so the
    at-a-glance meaning isn't lost. Slightly heavier weight + a subtle outline
    gives the pills clear edges against the colored bubble. */
-.chip[class*="color-"] .chip-usage,
-.chip[class*="color-"] .chip-status,
-.chip[class*="color-"] .chip-other,
-.chip[class*="color-"] .chip-level,
-.chip[class*="color-"] .chip-notforty {
+.chip.has-color .chip-usage,
+.chip.has-color .chip-status,
+.chip.has-color .chip-other,
+.chip.has-color .chip-level,
+.chip.has-color .chip-notforty {
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.18);
   font-weight: 600;
   box-shadow: 0 1px 0 rgba(0,0,0,0.08);
 }
-.chip[class*="color-"] .chip-usage    { color: #c0392b; }   /* darker red — pops on white */
-.chip[class*="color-"] .chip-status   { color: #a4651c; }   /* darker amber — pops on white */
-.chip[class*="color-"] .chip-other    { color: #1f6bd4; }   /* darker blue */
-.chip[class*="color-"] .chip-level    { color: #1a1a1a; }
-.chip[class*="color-"] .chip-notforty { color: #1a1a1a; text-decoration: line-through; }
+.chip.has-color .chip-usage    { color: #c0392b; }   /* darker red — pops on white */
+.chip.has-color .chip-status   { color: #a4651c; }   /* darker amber — pops on white */
+.chip.has-color .chip-other    { color: #1f6bd4; }   /* darker blue */
+.chip.has-color .chip-level    { color: #1a1a1a; }
+.chip.has-color .chip-notforty { color: #1a1a1a; text-decoration: line-through; }
 
 .chip .chip-name { font-weight: 500; }
 .chip .chip-usage {

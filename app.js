@@ -263,23 +263,68 @@ function lookupPitcher(chip) {
   return null;
 }
 
-// Compute the color that should display on a chip. Priority:
-//   1. Explicit chip.color the user picked (highest)
-//   2. Auto-magenta when the pitcher has any auto-populated usage tags
-//      (workload signal — matches what Magenta means in the legend)
-//   3. None
-function effectiveChipColor(chip) {
-  if (chip.color) return chip.color;
-  if (!chip.mlbamid) return null;
+// Coerce a chip's color shape into the canonical { explicit: string[], ... }
+// model. Backward compat: legacy chip.color (single string) is read as a
+// single-element array. The original chip.color field is migrated lazily —
+// next save writes the array shape and the legacy string disappears.
+function chipExplicitColors(chip) {
+  if (Array.isArray(chip.colors)) return chip.colors.filter(Boolean);
+  if (chip.color) return [chip.color];
+  return [];
+}
+
+// Compute the effective set of colors to render on the chip:
+//   explicit user picks + auto-magenta (when usageTags exist and the user
+//   hasn't dismissed it via chip.noMagenta).
+function effectiveChipColors(chip) {
+  const explicit = chipExplicitColors(chip);
+  const auto = autoMagentaActive(chip);
+  if (auto && !explicit.includes("Magenta")) {
+    return [...explicit, "Magenta"];
+  }
+  return explicit;
+}
+
+// True iff this chip should be auto-magenta'd (display-only effect that the
+// user has not explicitly dismissed via chip.noMagenta).
+function autoMagentaActive(chip) {
+  if (chip.noMagenta) return false;
+  if (!chip.mlbamid) return false;
   const tags = state.stats?.byPlayerId?.[String(chip.mlbamid)]?.usageTags;
-  return tags && tags.length ? "Magenta" : null;
+  return !!(tags && tags.length);
+}
+
+// Mutate chip.colors in place: add (if not present) or remove the color.
+// Also migrates the legacy chip.color string into the new array shape on
+// first write.
+function toggleChipColor(chip, color) {
+  if (!Array.isArray(chip.colors)) {
+    chip.colors = chipExplicitColors(chip);
+  }
+  if (chip.color) delete chip.color;  // legacy field, no longer used
+  const idx = chip.colors.indexOf(color);
+  if (idx >= 0) chip.colors.splice(idx, 1);
+  else chip.colors.push(color);
 }
 
 function buildChip(team, role, chip, idx, listEl) {
   const el = document.createElement("span");
   el.className = "chip";
-  const effColor = effectiveChipColor(chip);
-  if (effColor) el.classList.add("color-" + effColor);
+  const effColors = effectiveChipColors(chip);
+  if (effColors.length) {
+    el.classList.add("has-color");
+    if (effColors.length === 1) {
+      // Single color: simple CSS class with the palette variable.
+      el.classList.add("color-" + effColors[0]);
+    } else {
+      // Multi-color: render as equal vertical stripes via a gradient. Each
+      // color gets the same slice width so the chip reads as N tags layered.
+      const step = 100 / effColors.length;
+      const stops = effColors.map((c, i) =>
+        `var(--color-${c}) ${i * step}% ${(i + 1) * step}%`).join(", ");
+      el.style.background = `linear-gradient(to right, ${stops})`;
+    }
+  }
 
   const pitcher = lookupPitcher(chip);
   // "On the 40-man" = pitcher exists in pitcher_index AND level === MLB.
@@ -287,10 +332,10 @@ function buildChip(team, role, chip, idx, listEl) {
   // could have been bound via the org-MILB search to a minor leaguer.
   const onFortyMan = !!(pitcher && pitcher.level === "MLB");
   if (!onFortyMan) el.title = "Not on the 40-man roster";
-  // Hint when the displayed color came from auto-default rather than an
-  // explicit user pick.
-  if (!chip.color && effColor) {
-    el.title = (el.title ? el.title + " · " : "") + `Auto-${effColor.toLowerCase()} (usage tag active)`;
+  // Hint when Magenta on display came from auto-default rather than an
+  // explicit pick, so the user knows where it came from.
+  if (autoMagentaActive(chip) && !chipExplicitColors(chip).includes("Magenta")) {
+    el.title = (el.title ? el.title + " · " : "") + "Auto-magenta (usage tag active)";
   }
 
   const nameSpan = document.createElement("span");
@@ -386,17 +431,44 @@ function buildChipColorPicker(team, role, chip) {
   picker.className = "chip-color-picker";
   picker.addEventListener("click", e => e.stopPropagation());
 
+  const effective = effectiveChipColors(chip);
+  const explicit = chipExplicitColors(chip);
   const colorLabels = state.chart?.colorMeanings || {};
   CHIP_COLORS.forEach(c => {
     const sq = document.createElement("button");
     sq.type = "button";
     sq.className = "chip-color-sq color-" + c;
-    sq.title = c + (colorLabels[c] ? ` — ${colorLabels[c]}` : "");
-    if (chip.color === c) sq.classList.add("selected");
+    let tip = c + (colorLabels[c] ? ` — ${colorLabels[c]}` : "");
+    if (effective.includes(c)) sq.classList.add("selected");
+    // Magenta-specific auto-default styling: when Magenta is on display due
+    // to auto and not explicitly picked, show it as "selected" but with a
+    // visual hint that it's auto (dashed outline). Clicking dismisses.
+    if (c === "Magenta" && effective.includes(c) && !explicit.includes(c)) {
+      sq.classList.add("auto");
+      tip += " — auto from usage tag (click to dismiss)";
+    }
+    sq.title = tip;
     sq.addEventListener("click", () => {
-      // Toggle: clicking the explicitly-selected color clears it (which lets
-      // the auto-default kick back in if usage tags are active).
-      chip.color = chip.color === c ? null : c;
+      const explicitNow = chipExplicitColors(chip);
+      const isExplicit = explicitNow.includes(c);
+      const isAutoMagenta = c === "Magenta" && !isExplicit && autoMagentaActive(chip);
+
+      if (isExplicit) {
+        // Remove from explicit colors.
+        toggleChipColor(chip, c);
+        // If the user is removing Magenta explicitly while usage tags exist,
+        // also dismiss the auto so it doesn't immediately re-appear.
+        if (c === "Magenta" && autoMagentaActive(chip)) chip.noMagenta = true;
+      } else if (isAutoMagenta) {
+        // Dismiss the auto-magenta — leaves explicit colors untouched.
+        chip.noMagenta = true;
+      } else {
+        // Add to explicit colors. If the user is picking Magenta after
+        // dismissing it, also clear the dismissal so auto can fire again
+        // later if circumstances change.
+        toggleChipColor(chip, c);
+        if (c === "Magenta") delete chip.noMagenta;
+      }
       rerenderRoleCell(team, role);
       markDirty();
     });
@@ -660,7 +732,7 @@ function addChip(team, role, pitcher) {
     name: pitcher.name,
     mlbamid: pitcher.id ?? null,
     statusTag: null,
-    color: null,
+    colors: [],
     other: null,
   });
   rerenderRoleCell(team, role);
@@ -695,23 +767,8 @@ function openChipEditPopover(anchor, team, role, idx) {
   lblStatus.appendChild(inpStatus);
   popup.appendChild(lblStatus);
 
-  // Color (per-chip — replaces former per-team color)
-  const lblColor = document.createElement("label");
-  lblColor.textContent = "Color";
-  const selColor = document.createElement("select");
-  const noneOpt = document.createElement("option");
-  noneOpt.value = ""; noneOpt.textContent = "—";
-  selColor.appendChild(noneOpt);
-  const colorLabels = state.chart.colorMeanings || {};
-  CHIP_COLORS.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c + (colorLabels[c] ? ` (${colorLabels[c]})` : "");
-    if ((chip.color || "") === c) opt.selected = true;
-    selColor.appendChild(opt);
-  });
-  lblColor.appendChild(selColor);
-  popup.appendChild(lblColor);
+  // Colors are now managed via the inline picker squares under each chip
+  // (multi-select). The popover only handles Tag + Other now.
 
   // Other (free text — HLR / FROOP / etc.)
   const lblOther = document.createElement("label");
@@ -732,7 +789,6 @@ function openChipEditPopover(anchor, team, role, idx) {
   save.textContent = "Save";
   save.addEventListener("click", () => {
     chip.statusTag = inpStatus.value.trim() || null;
-    chip.color = selColor.value || null;
     chip.other = inpOther.value.trim() || null;
     rerenderRoleCell(team, role);
     closePopover();

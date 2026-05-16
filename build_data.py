@@ -95,13 +95,17 @@ def split_chip_text(raw: str) -> list[dict]:
         # Drop share-style "3-of-4" tokens — they're recomputed live.
         piece = SHARE_RE.sub("", piece)
 
-        # Pull bracketed color (must be in known palette; else treat as other).
-        color = None
+        # Pull bracketed color(s). New shape supports a comma-separated list
+        # inside one set of brackets, e.g. "[Blue, Magenta]". Single legacy
+        # "[Blue]" still parses. Unknown palette names are silently dropped.
+        colors: list[str] = []
         cm = COLOR_RE.search(piece)
         if cm:
-            cand = cm.group(1).strip().capitalize()
-            if cand in COLOR_PALETTE:
-                color = cand
+            raw_colors = cm.group(1)
+            for token in re.split(r"\s*,\s*", raw_colors):
+                cand = token.strip().capitalize()
+                if cand in COLOR_PALETTE:
+                    colors.append(cand)
             piece = piece[: cm.start()] + piece[cm.end():]
 
         # Pull curly "other" notes.
@@ -122,7 +126,7 @@ def split_chip_text(raw: str) -> list[dict]:
         chips.append({
             "name": name,
             "statusTag": status_vals[0] if status_vals else None,
-            "color": color,
+            "colors": colors,
             "other": other_vals[0] if other_vals else None,
         })
     return chips
