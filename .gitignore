@@ -21,3 +21,10 @@ Closer Charts (export).xlsx
 # Local secrets — never commit
 worker/.dev.vars
 *.secret
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
