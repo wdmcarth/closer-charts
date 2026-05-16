@@ -70,15 +70,28 @@ const CHIP_COLORS = ["Blue", "Orange", "Yellow", "Magenta", "Green"];
 
 // ===== load =====
 
+// Where to read data files from. The editor (against a remote backend)
+// reads from raw.githubusercontent.com so a save is visible on the very
+// next reload without waiting for the GitHub Pages CDN to invalidate
+// (~30-60s lag). The landing page keeps using Pages — CDN serves visitors
+// fast and a few-minute lag on read is fine since the landing is read-only.
+function dataUrl(path) {
+  if (!VIEW_MODE && REMOTE_BACKEND && window.CC_REPO) {
+    // ?t=Date.now() defeats any intermediate CDN that might cache by URL.
+    return `https://raw.githubusercontent.com/${window.CC_REPO}/main/${path}?t=${Date.now()}`;
+  }
+  return path;
+}
+
 async function loadAll() {
   const noCache = { cache: "no-store" };
   const [chart, quickhits, rosters, statsRes, dashRes, pitcherIdx] = await Promise.all([
-    fetch("data/chart.json", noCache).then(r => r.json()),
-    fetch("data/quickhits.json", noCache).then(r => r.json()),
-    fetch("data/rosters.json", noCache).then(r => r.json()),
-    fetch("data/stats.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
-    fetch("data/dashboard.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
-    fetch("data/pitcher_index.json", noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch(dataUrl("data/chart.json"), noCache).then(r => r.json()),
+    fetch(dataUrl("data/quickhits.json"), noCache).then(r => r.json()),
+    fetch(dataUrl("data/rosters.json"), noCache).then(r => r.json()),
+    fetch(dataUrl("data/stats.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch(dataUrl("data/dashboard.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch(dataUrl("data/pitcher_index.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
   ]);
   state.chart = chart;
   state.quickhits = quickhits;
@@ -1663,7 +1676,7 @@ async function refreshStats() {
     toast("Refreshing stats…");
     try { await backendPost("/refresh-stats"); }
     catch (e) { toast("Refresh failed: " + e.message, "error"); return; }
-    state.stats = await fetch("data/stats.json", { cache: "no-store" }).then(r => r.json());
+    state.stats = await fetch(dataUrl("data/stats.json"), { cache: "no-store" }).then(r => r.json());
     const lu = $("#lastUpdated");
     if (lu) lu.textContent = `last updated ${new Date(state.stats.fetchedAt).toLocaleString()}`;
     renderChart();
@@ -1687,7 +1700,7 @@ async function refreshDashboard() {
     toast("Refreshing RP Dashboard…");
     try { await backendPost("/refresh-dashboard", { days: 14 }); }
     catch (e) { toast("RP Dashboard refresh failed: " + e.message, "error"); return; }
-    state.dashboard = await fetch("data/dashboard.json", { cache: "no-store" }).then(r => r.json());
+    state.dashboard = await fetch(dataUrl("data/dashboard.json"), { cache: "no-store" }).then(r => r.json());
     toast("RP Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
     if (!$("#dashboardModal").hidden) renderDashboardModal(currentDashboardTeam);
     return;
@@ -1709,7 +1722,7 @@ async function refreshRosters() {
     toast("Refreshing rosters…");
     try { await backendPost("/refresh-rosters"); }
     catch (e) { toast("Refresh failed: " + e.message, "error"); return; }
-    state.rosters = await fetch("data/rosters.json", { cache: "no-store" }).then(r => r.json());
+    state.rosters = await fetch(dataUrl("data/rosters.json"), { cache: "no-store" }).then(r => r.json());
     renderChart();
     toast("Rosters refreshed", "ok");
     return;
