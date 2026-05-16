@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Closer Charts — Editor</title>
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=14">
   <script src="config.js"></script>
 </head>
 <body>
@@ -86,11 +86,13 @@
   <!-- Tooltip layer for hover stats -->
   <div id="statTooltip" class="stat-tooltip" hidden></div>
 
-  <!-- RP Dashboard modal (opens when a team name is clicked) -->
+  <!-- RP Dashboard modal (opens when a team name is clicked, either in
+       the chart or in the Quick Hits per-team cells). -->
   <div id="dashboardModal" class="dashboard-backdrop" hidden>
     <div class="dashboard-card" role="dialog" aria-modal="true">
       <div class="dashboard-head">
         <div class="dashboard-title">
+          <span class="dashboard-prefix">RP Dashboard</span>
           <span id="dashTeamName"></span>
           <span class="subtle" id="dashWindow"></span>
         </div>
@@ -120,6 +122,6 @@
   <!-- Toast for save/export status -->
   <div id="toast" class="toast" hidden></div>
 
-  <script src="app.js?v=13"></script>
+  <script src="app.js?v=14"></script>
 </body>
 </html>

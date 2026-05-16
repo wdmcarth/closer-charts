@@ -1005,6 +1005,13 @@ function buildQhDay(q, teams) {
     const name = document.createElement("div");
     name.className = "qh-team-name";
     name.textContent = t.teamName;
+    // Edit mode only: clicking the team name opens the RP Dashboard modal
+    // for that team — same modal the chart's team-name cells trigger.
+    if (!VIEW_MODE) {
+      name.classList.add("clickable");
+      name.title = "Open RP Dashboard for " + t.teamName;
+      name.addEventListener("click", () => openDashboardModal(t));
+    }
     head.appendChild(name);
     if (!VIEW_MODE) {
       const add = document.createElement("button");
@@ -1541,7 +1548,7 @@ async function refreshAll() {
   const steps = [
     { name: "Stats",                    endpoint: "/refresh-stats",     file: "refresh-stats.yml",     body: {} },
     { name: "Rosters & pitcher index",  endpoint: "/refresh-rosters",   file: "refresh-rosters.yml",   body: {} },
-    { name: "Dashboard",                endpoint: "/refresh-dashboard", file: "refresh-dashboard.yml", body: { days: 14 } },
+    { name: "RP Dashboard",             endpoint: "/refresh-dashboard", file: "refresh-dashboard.yml", body: { days: 14 } },
   ];
   showProgressSteps("Refresh all", steps.map(s => s.name));
 
@@ -1603,23 +1610,23 @@ async function refreshStats() {
 async function refreshDashboard() {
   if (!confirm("Refresh RP Dashboard? Fetches ~14 days of completed games (~30–60s).")) return;
   if (!REMOTE_BACKEND) {
-    toast("Refreshing dashboard…");
+    toast("Refreshing RP Dashboard…");
     try { await backendPost("/refresh-dashboard", { days: 14 }); }
-    catch (e) { toast("Dashboard refresh failed: " + e.message, "error"); return; }
+    catch (e) { toast("RP Dashboard refresh failed: " + e.message, "error"); return; }
     state.dashboard = await fetch("data/dashboard.json", { cache: "no-store" }).then(r => r.json());
-    toast("Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
+    toast("RP Dashboard refreshed (" + state.dashboard.windowStart + " → " + state.dashboard.windowEnd + ")", "ok");
     if (!$("#dashboardModal").hidden) renderDashboardModal(currentDashboardTeam);
     return;
   }
   const triggeredAt = Date.now();
-  showProgress("Refresh dashboard", "Triggering GitHub Action…");
+  showProgress("Refresh RP Dashboard", "Triggering GitHub Action…");
   try {
     await backendPost("/refresh-dashboard", { days: 14 });
   } catch (e) {
     if (e.message !== "unauthorized") updateProgress("Couldn't dispatch", e.message, { state: "error" });
     return;
   }
-  await pollWorkflowAndReload("refresh-dashboard.yml", triggeredAt, "Refresh dashboard");
+  await pollWorkflowAndReload("refresh-dashboard.yml", triggeredAt, "Refresh RP Dashboard");
 }
 
 async function refreshRosters() {
