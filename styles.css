@@ -183,7 +183,15 @@ textarea { resize: vertical; }
   font-size: 11px;
   flex-wrap: wrap;
 }
-.legend-group { display: inline-flex; align-items: center; gap: 6px; }
+.legend-group {
+  display: inline-flex; align-items: center;
+  gap: 14px;             /* larger gap BETWEEN entries within a group */
+  flex-wrap: wrap;
+}
+.legend-group .legend-item {
+  display: inline-flex; align-items: center;
+  gap: 5px;              /* tight gap between a pill/swatch and its label */
+}
 .legend strong { color: var(--text); margin-right: 4px; }
 .color-swatch {
   display: inline-block; width: 12px; height: 12px;
