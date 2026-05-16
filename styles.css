@@ -896,6 +896,42 @@ textarea { resize: vertical; }
 .progress-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .progress-status { font-size: 13px; color: var(--text); margin-bottom: 4px; }
 .progress-detail { font-size: 11px; min-height: 14px; margin-bottom: 14px; }
+
+/* Multi-step progress (used by Refresh all). Each row shows one workflow's
+   state: pending (gray), running (accent border), done (green border), error
+   (red border). */
+.progress-steps {
+  display: flex; flex-direction: column;
+  gap: 6px;
+  margin: 10px 0 14px;
+  text-align: left;
+}
+.progress-steps[hidden] { display: none; }
+.progress-step {
+  display: flex; align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+}
+.progress-step[data-state="pending"] { opacity: 0.55; }
+.progress-step[data-state="running"] { border-color: var(--accent); }
+.progress-step[data-state="done"]    { border-color: var(--accent-2); }
+.progress-step[data-state="error"]   { border-color: var(--danger); }
+.progress-step .step-icon {
+  font-size: 14px; min-width: 18px; text-align: center;
+}
+.progress-step .step-name { flex: 1; font-weight: 500; }
+.progress-step .step-detail { color: var(--muted); font-size: 11px; }
+.progress-step .step-link {
+  font-size: 11px; color: var(--accent);
+  text-decoration: none;
+  margin-left: 4px;
+}
+.progress-step .step-link[hidden] { display: none; }
+.progress-step .step-link:hover { text-decoration: underline; }
 .progress-row {
   display: flex; justify-content: space-between; align-items: center;
   gap: 8px;

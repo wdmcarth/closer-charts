@@ -15,9 +15,7 @@
     </div>
     <div class="topbar-actions">
       <span id="saveStatus" class="save-status">Loaded</span>
-      <button id="btnRefreshStats">Refresh stats</button>
-      <button id="btnRefreshDashboard">Refresh dashboard</button>
-      <button id="btnRefreshRosters">Refresh rosters</button>
+      <button id="btnRefreshAll">Refresh all</button>
       <button id="btnSignOut" hidden>Sign out</button>
       <a class="topbar-link" href="index.html" target="_blank" rel="noopener">View landing page</a>
     </div>
@@ -102,14 +100,15 @@
     </div>
   </div>
 
-  <!-- Refresh-progress modal: shown while a /refresh-* GitHub Action is in
-       flight. Polls the workflow's most recent run and auto-reloads the
-       page once the commit lands. -->
+  <!-- Refresh-progress modal: shown while one or more /refresh-* GitHub
+       Actions are in flight. Polls each workflow's most recent dispatch
+       run and auto-reloads the page once all commits land. -->
   <div id="progressBackdrop" class="progress-backdrop" hidden>
     <div class="progress-card" role="dialog" aria-modal="true">
       <div class="progress-spinner"></div>
       <div id="progressTitle" class="progress-title">Refreshing…</div>
       <div id="progressStatus" class="progress-status">Triggering workflow…</div>
+      <div id="progressSteps" class="progress-steps" hidden></div>
       <div id="progressDetail" class="progress-detail subtle"></div>
       <div class="progress-row">
         <a id="progressOpenAction" class="progress-link" href="#" target="_blank" rel="noopener" hidden>View on GitHub →</a>
@@ -121,6 +120,6 @@
   <!-- Toast for save/export status -->
   <div id="toast" class="toast" hidden></div>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

@@ -1076,7 +1076,49 @@ function showProgress(title, status) {
   $("#progressStatus").textContent = status || "";
   $("#progressDetail").textContent = "";
   $("#progressOpenAction").hidden = true;
+  $("#progressSteps").hidden = true;
+  $("#progressSteps").innerHTML = "";
   $(".progress-spinner").classList.remove("done", "error");
+}
+
+// Multi-step variant: title + N rows that update independently as each
+// workflow finishes. Used by refreshAll().
+function showProgressSteps(title, stepNames) {
+  showProgress(title, "");
+  const container = $("#progressSteps");
+  container.innerHTML = "";
+  stepNames.forEach((name, idx) => {
+    const row = document.createElement("div");
+    row.className = "progress-step";
+    row.dataset.state = "pending";
+    row.dataset.idx = String(idx);
+    row.innerHTML = `
+      <span class="step-icon">⏸</span>
+      <span class="step-name"></span>
+      <span class="step-detail"></span>
+      <a class="step-link" target="_blank" rel="noopener" hidden>view →</a>
+    `;
+    row.querySelector(".step-name").textContent = name;
+    container.appendChild(row);
+  });
+  container.hidden = false;
+}
+
+const STEP_ICONS = { pending: "⏸", running: "⏳", done: "✓", error: "✗" };
+
+function updateStep(idx, state, detail, actionUrl) {
+  if (_progressCancelled) return;
+  const row = document.querySelector(
+    `#progressSteps .progress-step[data-idx="${idx}"]`);
+  if (!row) return;
+  row.dataset.state = state;
+  row.querySelector(".step-icon").textContent = STEP_ICONS[state] || "⏸";
+  if (detail !== undefined) row.querySelector(".step-detail").textContent = detail;
+  if (actionUrl !== undefined) {
+    const link = row.querySelector(".step-link");
+    if (actionUrl) { link.href = actionUrl; link.hidden = false; }
+    else { link.hidden = true; }
+  }
 }
 function updateProgress(status, detail, opts = {}) {
   if (_progressCancelled) return;
@@ -1166,6 +1208,112 @@ async function pollWorkflowAndReload(workflowFile, triggeredAt, friendlyTitle) {
       "It may still be running — check the GitHub link above.",
       { state: "error", actionUrl: run.html_url });
   }
+}
+
+// Single-step variant: polls one workflow's most recent dispatch run until
+// it finishes. Reports state via updateStep(stepIdx, …) — does NOT reload
+// the page. Returns {ok, elapsed, run} on success, {ok:false, error} on
+// failure or timeout. Used by refreshAll().
+async function pollWorkflowForStep(workflowFile, triggeredAt, stepIdx) {
+  if (!window.CC_REPO) return { ok: false, error: "CC_REPO not set" };
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const runsUrl = `https://api.github.com/repos/${window.CC_REPO}/actions/workflows/${workflowFile}/runs?per_page=10`;
+
+  // Phase 1: find the run we just spawned.
+  const findStart = Date.now();
+  let run = null;
+  while (Date.now() - findStart < WORKFLOW_TIMEOUT_MS && !_progressCancelled) {
+    try {
+      const r = await fetch(runsUrl, { cache: "no-store" });
+      const data = await r.json();
+      const candidate = (data.workflow_runs || []).find(w =>
+        w.event === "workflow_dispatch" &&
+        new Date(w.created_at).getTime() >= triggeredAt - 5000);
+      if (candidate) { run = candidate; break; }
+      updateStep(stepIdx, "running", "waiting for run…");
+    } catch (e) {
+      updateStep(stepIdx, "running", "polling…");
+    }
+    await sleep(WORKFLOW_POLL_MS);
+  }
+  if (_progressCancelled) return { ok: false, error: "cancelled" };
+  if (!run) return { ok: false, error: "timed out waiting for run to start" };
+
+  updateStep(stepIdx, "running", "queued", run.html_url);
+
+  // Phase 2: poll the run until completed.
+  const runStart = new Date(run.created_at).getTime();
+  const runUrl = `https://api.github.com/repos/${window.CC_REPO}/actions/runs/${run.id}`;
+  while (Date.now() - runStart < WORKFLOW_TIMEOUT_MS && !_progressCancelled) {
+    await sleep(WORKFLOW_POLL_MS);
+    let cur;
+    try { cur = await fetch(runUrl, { cache: "no-store" }).then(r => r.json()); }
+    catch { continue; }
+    const elapsed = Math.round((Date.now() - runStart) / 1000);
+    if (cur.status === "completed") {
+      if (cur.conclusion === "success") {
+        return { ok: true, elapsed, run };
+      }
+      return { ok: false, error: cur.conclusion || "failed", elapsed, run };
+    }
+    updateStep(stepIdx, "running", `${cur.status} (${elapsed}s)`, run.html_url);
+  }
+  return _progressCancelled
+    ? { ok: false, error: "cancelled" }
+    : { ok: false, error: "timed out" };
+}
+
+// "Refresh all" — fires the three workflows in sequence (NOT parallel, to
+// avoid SHA conflicts since refresh-rosters also writes stats.json). The
+// modal shows three rows that tick from pending → running → done as each
+// workflow completes. After the last one, waits for Pages to publish and
+// reloads.
+async function refreshAll() {
+  if (!REMOTE_BACKEND) {
+    // Local server.py mode — just chain the three in sequence using the
+    // synchronous local-mode paths inside each refresh fn.
+    await refreshStats();
+    await refreshRosters();
+    await refreshDashboard();
+    return;
+  }
+
+  const steps = [
+    { name: "Stats",                    endpoint: "/refresh-stats",     file: "refresh-stats.yml",     body: {} },
+    { name: "Rosters & pitcher index",  endpoint: "/refresh-rosters",   file: "refresh-rosters.yml",   body: {} },
+    { name: "Dashboard",                endpoint: "/refresh-dashboard", file: "refresh-dashboard.yml", body: { days: 14 } },
+  ];
+  showProgressSteps("Refresh all", steps.map(s => s.name));
+
+  for (let i = 0; i < steps.length; i++) {
+    if (_progressCancelled) return;
+    const s = steps[i];
+    updateStep(i, "running", "triggering…");
+    const triggeredAt = Date.now();
+    try {
+      await backendPost(s.endpoint, s.body);
+    } catch (e) {
+      if (e.message === "unauthorized") return;
+      updateStep(i, "error", e.message);
+      return;
+    }
+    const result = await pollWorkflowForStep(s.file, triggeredAt, i);
+    if (!result.ok) {
+      updateStep(i, "error", result.error,
+        result.run ? result.run.html_url : undefined);
+      return;
+    }
+    updateStep(i, "done", `${result.elapsed}s`,
+      result.run ? result.run.html_url : undefined);
+  }
+
+  // All three done — wait for Pages to publish, then reload.
+  $("#progressStatus").textContent = "All refreshes complete. Waiting for Pages to publish…";
+  await new Promise(r => setTimeout(r, PAGES_REBUILD_WAIT_MS));
+  if (_progressCancelled) return;
+  $("#progressStatus").textContent = "Reloading…";
+  $(".progress-spinner").classList.add("done");
+  location.reload();
 }
 
 async function refreshStats() {
@@ -1439,6 +1587,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Edit-mode-only button wiring. The view page omits these buttons entirely;
   // we still guard with `?.` so a stale DOM doesn't crash.
   if (!VIEW_MODE) {
+    $("#btnRefreshAll")?.addEventListener("click", refreshAll);
+    // Legacy individual-refresh buttons are no longer in the topbar but the
+    // handlers stay defined for code reuse (refreshAll calls them in local
+    // mode). If someone re-adds the buttons later, these wire-ups still work.
     $("#btnRefreshStats")?.addEventListener("click", refreshStats);
     $("#btnRefreshDashboard")?.addEventListener("click", refreshDashboard);
     $("#btnRefreshRosters")?.addEventListener("click", refreshRosters);
