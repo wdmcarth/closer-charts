@@ -104,7 +104,7 @@ textarea { resize: vertical; }
 }
 .view-mode .topbar { padding: 6px 16px; }
 .view-mode .brand h1 { font-size: 16px; }
-.view-mode .tabs { padding: 4px 16px; gap: 2px; top: 38px; }
+.view-mode .tabs { padding: 4px 16px; gap: 2px; }   /* top is JS-computed */
 .view-mode .tab { padding: 4px 10px; font-size: 12px; }
 .view-mode .legend { font-size: 10px; gap: 12px; }
 .view-mode .view { padding: 10px 12px; }
@@ -157,7 +157,10 @@ textarea { resize: vertical; }
 /* Tabs --------------------------------------------------------------- */
 
 .tabs {
-  position: sticky; top: 49px; z-index: 25;
+  /* --tabs-top is computed in JS (recomputeStickyTop) so the tabs bar
+     always pins flush against the topbar's actual rendered bottom, no
+     matter how the topbar's content (badges, buttons) sizes. */
+  position: sticky; top: var(--tabs-top, 49px); z-index: 25;
   display: flex; align-items: center; gap: 4px;
   padding: 8px 16px;
   background: var(--panel);

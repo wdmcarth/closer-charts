@@ -135,26 +135,31 @@ function appendHead(gridEl) {
     });
 }
 
-// Set the --sticky-top CSS variable to the y-coordinate where the tabs bar
-// ends when stuck (i.e. its sticky `top` offset + its rendered height).
-// The chart's column headers then pin FLUSH against that, eliminating the
-// gap that previously let scrolling content show between the tabs and the
-// headers. Adapts automatically when the legend wraps to multiple lines.
+// Lock the sticky offsets so every stuck-element pair is FLUSH against
+// each other, with no gaps for scrolling content to show through:
 //
-// Using tabs.style.top instead of getBoundingClientRect().bottom because
-// the latter reports different values depending on whether the tabs is
-// currently stuck or in its natural document position — we want the stuck
-// value at all times.
+//   topbar (top: 0)
+//   tabs   (top: --tabs-top  = topbar.height)
+//   chart-head-cell (top: --sticky-top = tabs.bottom-when-stuck)
+//
+// Each downstream element uses `Math.floor` to overlap its predecessor by
+// a hairline (z-index covers the overlap). We can't hard-code the values
+// because the topbar AND the tabs height both vary (the latter wraps when
+// the legend doesn't fit on one line).
 function recomputeStickyTop() {
+  const topbar = document.querySelector(".topbar");
   const tabs = document.querySelector(".tabs");
-  if (!tabs) return;
-  const cs = getComputedStyle(tabs);
-  const tabsStickyTop = parseFloat(cs.top) || 0;
+  if (!topbar || !tabs) return;
+  const topbarH = topbar.getBoundingClientRect().height;
+  // Tabs pins where topbar ends.
+  const tabsTop = Math.floor(topbarH);
+  document.documentElement.style.setProperty("--tabs-top", `${tabsTop}px`);
+  // tabs.height is intrinsic — doesn't change when we change its CSS top.
   const tabsHeight = tabs.getBoundingClientRect().height;
-  // Math.floor gives a hairline overlap with the tabs bar's bottom edge;
-  // the tabs' higher z-index covers it cleanly with no visible seam.
+  // Chart headers pin where tabs ends. Hairline overlap so tabs covers any
+  // subpixel seam (tabs has higher z-index).
   document.documentElement.style.setProperty(
-    "--sticky-top", `${Math.floor(tabsStickyTop + tabsHeight)}px`);
+    "--sticky-top", `${Math.floor(tabsTop + tabsHeight)}px`);
 }
 
 function buildTeamRow(team) {
