@@ -361,7 +361,46 @@ textarea { resize: vertical; }
 /* Chips -------------------------------------------------------------- */
 
 .chip-list {
-  display: flex; flex-wrap: wrap; gap: 4px; width: 100%;
+  display: flex; flex-wrap: wrap; gap: 6px; width: 100%;
+  align-items: flex-start;
+}
+
+/* Edit-mode wrapper around each chip: the chip on top + a small row of
+   color-picker squares underneath. View mode skips the wrapper and shows
+   the bare chip. */
+.chip-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.chip-color-picker {
+  display: flex;
+  gap: 2px;
+  padding-left: 2px;
+  margin-top: 1px;
+}
+.chip-color-sq {
+  width: 10px; height: 10px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+}
+.chip-color-sq.color-Blue    { background: var(--color-Blue); }
+.chip-color-sq.color-Orange  { background: var(--color-Orange); }
+.chip-color-sq.color-Yellow  { background: var(--color-Yellow); }
+.chip-color-sq.color-Magenta { background: var(--color-Magenta); }
+.chip-color-sq.color-Green   { background: var(--color-Green); }
+.chip-color-sq:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 1px var(--text);
+}
+.chip-color-sq.selected {
+  box-shadow: 0 0 0 2px var(--text);
+  /* Counter-shift the border so the outline doesn't push other squares */
+  border-color: transparent;
 }
 .chip {
   display: inline-flex; align-items: center; gap: 4px;

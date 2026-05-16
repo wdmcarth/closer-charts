@@ -238,10 +238,23 @@ function lookupPitcher(chip) {
   return null;
 }
 
+// Compute the color that should display on a chip. Priority:
+//   1. Explicit chip.color the user picked (highest)
+//   2. Auto-magenta when the pitcher has any auto-populated usage tags
+//      (workload signal — matches what Magenta means in the legend)
+//   3. None
+function effectiveChipColor(chip) {
+  if (chip.color) return chip.color;
+  if (!chip.mlbamid) return null;
+  const tags = state.stats?.byPlayerId?.[String(chip.mlbamid)]?.usageTags;
+  return tags && tags.length ? "Magenta" : null;
+}
+
 function buildChip(team, role, chip, idx, listEl) {
   const el = document.createElement("span");
   el.className = "chip";
-  if (chip.color) el.classList.add("color-" + chip.color);
+  const effColor = effectiveChipColor(chip);
+  if (effColor) el.classList.add("color-" + effColor);
 
   const pitcher = lookupPitcher(chip);
   // "On the 40-man" = pitcher exists in pitcher_index AND level === MLB.
@@ -249,6 +262,11 @@ function buildChip(team, role, chip, idx, listEl) {
   // could have been bound via the org-MILB search to a minor leaguer.
   const onFortyMan = !!(pitcher && pitcher.level === "MLB");
   if (!onFortyMan) el.title = "Not on the 40-man roster";
+  // Hint when the displayed color came from auto-default rather than an
+  // explicit user pick.
+  if (!chip.color && effColor) {
+    el.title = (el.title ? el.title + " · " : "") + `Auto-${effColor.toLowerCase()} (usage tag active)`;
+  }
 
   const nameSpan = document.createElement("span");
   nameSpan.className = "chip-name";
@@ -328,7 +346,38 @@ function buildChip(team, role, chip, idx, listEl) {
     });
   }
 
-  return el;
+  // In edit mode, wrap the chip in a small column with a quick color picker
+  // (5 squares) underneath. View mode returns the bare chip — no editing UI.
+  if (VIEW_MODE) return el;
+  const wrap = document.createElement("div");
+  wrap.className = "chip-wrap";
+  wrap.appendChild(el);
+  wrap.appendChild(buildChipColorPicker(team, role, chip));
+  return wrap;
+}
+
+function buildChipColorPicker(team, role, chip) {
+  const picker = document.createElement("div");
+  picker.className = "chip-color-picker";
+  picker.addEventListener("click", e => e.stopPropagation());
+
+  const colorLabels = state.chart?.colorMeanings || {};
+  CHIP_COLORS.forEach(c => {
+    const sq = document.createElement("button");
+    sq.type = "button";
+    sq.className = "chip-color-sq color-" + c;
+    sq.title = c + (colorLabels[c] ? ` — ${colorLabels[c]}` : "");
+    if (chip.color === c) sq.classList.add("selected");
+    sq.addEventListener("click", () => {
+      // Toggle: clicking the explicitly-selected color clears it (which lets
+      // the auto-default kick back in if usage tags are active).
+      chip.color = chip.color === c ? null : c;
+      rerenderRoleCell(team, role);
+      markDirty();
+    });
+    picker.appendChild(sq);
+  });
+  return picker;
 }
 
 function rerenderRoleCell(team, role) {
