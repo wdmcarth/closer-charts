@@ -1105,7 +1105,7 @@
             "colors": [
               "Blue"
             ],
-            "statusTag": "HLR",
+            "statusTag": null,
             "other": "HLR"
           }
         ],
