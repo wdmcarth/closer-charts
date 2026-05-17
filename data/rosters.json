@@ -11,14 +11,14 @@
         "name": "Alek Manoah",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 690829,
         "name": "Ben Joyce",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 608718,
@@ -60,7 +60,7 @@
         "name": "Grayson Rodriguez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 686799,
@@ -414,7 +414,7 @@
         "name": "Cameron Foster",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 605135,
@@ -477,7 +477,7 @@
         "name": "Josh Walker",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 669211,
@@ -824,7 +824,7 @@
         "name": "Hunter Harvey",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 657097,
@@ -845,7 +845,7 @@
         "name": "Javier Assad",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 696136,
@@ -929,6 +929,13 @@
         "name": "Trent Thornton",
         "posAbbr": "P",
         "hand": "R",
+        "status": "Active"
+      },
+      {
+        "id": 621389,
+        "name": "Ty Blach",
+        "posAbbr": "P",
+        "hand": "L",
         "status": "Active"
       },
       {
@@ -1036,7 +1043,7 @@
         "name": "Jose Franco",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 687924,
@@ -1057,7 +1064,7 @@
         "name": "Luis Mey",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 666157,
@@ -1278,7 +1285,7 @@
         "name": "Blas Castaño",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 657514,
@@ -1432,7 +1439,7 @@
         "name": "Zach Agnos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -1609,7 +1616,7 @@
         "name": "Ty Madden",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 663947,
@@ -1623,7 +1630,7 @@
         "name": "Will Vest",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       }
     ]
   },
@@ -2056,21 +2063,21 @@
         "name": "Brusdar Graterol",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 656212,
         "name": "Charlie Barnes",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 694646,
         "name": "Chayce McDermott",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 683618,
@@ -2094,6 +2101,13 @@
         "status": "Active"
       },
       {
+        "id": 641778,
+        "name": "Eric Lauer",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Not Yet Reported"
+      },
+      {
         "id": 623465,
         "name": "Evan Phillips",
         "posAbbr": "P",
@@ -2112,7 +2126,7 @@
         "name": "Jack Dreyer",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 664776,
@@ -2154,7 +2168,7 @@
         "name": "Paul Gervase",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 689981,
@@ -3316,7 +3330,7 @@
         "name": "Erik Miller",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 666619,
@@ -3456,7 +3470,7 @@
         "name": "Tristan Beck",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 641816,
@@ -4003,7 +4017,7 @@
         "name": "Adam Macko",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 670102,
@@ -4143,7 +4157,7 @@
         "name": "Tommy Nance",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 702056,
@@ -5392,13 +5406,6 @@
         "status": "Active"
       },
       {
-        "id": 657265,
-        "name": "Peter Strzelecki",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
         "id": 682990,
         "name": "Quinn Priester",
         "posAbbr": "P",
@@ -5417,7 +5424,7 @@
         "name": "Robert Gasser",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 675660,
