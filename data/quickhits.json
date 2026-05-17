@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-05-17",
+    "league": "NL",
+    "entries": {}
+  },
+  {
+    "date": "2026-05-17",
+    "league": "AL",
+    "entries": {
+      "139": [
+        "Working around a leadoff single by Joe Mack at the top of the ninth, <a class=\"player-link\" data-pid=\"641329\" href=\"https://www.mlb.com/player/641329?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Bryan Baker</a> retired the next three batters on a lineout, a fielder’s choice grounder, and a game-ending popout, securing his 12th save. He threw 10 pitches (80 Strike%) and produced one whiff. Through 19.1 innings, he has posted a 1086 WHIP with 23 strikeouts against eight walks (19 K-BB%) while converting 12 of 15 save opportunities. <a class=\"player-link\" data-pid=\"693855\" href=\"https://www.mlb.com/player/693855?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Ian Seymour</a> stranded all three inherited runners and recorded a strikeout for his ninth hold during two-thirds of the eighth. <a class=\"player-link\" data-pid=\"664076\" href=\"https://www.mlb.com/player/664076?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Garrett Cleavinger</a> allowed three hits, an earned run, and a walk while striking out one during one-third of the eighth. <a class=\"player-link\" data-pid=\"687330\" href=\"https://www.mlb.com/player/687330?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Kevin Kelly</a> logged 1.2 clean frames, retiring all four batters and striking out one. He stranded two runners with an inning-ending double play groundout at the top of the sixth. <div><br></div>"
+      ]
+    }
+  },
+  {
     "date": "2026-05-16",
     "league": "NL",
     "entries": {
