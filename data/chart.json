@@ -111,7 +111,9 @@
           {
             "name": "Seranthony Domínguez",
             "mlbamid": 622554,
-            "colors": [],
+            "colors": [
+              "Orange"
+            ],
             "statusTag": null,
             "other": null
           }
