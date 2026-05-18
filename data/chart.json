@@ -58,7 +58,8 @@
             "mlbamid": 547973,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stopper": [
@@ -191,7 +192,8 @@
             "mlbamid": 670059,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "upside": [
@@ -241,7 +243,8 @@
             "mlbamid": 445276,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stopper": [
@@ -304,7 +307,8 @@
               "Blue"
             ],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stopper": [
@@ -315,7 +319,8 @@
               "Blue"
             ],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stealth": [
@@ -491,11 +496,10 @@
           {
             "name": "Yoendrys Gómez",
             "mlbamid": 672782,
-            "colors": [
-              "Blue"
-            ],
             "statusTag": null,
-            "other": null
+            "colors": [],
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stopper": [
