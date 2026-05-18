@@ -1416,7 +1416,9 @@
           {
             "name": "Devin Williams",
             "mlbamid": 642207,
-            "colors": [],
+            "colors": [
+              "Magenta"
+            ],
             "statusTag": null,
             "other": null
           }
@@ -1610,7 +1612,8 @@
             "mlbamid": 592094,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stealth": [
@@ -1738,7 +1741,8 @@
             "mlbamid": 666277,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "upside": [
