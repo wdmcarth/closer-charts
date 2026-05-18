@@ -771,6 +771,13 @@
         "status": "Injured 15-Day"
       },
       {
+        "id": 685005,
+        "name": "Christian Roa",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 607067,
         "name": "Colin Rea",
         "posAbbr": "P",
@@ -2941,7 +2948,7 @@
         "name": "Alek Jacob",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 699134,
@@ -3032,7 +3039,7 @@
         "name": "Lucas Giolito",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 695243,
