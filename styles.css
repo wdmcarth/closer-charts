@@ -355,6 +355,17 @@ textarea { resize: vertical; }
   flex-direction: column;
   align-items: stretch !important;
   gap: 4px;
+  /* Avoid flicker when dragover/dragleave toggle the drop-target class. */
+  transition: background-color 0.08s ease-out, outline-color 0.08s ease-out;
+}
+/* Chip being dragged: dim to make the move visually clear. The browser's
+   default drag image still shows the chip following the cursor. */
+.chip.dragging { opacity: 0.4; cursor: grabbing; }
+/* Role cell receiving a chip via drag. */
+.cell-role.drop-target {
+  background: rgba(79,157,255,0.08);
+  outline: 2px dashed var(--accent);
+  outline-offset: -2px;
 }
 
 .cell-notes {
@@ -703,6 +714,50 @@ textarea { resize: vertical; }
   font-size: 11px;
   margin-bottom: 4px;
 }
+
+/* Changelog view ----------------------------------------------------- */
+
+.changelog-controls {
+  display: flex; gap: 8px; align-items: center;
+  margin-bottom: 12px;
+}
+.changelog-controls input[type=search] { flex: 1; min-width: 200px; }
+.changelog-controls #changelogCount { margin-left: auto; font-size: 11px; }
+
+.changelog-list { display: flex; flex-direction: column; gap: 3px; }
+.changelog-empty {
+  padding: 32px; color: var(--muted); text-align: center;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+}
+.changelog-entry {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 6px 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.changelog-entry .ts {
+  color: var(--muted); font-size: 11px;
+  min-width: 150px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.changelog-entry .type-icon {
+  width: 16px; text-align: center; flex-shrink: 0;
+  font-weight: 700; font-size: 14px;
+  color: var(--muted);
+}
+.changelog-entry .body { flex: 1; min-width: 0; }
+.changelog-entry .body strong { color: var(--text); }
+.changelog-entry .body em { color: var(--accent); font-style: normal; }
+.changelog-entry .body .subtle { color: var(--muted); font-size: 11px; }
+
+.changelog-entry.type-chip_move    .type-icon { color: var(--accent); }
+.changelog-entry.type-chip_add     .type-icon { color: var(--accent-2); }
+.changelog-entry.type-chip_remove  .type-icon { color: var(--danger); }
+.changelog-entry.type-color_change .type-icon { color: var(--warn); }
+.changelog-entry.type-tag_change   .type-icon { color: var(--muted); }
 
 /* Quick Hits view ---------------------------------------------------- */
 

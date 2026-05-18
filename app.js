@@ -21,9 +21,14 @@ const state = {
   dashboard: null,         // {windowStart, windowEnd, fetchedAt, dates:[], byTeam:{ABBR:[reliever,...]}}
   pitcherIndex: null,      // {mlbamid: {level, teamAbbr, name, hand, ...}} — covers MLB + all MILB affiliates
   pitcherIndexByName: null, // lowercased name -> record (built once at load)
+  changelog: null,         // { schemaVersion, entries: [...] }
+  savedChart: null,        // deep clone of state.chart as of the last successful save (basis for the diff)
   dirty: false,
   saveTimer: null,
 };
+
+// Deep clone via JSON — chart is pure data, no functions/dates/etc.
+function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 
 // View mode: when set, hides edit affordances (add buttons, chip popovers,
 // editable notes, save/refresh buttons). Set by index.html (landing) before
@@ -85,13 +90,14 @@ function dataUrl(path) {
 
 async function loadAll() {
   const noCache = { cache: "no-store" };
-  const [chart, quickhits, rosters, statsRes, dashRes, pitcherIdx] = await Promise.all([
+  const [chart, quickhits, rosters, statsRes, dashRes, pitcherIdx, clog] = await Promise.all([
     fetch(dataUrl("data/chart.json"), noCache).then(r => r.json()),
     fetch(dataUrl("data/quickhits.json"), noCache).then(r => r.json()),
     fetch(dataUrl("data/rosters.json"), noCache).then(r => r.json()),
     fetch(dataUrl("data/stats.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch(dataUrl("data/dashboard.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch(dataUrl("data/pitcher_index.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch(dataUrl("data/changelog.json"), noCache).then(r => r.ok ? r.json() : null).catch(() => null),
   ]);
   state.chart = chart;
   state.quickhits = quickhits;
@@ -99,6 +105,9 @@ async function loadAll() {
   state.stats = statsRes;
   state.dashboard = dashRes;
   state.pitcherIndex = pitcherIdx;
+  state.changelog = clog || { schemaVersion: 1, entries: [] };
+  // Snapshot the just-loaded chart as the baseline for diff-on-save.
+  state.savedChart = deepClone(chart);
   if (pitcherIdx) {
     state.pitcherIndexByName = {};
     for (const rec of Object.values(pitcherIdx)) {
@@ -227,8 +236,13 @@ function buildTeamRow(team) {
   state.chart.roleOrder.forEach(role => {
     const cell = document.createElement("div");
     cell.className = "cell-role";
+    cell.dataset.teamId = team.teamId ?? "";
+    cell.dataset.role = role;
     cell.appendChild(buildChipList(team, role));
-    if (!VIEW_MODE) cell.appendChild(buildChipAdd(team, role));
+    if (!VIEW_MODE) {
+      cell.appendChild(buildChipAdd(team, role));
+      attachCellDropHandlers(cell, team, role);
+    }
     row.appendChild(cell);
   });
 
@@ -434,6 +448,27 @@ function buildChip(team, role, chip, idx, listEl) {
     });
   }
 
+  // Edit mode: chip is draggable. The role-cell drop handler (in
+  // buildTeamRow) reads _dragCtx and moves the chip. Drag works across
+  // teams and roles. View mode is read-only — no drag.
+  if (!VIEW_MODE) {
+    el.draggable = true;
+    el.addEventListener("dragstart", e => {
+      _dragCtx = { sourceTeam: team, sourceRole: role, sourceIdx: idx, chip };
+      e.dataTransfer.effectAllowed = "move";
+      // Some browsers require non-empty data to actually start the drag.
+      e.dataTransfer.setData("text/plain", chip.name);
+      el.classList.add("dragging");
+    });
+    el.addEventListener("dragend", () => {
+      el.classList.remove("dragging");
+      _dragCtx = null;
+      // Belt-and-suspenders: clear any lingering drop-target highlights
+      document.querySelectorAll(".cell-role.drop-target")
+        .forEach(c => c.classList.remove("drop-target"));
+    });
+  }
+
   // In edit mode, wrap the chip in a small column with a quick color picker
   // (5 squares) underneath. View mode returns the bare chip — no editing UI.
   if (VIEW_MODE) return el;
@@ -442,6 +477,39 @@ function buildChip(team, role, chip, idx, listEl) {
   wrap.appendChild(el);
   wrap.appendChild(buildChipColorPicker(team, role, chip));
   return wrap;
+}
+
+// Active drag context (set in dragstart, consumed in drop, cleared in dragend).
+let _dragCtx = null;
+
+function attachCellDropHandlers(cellEl, targetTeam, targetRole) {
+  cellEl.addEventListener("dragover", e => {
+    if (!_dragCtx) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    cellEl.classList.add("drop-target");
+  });
+  cellEl.addEventListener("dragleave", e => {
+    // Only remove the highlight when we're leaving the cell itself, not
+    // a child element. relatedTarget is null when leaving the document.
+    if (!cellEl.contains(e.relatedTarget)) cellEl.classList.remove("drop-target");
+  });
+  cellEl.addEventListener("drop", e => {
+    if (!_dragCtx) return;
+    e.preventDefault();
+    cellEl.classList.remove("drop-target");
+    const { sourceTeam, sourceRole, sourceIdx, chip } = _dragCtx;
+    _dragCtx = null;
+    // No-op if dropped on the same role cell.
+    if (sourceTeam === targetTeam && sourceRole === targetRole) return;
+    // Move: splice from source, push to target.
+    sourceTeam.roles[sourceRole].splice(sourceIdx, 1);
+    targetTeam.roles[targetRole] = targetTeam.roles[targetRole] || [];
+    targetTeam.roles[targetRole].push(chip);
+    rerenderRoleCell(sourceTeam, sourceRole);
+    rerenderRoleCell(targetTeam, targetRole);
+    markDirty();
+  });
 }
 
 function buildChipColorPicker(team, role, chip) {
@@ -867,6 +935,107 @@ function moveStatTooltip(e) {
   tooltip.style.top = `${y}px`;
 }
 function hideStatTooltip() { tooltip.hidden = true; }
+
+// ===== changelog =====
+
+const CHANGELOG_TYPE_LABEL = {
+  chip_move:    { icon: "→", label: "moved" },
+  chip_add:     { icon: "+", label: "added" },
+  chip_remove:  { icon: "−", label: "removed" },
+  color_change: { icon: "●", label: "color" },
+  tag_change:   { icon: "✎", label: "tag" },
+};
+
+function formatColorList(arr) {
+  if (!arr || !arr.length) return "(none)";
+  return arr.join(", ");
+}
+
+function buildChangelogEntry(e) {
+  const meta = CHANGELOG_TYPE_LABEL[e.type] || { icon: "·", label: e.type };
+  const wrap = document.createElement("div");
+  wrap.className = "changelog-entry type-" + e.type;
+
+  const ts = document.createElement("span");
+  ts.className = "ts";
+  try {
+    ts.textContent = new Date(e.ts).toLocaleString();
+  } catch { ts.textContent = e.ts || ""; }
+  wrap.appendChild(ts);
+
+  const icon = document.createElement("span");
+  icon.className = "type-icon";
+  icon.textContent = meta.icon;
+  icon.title = meta.label;
+  wrap.appendChild(icon);
+
+  const body = document.createElement("span");
+  body.className = "body";
+  if (e.type === "chip_move") {
+    body.innerHTML =
+      `<strong>${escapeHtml(e.player)}</strong> moved ` +
+      `<em>${escapeHtml(e.from?.team || "?")} / ${escapeHtml(e.from?.role || "?")}</em> ` +
+      `→ <em>${escapeHtml(e.to?.team || "?")} / ${escapeHtml(e.to?.role || "?")}</em>`;
+  } else if (e.type === "chip_add") {
+    body.innerHTML =
+      `Added <strong>${escapeHtml(e.player)}</strong> to ` +
+      `<em>${escapeHtml(e.team)} / ${escapeHtml(e.role)}</em>`;
+  } else if (e.type === "chip_remove") {
+    body.innerHTML =
+      `Removed <strong>${escapeHtml(e.player)}</strong> from ` +
+      `<em>${escapeHtml(e.team)} / ${escapeHtml(e.role)}</em>`;
+  } else if (e.type === "color_change") {
+    body.innerHTML =
+      `<strong>${escapeHtml(e.player)}</strong> ` +
+      `<span class="subtle">(${escapeHtml(e.team)} / ${escapeHtml(e.role)})</span> ` +
+      `colors: ${escapeHtml(formatColorList(e.from))} → <em>${escapeHtml(formatColorList(e.to))}</em>`;
+  } else if (e.type === "tag_change") {
+    const fromTxt = e.from ?? "(none)";
+    const toTxt = e.to ?? "(none)";
+    body.innerHTML =
+      `<strong>${escapeHtml(e.player)}</strong> ` +
+      `<span class="subtle">(${escapeHtml(e.team)} / ${escapeHtml(e.role)})</span> ` +
+      `${escapeHtml(e.field || "tag")}: ${escapeHtml(fromTxt)} → <em>${escapeHtml(toTxt)}</em>`;
+  } else {
+    body.textContent = JSON.stringify(e);
+  }
+  wrap.appendChild(body);
+  return wrap;
+}
+
+function renderChangelog() {
+  const list = $("#changelogList");
+  if (!list) return;
+  const filter = $("#changelogFilter")?.value || "ALL";
+  const search = ($("#changelogSearch")?.value || "").toLowerCase().trim();
+  const all = state.changelog?.entries || [];
+  const filtered = all.filter(e => {
+    if (filter !== "ALL" && e.type !== filter) return false;
+    if (search) {
+      const hay = JSON.stringify(e).toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+  list.innerHTML = "";
+  const count = $("#changelogCount");
+  if (count) {
+    count.textContent = filtered.length === all.length
+      ? `${all.length} entries`
+      : `${filtered.length} of ${all.length} entries`;
+  }
+  if (!filtered.length) {
+    const empty = document.createElement("div");
+    empty.className = "changelog-empty";
+    empty.textContent = all.length
+      ? "No entries match the current filter."
+      : "No changes recorded yet. Apply changes to start populating this log.";
+    list.appendChild(empty);
+    return;
+  }
+  // Already newest-first because diff entries are prepended on save.
+  for (const e of filtered) list.appendChild(buildChangelogEntry(e));
+}
 
 // ===== quick hits =====
 
@@ -1396,15 +1565,116 @@ async function backendPost(path, body = {}) {
 let _saveInFlight = false;
 let _savePending = false;
 
+// Diff savedChart vs current state.chart. Emits change-log entries for
+// chip moves, adds, removes, color changes, and statusTag/other changes.
+// Usage tags + auto-magenta are display-only (never in chart.json) so
+// they're naturally excluded from this diff.
+function diffCharts(oldChart, newChart) {
+  const ts = new Date().toISOString();
+  const entries = [];
+  // Identity key per chip = name|mlbamid. If both null, name alone.
+  const indexOf = chart => {
+    const m = new Map();
+    for (const t of chart.teams || []) {
+      for (const role of Object.keys(t.roles || {})) {
+        for (const chip of t.roles[role] || []) {
+          if (!chip || !chip.name) continue;
+          const key = `${chip.name}|${chip.mlbamid ?? ""}`;
+          m.set(key, { teamName: t.teamName, role, chip });
+        }
+      }
+    }
+    return m;
+  };
+  const oldMap = indexOf(oldChart || { teams: [] });
+  const newMap = indexOf(newChart || { teams: [] });
+  for (const [key, oldRec] of oldMap) {
+    const fresh = newMap.get(key);
+    if (!fresh) {
+      entries.push({
+        ts, type: "chip_remove",
+        team: oldRec.teamName, role: oldRec.role,
+        player: oldRec.chip.name, mlbamid: oldRec.chip.mlbamid ?? null,
+      });
+      continue;
+    }
+    // Both — check move + property changes.
+    if (oldRec.teamName !== fresh.teamName || oldRec.role !== fresh.role) {
+      entries.push({
+        ts, type: "chip_move",
+        player: fresh.chip.name, mlbamid: fresh.chip.mlbamid ?? null,
+        from: { team: oldRec.teamName, role: oldRec.role },
+        to: { team: fresh.teamName, role: fresh.role },
+      });
+    }
+    const oldColors = JSON.stringify(oldRec.chip.colors || []);
+    const newColors = JSON.stringify(fresh.chip.colors || []);
+    if (oldColors !== newColors) {
+      entries.push({
+        ts, type: "color_change",
+        team: fresh.teamName, role: fresh.role,
+        player: fresh.chip.name, mlbamid: fresh.chip.mlbamid ?? null,
+        from: oldRec.chip.colors || [], to: fresh.chip.colors || [],
+      });
+    }
+    if ((oldRec.chip.statusTag || null) !== (fresh.chip.statusTag || null)) {
+      entries.push({
+        ts, type: "tag_change", field: "statusTag",
+        team: fresh.teamName, role: fresh.role,
+        player: fresh.chip.name, mlbamid: fresh.chip.mlbamid ?? null,
+        from: oldRec.chip.statusTag || null, to: fresh.chip.statusTag || null,
+      });
+    }
+    if ((oldRec.chip.other || null) !== (fresh.chip.other || null)) {
+      entries.push({
+        ts, type: "tag_change", field: "other",
+        team: fresh.teamName, role: fresh.role,
+        player: fresh.chip.name, mlbamid: fresh.chip.mlbamid ?? null,
+        from: oldRec.chip.other || null, to: fresh.chip.other || null,
+      });
+    }
+  }
+  for (const [key, fresh] of newMap) {
+    if (!oldMap.has(key)) {
+      entries.push({
+        ts, type: "chip_add",
+        team: fresh.teamName, role: fresh.role,
+        player: fresh.chip.name, mlbamid: fresh.chip.mlbamid ?? null,
+      });
+    }
+  }
+  return entries;
+}
+
 async function saveAll() {
   if (!state.dirty) return;            // nothing to push
   if (_saveInFlight) { _savePending = true; return; }
   _saveInFlight = true;
   setSaveStatus("Saving…", "saving");
+
+  // Compute changelog diff vs the last-saved snapshot. Entries are
+  // prepended (newest first) into state.changelog. Sent alongside the
+  // chart/quickhits payload so the three files land in the same Apply.
+  const diffEntries = diffCharts(state.savedChart, state.chart);
+  let changelogPayload;
+  if (diffEntries.length) {
+    state.changelog = state.changelog || { schemaVersion: 1, entries: [] };
+    state.changelog.entries = [...diffEntries, ...(state.changelog.entries || [])];
+    changelogPayload = state.changelog;
+  }
+
   try {
-    await backendPost("/save", { chart: state.chart, quickhits: state.quickhits });
+    await backendPost("/save", {
+      chart: state.chart,
+      quickhits: state.quickhits,
+      ...(changelogPayload ? { changelog: changelogPayload } : {}),
+    });
     state.dirty = false;
+    state.savedChart = deepClone(state.chart);
     setSaveStatus("Saved " + new Date().toLocaleTimeString(), "saved");
+    // If the user is viewing the Changes tab, reflect the newly-appended
+    // entries immediately.
+    if ($("#changelogView")?.classList.contains("active")) renderChangelog();
   } catch (e) {
     if (e.message === "unauthorized") {
       setSaveStatus("Sign in to save", "error");
@@ -1977,7 +2247,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const view = tab.dataset.view;
     $$(".view").forEach(v => v.classList.remove("active"));
     $("#" + view + "View").classList.add("active");
+    // Lazy-render the changelog when its tab is selected.
+    if (view === "changelog") renderChangelog();
   }));
+
+  $("#changelogFilter")?.addEventListener("change", renderChangelog);
+  $("#changelogSearch")?.addEventListener("input", renderChangelog);
 
   $("#qhLeagueFilter")?.addEventListener("change", renderQuickHits);
   $("#qhSearch")?.addEventListener("input", renderQuickHits);

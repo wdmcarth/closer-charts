@@ -126,10 +126,9 @@ async function handleSave(body, env) {
     return json({ error: "expected { chart, quickhits }" }, { status: 400 });
   }
   const stamp = new Date().toISOString();
-  // Two commits — the Contents API only updates one file per call. We could
-  // collapse to a single commit via the lower-level Git Data API; doing it
-  // here would be a meaningful upgrade later. For now the audit trail just
-  // has two adjacent commits per save.
+  // Up to three sequential file writes. Contents API only updates one
+  // file per call; we could collapse via the Git Data API but for now the
+  // audit trail just has 2–3 adjacent commits per Apply changes.
   const chartRes = await putFile(
     env,
     "data/chart.json",
@@ -146,10 +145,24 @@ async function handleSave(body, env) {
   );
   if (!qhRes.ok) return json({ ok: false, step: "quickhits", ...qhRes }, { status: 502 });
 
+  let changelogRes = null;
+  if (body.changelog !== undefined) {
+    changelogRes = await putFile(
+      env,
+      "data/changelog.json",
+      JSON.stringify(body.changelog, null, 2) + "\n",
+      `changelog: append (${stamp})`
+    );
+    if (!changelogRes.ok) {
+      return json({ ok: false, step: "changelog", ...changelogRes }, { status: 502 });
+    }
+  }
+
   return json({
     ok: true,
     chartCommit: chartRes.commitSha,
     quickhitsCommit: qhRes.commitSha,
+    changelogCommit: changelogRes?.commitSha,
   });
 }
 
