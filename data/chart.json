@@ -1355,9 +1355,7 @@
           {
             "name": "Abner Uribe",
             "mlbamid": 682842,
-            "colors": [
-              "Magenta"
-            ],
+            "colors": [],
             "statusTag": null,
             "other": null
           }
@@ -1429,7 +1427,8 @@
             "mlbamid": 596133,
             "colors": [],
             "statusTag": null,
-            "other": null
+            "other": null,
+            "noMagenta": true
           }
         ],
         "stealth": [
