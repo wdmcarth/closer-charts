@@ -26,27 +26,20 @@
         ],
         "stealth": [
           {
-            "name": "Grant Wolfram",
-            "mlbamid": 664991,
-            "colors": [],
+            "name": "Yennier Cano",
+            "mlbamid": 666974,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "upside": [],
         "hybrid": [
           {
-            "name": "Yennier Cano",
-            "mlbamid": 666974,
-            "colors": [],
+            "name": "Tyler Wells",
+            "mlbamid": 669330,
             "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Keegan Akin",
-            "mlbamid": 669211,
             "colors": [],
-            "statusTag": null,
             "other": null
           }
         ]
@@ -765,12 +758,12 @@
         ],
         "stealth": [
           {
-            "name": "Luis Medina",
-            "mlbamid": 665622,
+            "name": "Joel Kuhnel",
+            "mlbamid": 669270,
+            "statusTag": null,
             "colors": [
               "Blue"
             ],
-            "statusTag": null,
             "other": null
           }
         ],
