@@ -1179,25 +1179,29 @@
             "name": "Antonio Senzatela",
             "mlbamid": 622608,
             "statusTag": null,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "other": null,
             "noMagenta": true
           }
         ],
         "stopper": [
           {
-            "name": "Jaden Hill",
-            "mlbamid": 677955,
+            "name": "Juan Mejia",
+            "mlbamid": 675848,
             "statusTag": null,
-            "colors": [],
+            "colors": [
+              "Blue"
+            ],
             "other": null,
             "noMagenta": true
           }
         ],
         "stealth": [
           {
-            "name": "Juan Mejia",
-            "mlbamid": 675848,
+            "name": "Jaden Hill",
+            "mlbamid": 677955,
             "statusTag": null,
             "colors": [],
             "other": null,
