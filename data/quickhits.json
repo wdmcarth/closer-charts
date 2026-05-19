@@ -14,7 +14,11 @@
   {
     "date": "2026-05-18",
     "league": "AL",
-    "entries": {}
+    "entries": {
+      "111": [
+        "Taking over tenth all-time in saves, <a class=\"player-link\" data-pid=\"547973\" href=\"https://www.mlb.com/player/547973?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Aroldis Chapman</a> closed out his 11th save in Kansas City, and the 378th of his career, moving ahead of Joe Nathan. He retired the side on 14 pitches (71.4 Strike%) and induced one whiff while recording one strikeout. This extended his scoreless streak to 13 games, during which he has posted a 0.868 WHIP with 19 strikeouts versus six walks (26.5 K-BB%) across 12.2 innings. <a class=\"player-link\" data-pid=\"676477\" href=\"https://www.mlb.com/player/676477?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Garrett Whitlock</a> notched his ninth hold, yielding a hit and striking out one in a scoreless eighth. <a class=\"player-link\" data-pid=\"686580\" href=\"https://www.mlb.com/player/686580?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Justin Slaten</a> fired a clean seventh, striking out two for his fourth hold. "
+      ]
+    }
   },
   {
     "date": "2026-05-17",
