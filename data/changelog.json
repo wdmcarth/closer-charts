@@ -1,4 +1,57 @@
 {
   "schemaVersion": 1,
-  "entries": []
+  "entries": [
+    {
+      "ts": "2026-05-19T03:52:26.323Z",
+      "type": "color_change",
+      "team": "Colorado Rockies",
+      "role": "closer",
+      "player": "Antonio Senzatela",
+      "mlbamid": 622608,
+      "from": [],
+      "to": [
+        "Blue"
+      ]
+    },
+    {
+      "ts": "2026-05-19T03:52:26.323Z",
+      "type": "chip_move",
+      "player": "Jaden Hill",
+      "mlbamid": 677955,
+      "from": {
+        "team": "Colorado Rockies",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Colorado Rockies",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-05-19T03:52:26.323Z",
+      "type": "chip_move",
+      "player": "Juan Mejia",
+      "mlbamid": 675848,
+      "from": {
+        "team": "Colorado Rockies",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Colorado Rockies",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-05-19T03:52:26.323Z",
+      "type": "color_change",
+      "team": "Colorado Rockies",
+      "role": "stopper",
+      "player": "Juan Mejia",
+      "mlbamid": 675848,
+      "from": [],
+      "to": [
+        "Blue"
+      ]
+    }
+  ]
 }
