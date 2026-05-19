@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-18T02:26:42+00:00",
+  "generatedAt": "2026-05-19T03:52:35+00:00",
   "pitcherCount": 173,
   "pitchers": [
     {
@@ -26,7 +26,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-11"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -46,9 +46,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.1 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -96,12 +96,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "2.0 IP, 38 np",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": null
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -123,7 +123,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -246,12 +246,12 @@
       "blue": false,
       "orange": true,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "32 np",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -271,9 +271,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "2.0 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -301,7 +301,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -371,9 +371,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "2.0 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -448,7 +448,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "1.2 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -573,7 +573,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -723,7 +723,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "1.1 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -748,7 +748,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -898,10 +898,10 @@
       "yellow": false,
       "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "3-of-4",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -946,9 +946,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.2 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -1101,7 +1101,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1173,7 +1173,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -1201,7 +1201,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1271,9 +1271,9 @@
       "blue": true,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "2.0 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -1346,12 +1346,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1446,12 +1446,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1576,7 +1576,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1596,12 +1596,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1646,12 +1646,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1721,12 +1721,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b, 1.2 IP",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1801,7 +1801,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": null
+      "last_game": "2026-05-15"
     },
     {
       "league": "AL",
@@ -1851,7 +1851,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-14"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -1996,9 +1996,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "2.0 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2048,7 +2048,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "2.0 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2071,12 +2071,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "AL",
@@ -2146,9 +2146,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2201,7 +2201,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2226,7 +2226,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2246,12 +2246,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2401,7 +2401,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2446,9 +2446,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "2.0 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -2476,7 +2476,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-14"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2501,7 +2501,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-14"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2571,9 +2571,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.1 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -2596,9 +2596,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.1 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -2648,7 +2648,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2768,12 +2768,12 @@
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "27 np",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2788,17 +2788,17 @@
       "role": "stopper",
       "role_label": "Stopper (unless fluid)",
       "role_position": 1,
-      "player": "Jaden Hill",
-      "mlbamid": 677955,
+      "player": "Juan Mejia",
+      "mlbamid": 675848,
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
-      "blue": false,
+      "blue": true,
       "orange": false,
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "1.1 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2813,8 +2813,8 @@
       "role": "stealth",
       "role_label": "Stealth Option",
       "role_position": 1,
-      "player": "Juan Mejia",
-      "mlbamid": 675848,
+      "player": "Jaden Hill",
+      "mlbamid": 677955,
       "level": "MLB",
       "on_40_man": true,
       "hand": "R",
@@ -2823,7 +2823,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "1.2 IP, 35 np",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -2921,12 +2921,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "3-of-4",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -2996,9 +2996,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3146,9 +3146,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3171,9 +3171,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "2.0 IP, 43 np",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -3296,9 +3296,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.1 IP",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -3348,10 +3348,10 @@
       "yellow": false,
       "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -3373,7 +3373,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "2.0 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3471,9 +3471,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "1.1 IP",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3671,9 +3671,9 @@
       "blue": false,
       "orange": true,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "3-of-4",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -3746,9 +3746,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": true,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3798,7 +3798,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3871,9 +3871,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -3951,7 +3951,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-11"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -4001,7 +4001,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-13"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -4026,7 +4026,7 @@
       "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-15"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
@@ -4098,7 +4098,7 @@
       "yellow": false,
       "magenta": false,
       "green": false,
-      "usage_tag": "b2b",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -4171,9 +4171,9 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": true,
+      "magenta": false,
       "green": false,
-      "usage_tag": "b2b, 3-of-4",
+      "usage_tag": null,
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-16"
@@ -4221,9 +4221,9 @@
       "blue": true,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "1.1 IP, 27 np",
       "injury_tag": null,
       "other_tag": null,
       "last_game": "2026-05-17"
@@ -4296,12 +4296,12 @@
       "blue": false,
       "orange": false,
       "yellow": false,
-      "magenta": false,
+      "magenta": true,
       "green": false,
-      "usage_tag": null,
+      "usage_tag": "b2b",
       "injury_tag": null,
       "other_tag": null,
-      "last_game": "2026-05-16"
+      "last_game": "2026-05-17"
     },
     {
       "league": "NL",
