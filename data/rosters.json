@@ -382,6 +382,13 @@
     "division": "American League East",
     "pitchers": [
       {
+        "id": 544150,
+        "name": "Albert Suárez",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 552640,
         "name": "Andrew Kittredge",
         "posAbbr": "P",
@@ -414,7 +421,7 @@
         "name": "Cameron Foster",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 605135,
@@ -761,7 +768,7 @@
         "name": "Caleb Thielbar",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 685005,
@@ -929,13 +936,6 @@
         "name": "Trent Thornton",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 621389,
-        "name": "Ty Blach",
-        "posAbbr": "P",
-        "hand": "L",
         "status": "Active"
       },
       {
@@ -1129,7 +1129,7 @@
         "name": "Andrew Walters",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 804926,
@@ -1150,7 +1150,7 @@
         "name": "Codi Heuer",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 670059,
@@ -1227,7 +1227,7 @@
         "name": "Peyton Pallette",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Paternity List"
       },
       {
         "id": 542888,
@@ -1351,6 +1351,13 @@
         "status": "Active"
       },
       {
+        "id": 624522,
+        "name": "Keegan Thompson",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 607536,
         "name": "Kyle Freeland",
         "posAbbr": "P",
@@ -1425,7 +1432,7 @@
         "name": "Victor Vodnik",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 700327,
@@ -1744,7 +1751,7 @@
         "name": "Lance McCullers Jr.",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 701121,
@@ -1772,7 +1779,7 @@
         "name": "Nate Pearson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 663567,
@@ -2098,7 +2105,7 @@
         "name": "Eric Lauer",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Not Yet Reported"
+        "status": "Active"
       },
       {
         "id": 623465,
@@ -2217,7 +2224,7 @@
         "name": "Wyatt Mills",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 808967,
@@ -2434,6 +2441,13 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 644429,
+        "name": "Anderson Severino",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 681810,
         "name": "Austin Warren",
         "posAbbr": "P",
@@ -2459,7 +2473,7 @@
         "name": "Clay Holmes",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 518886,
@@ -2473,7 +2487,7 @@
         "name": "Daniel Duarte",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 656849,
@@ -2593,6 +2607,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Injured 60-Day"
+      },
+      {
+        "id": 804267,
+        "name": "Zach Thornton",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Active"
       }
     ]
   },
@@ -3251,7 +3272,7 @@
         "name": "Matt Brash",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 689546,
@@ -3265,7 +3286,7 @@
         "name": "Robinson Ortiz",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 700187,
@@ -3684,7 +3705,7 @@
         "name": "Chase Solesky",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 642121,
@@ -3750,13 +3771,6 @@
         "status": "Reassigned to Minors"
       },
       {
-        "id": 697812,
-        "name": "Joe Rock",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 687330,
         "name": "Kevin Kelly",
         "posAbbr": "P",
@@ -3810,7 +3824,7 @@
         "name": "Steven Matz",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 621051,
@@ -3854,7 +3868,7 @@
         "name": "Chris Martin",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 674003,
@@ -3889,7 +3903,7 @@
         "name": "Gavin Collyer",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 683004,
@@ -3959,7 +3973,7 @@
         "name": "Luis Curvelo",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 669022,
@@ -4052,7 +4066,7 @@
         "name": "Chase Lee",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 664074,
@@ -4087,7 +4101,7 @@
         "name": "Joe Mantiply",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 621244,
@@ -4264,7 +4278,7 @@
         "name": "Garrett Acton",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 657746,
@@ -4279,13 +4293,6 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
-      },
-      {
-        "id": 623437,
-        "name": "Justin Topa",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
       },
       {
         "id": 696070,
@@ -4355,7 +4362,7 @@
         "name": "Travis Adams",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 672782,
@@ -4558,13 +4565,6 @@
     "division": "National League East",
     "pitchers": [
       {
-        "id": 607481,
-        "name": "Aaron Bummer",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Active"
-      },
-      {
         "id": 700363,
         "name": "AJ Smith-Shawver",
         "posAbbr": "P",
@@ -4618,7 +4618,7 @@
         "name": "Dylan Dodd",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 669276,
@@ -4681,7 +4681,7 @@
         "name": "JR Ritchie",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 527048,
@@ -4744,7 +4744,7 @@
         "name": "Victor Mederos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       }
     ]
   },
@@ -4824,6 +4824,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
+      },
+      {
+        "id": 697812,
+        "name": "Joe Rock",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 686563,
@@ -4986,14 +4993,14 @@
         "name": "Braxton Garrett",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 806188,
         "name": "Cade Gibson",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 676534,
