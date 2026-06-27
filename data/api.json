@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-27T20:00:37+00:00",
+  "generatedAt": "2026-06-27T20:01:14+00:00",
   "pitcherCount": 169,
   "pitchers": [
     {
@@ -2555,7 +2555,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2580,7 +2580,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2605,7 +2605,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2630,7 +2630,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2655,7 +2655,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2680,7 +2680,7 @@
     },
     {
       "league": "NL",
-      "lev": 2,
+      "lev": 1,
       "team": "Cincinnati Reds",
       "team_abbr": "CIN",
       "team_id": 113,
@@ -2705,7 +2705,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Colorado Rockies",
       "team_abbr": "COL",
       "team_id": 115,
@@ -2730,7 +2730,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Colorado Rockies",
       "team_abbr": "COL",
       "team_id": 115,
@@ -2755,7 +2755,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Colorado Rockies",
       "team_abbr": "COL",
       "team_id": 115,
@@ -2780,7 +2780,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Colorado Rockies",
       "team_abbr": "COL",
       "team_id": 115,
@@ -2805,7 +2805,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Colorado Rockies",
       "team_abbr": "COL",
       "team_id": 115,
@@ -2955,7 +2955,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -2980,7 +2980,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -3005,7 +3005,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -3030,7 +3030,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -3055,7 +3055,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -3080,7 +3080,7 @@
     },
     {
       "league": "NL",
-      "lev": 4,
+      "lev": 5,
       "team": "Miami Marlins",
       "team_abbr": "MIA",
       "team_id": 146,
@@ -3105,7 +3105,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 5,
       "team": "Milwaukee Brewers",
       "team_abbr": "MIL",
       "team_id": 158,
@@ -3130,7 +3130,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 5,
       "team": "Milwaukee Brewers",
       "team_abbr": "MIL",
       "team_id": 158,
@@ -3155,7 +3155,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 5,
       "team": "Milwaukee Brewers",
       "team_abbr": "MIL",
       "team_id": 158,
@@ -3180,7 +3180,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 5,
       "team": "Milwaukee Brewers",
       "team_abbr": "MIL",
       "team_id": 158,
@@ -3205,7 +3205,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 5,
       "team": "Milwaukee Brewers",
       "team_abbr": "MIL",
       "team_id": 158,
@@ -3780,7 +3780,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -3805,7 +3805,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -3830,7 +3830,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -3855,7 +3855,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -3880,7 +3880,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -3905,7 +3905,7 @@
     },
     {
       "league": "NL",
-      "lev": 1,
+      "lev": 4,
       "team": "San Francisco Giants",
       "team_abbr": "SF",
       "team_id": 137,
@@ -4080,7 +4080,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
@@ -4105,7 +4105,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
@@ -4130,7 +4130,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
@@ -4155,7 +4155,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
@@ -4180,7 +4180,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
@@ -4205,7 +4205,7 @@
     },
     {
       "league": "NL",
-      "lev": 3,
+      "lev": 1,
       "team": "Washington Nationals",
       "team_abbr": "WSH",
       "team_id": 120,
