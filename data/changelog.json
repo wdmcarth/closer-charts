@@ -2,6 +2,1194 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Baltimore Orioles",
+      "role": "closer",
+      "player": "Rico Garcia",
+      "mlbamid": 670329
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Anthony Nunez",
+      "mlbamid": 689296,
+      "from": {
+        "team": "Baltimore Orioles",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Baltimore Orioles",
+        "role": "upside"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Yennier Cano",
+      "mlbamid": 666974,
+      "from": {
+        "team": "Baltimore Orioles",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Baltimore Orioles",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Boston Red Sox",
+      "role": "hybrid",
+      "player": "Zack Kelly",
+      "mlbamid": 677161
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Seranthony Domínguez",
+      "mlbamid": 622554,
+      "from": {
+        "team": "Chicago White Sox",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Chicago White Sox",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Chicago White Sox",
+      "role": "stopper",
+      "player": "Seranthony Domínguez",
+      "mlbamid": 622554,
+      "from": [
+        "Orange"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Grant Taylor",
+      "mlbamid": 691799,
+      "from": {
+        "team": "Chicago White Sox",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Chicago White Sox",
+        "role": "closer"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Erik Sabrowski",
+      "mlbamid": 681870,
+      "from": {
+        "team": "Cleveland Guardians",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Cleveland Guardians",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Cleveland Guardians",
+      "role": "stealth",
+      "player": "Colin Holdmerman",
+      "mlbamid": 670059
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Hunter Gaddis",
+      "mlbamid": 683769,
+      "from": {
+        "team": "Cleveland Guardians",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Cleveland Guardians",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Cleveland Guardians",
+      "role": "hybrid",
+      "player": "Matt Festa",
+      "mlbamid": 670036
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Kyle Finnegan",
+      "mlbamid": 640448,
+      "from": {
+        "team": "Detroit Tigers",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Detroit Tigers",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Detroit Tigers",
+      "role": "stealth",
+      "player": "Brant Hurter",
+      "mlbamid": 676428
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Bryan Abreu",
+      "mlbamid": 650556,
+      "from": {
+        "team": "Houston Astros",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Houston Astros",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Houston Astros",
+      "role": "hybrid",
+      "player": "Bryan Abreu",
+      "mlbamid": 650556,
+      "from": [
+        "Blue"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Houston Astros",
+      "role": "hybrid",
+      "player": "Bennett Sousa",
+      "mlbamid": 656986
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Lucas Erceg",
+      "mlbamid": 668674,
+      "from": {
+        "team": "Kansas City Royals",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Kansas City Royals",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Kansas City Royals",
+      "role": "stealth",
+      "player": "Lucas Erceg",
+      "mlbamid": 668674,
+      "from": [
+        "Magenta"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Matt Strahm",
+      "mlbamid": 621381,
+      "from": {
+        "team": "Kansas City Royals",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Kansas City Royals",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Daniel Lynch IV",
+      "mlbamid": 663738,
+      "from": {
+        "team": "Kansas City Royals",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Kansas City Royals",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Kansas City Royals",
+      "role": "hybrid",
+      "player": "Nick Mears",
+      "mlbamid": 683232
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Ryan Zeferjahn",
+      "mlbamid": 666171,
+      "from": {
+        "team": "Los Angeles Angels",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Los Angeles Angels",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Sam Bachman",
+      "mlbamid": 696147,
+      "from": {
+        "team": "Los Angeles Angels",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Los Angeles Angels",
+        "role": "closer"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Kirby Yates",
+      "mlbamid": 489446,
+      "from": {
+        "team": "Los Angeles Angels",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Los Angeles Angels",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Chase Silseth",
+      "mlbamid": 681217,
+      "from": {
+        "team": "Los Angeles Angels",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Los Angeles Angels",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Minnesota Twins",
+      "role": "stopper",
+      "player": "Luis García",
+      "mlbamid": 472610
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Camilo Doval",
+      "mlbamid": 666808,
+      "from": {
+        "team": "New York Yankees",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "New York Yankees",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Fernando Cruz",
+      "mlbamid": 518585,
+      "from": {
+        "team": "New York Yankees",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "New York Yankees",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "New York Yankees",
+      "role": "hybrid",
+      "player": "Jake Bird",
+      "mlbamid": 656234
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Cole Sulser",
+      "mlbamid": 642121,
+      "from": {
+        "team": "Tampa Bay Rays",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Tampa Bay Rays",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Tampa Bay Rays",
+      "role": "hybrid",
+      "player": "Ian Seymour",
+      "mlbamid": 693855
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Kevin Kelly",
+      "mlbamid": 687330,
+      "from": {
+        "team": "Tampa Bay Rays",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Tampa Bay Rays",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "The Athletics",
+      "role": "closer",
+      "player": "Jack Perkins",
+      "mlbamid": 678022
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "The Athletics",
+      "role": "stealth",
+      "player": "Joel Kuhnel",
+      "mlbamid": 669270
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "The Athletics",
+      "role": "hybrid",
+      "player": "Scott Barlow",
+      "mlbamid": 605130
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Texas Rangers",
+      "role": "stealth",
+      "player": "Cole Winn",
+      "mlbamid": 668390
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Texas Rangers",
+      "role": "hybrid",
+      "player": "Jalen Beeks",
+      "mlbamid": 656222
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Juan Morillo",
+      "mlbamid": 666661,
+      "from": {
+        "team": "Arizona Diamondbacks",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Arizona Diamondbacks",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Arizona Diamondbacks",
+      "role": "stealth",
+      "player": "Taylor Clarke",
+      "mlbamid": 664199
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Atlanta Braves",
+      "role": "stopper",
+      "player": "Robert Suarez",
+      "mlbamid": 663158
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Atlanta Braves",
+      "role": "hybrid",
+      "player": "Reynaldo López",
+      "mlbamid": 625643
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Chicago Cubs",
+      "role": "closer",
+      "player": "Daniel Palencia",
+      "mlbamid": 694037
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Chicago Cubs",
+      "role": "stopper",
+      "player": "Phil Maton",
+      "mlbamid": 664208
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Jacob Webb",
+      "mlbamid": 657097,
+      "from": {
+        "team": "Chicago Cubs",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Chicago Cubs",
+        "role": "closer"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Chicago Cubs",
+      "role": "hybrid",
+      "player": "Hoby Milner",
+      "mlbamid": 571948
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Cincinnati Reds",
+      "role": "closer",
+      "player": "Graham Ashcraft",
+      "mlbamid": 668933
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Pierce Johnson",
+      "mlbamid": 572955,
+      "from": {
+        "team": "Cincinnati Reds",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Cincinnati Reds",
+        "role": "closer"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Cincinnati Reds",
+      "role": "closer",
+      "player": "Pierce Johnson",
+      "mlbamid": 572955,
+      "from": [
+        "Blue"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Cincinnati Reds",
+      "role": "stealth",
+      "player": "Tony Santillan",
+      "mlbamid": 663574
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Chase Petty",
+      "mlbamid": 695534,
+      "from": {
+        "team": "Cincinnati Reds",
+        "role": "upside"
+      },
+      "to": {
+        "team": "Cincinnati Reds",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Brock Burke",
+      "mlbamid": 656271,
+      "from": {
+        "team": "Cincinnati Reds",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Cincinnati Reds",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Antonio Senzatela",
+      "mlbamid": 622608,
+      "from": {
+        "team": "Colorado Rockies",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Colorado Rockies",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Colorado Rockies",
+      "role": "stopper",
+      "player": "Antonio Senzatela",
+      "mlbamid": 622608,
+      "from": [
+        "Blue"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Colorado Rockies",
+      "role": "stopper",
+      "player": "Juan Mejia",
+      "mlbamid": 675848
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Colorado Rockies",
+      "role": "stealth",
+      "player": "Jaden Hill",
+      "mlbamid": 677955
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Colorado Rockies",
+      "role": "hybrid",
+      "player": "Zach Agnos",
+      "mlbamid": 688642
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Los Angeles Dodgers",
+      "role": "hybrid",
+      "player": "Blake Treinen",
+      "mlbamid": 595014
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Calvin Faucher",
+      "mlbamid": 676534,
+      "from": {
+        "team": "Miami Marlins",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Miami Marlins",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "John King",
+      "mlbamid": 667463,
+      "from": {
+        "team": "Miami Marlins",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Miami Marlins",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Miami Marlins",
+      "role": "hybrid",
+      "player": "Andrew Nardi",
+      "mlbamid": 677053
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Miami Marlins",
+      "role": "hybrid",
+      "player": "Tyler Phillips",
+      "mlbamid": 663969
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Abner Uribe",
+      "mlbamid": 682842,
+      "from": {
+        "team": "Milwaukee Brewers",
+        "role": "closer"
+      },
+      "to": {
+        "team": "Milwaukee Brewers",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Trevor Megill",
+      "mlbamid": 656730,
+      "from": {
+        "team": "Milwaukee Brewers",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "Milwaukee Brewers",
+        "role": "closer"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Milwaukee Brewers",
+      "role": "hybrid",
+      "player": "DL Hall",
+      "mlbamid": 669084
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Milwaukee Brewers",
+      "role": "hybrid",
+      "player": "Shane Drohan",
+      "mlbamid": 675660
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Philadelphia Phillies",
+      "role": "stopper",
+      "player": "Brad Keller",
+      "mlbamid": 641745
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Orion Kerkering",
+      "mlbamid": 689147,
+      "from": {
+        "team": "Philadelphia Phillies",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "Philadelphia Phillies",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Pittsburgh Pirates",
+      "role": "stopper",
+      "player": "Dennis Santana",
+      "mlbamid": 642701
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Mason Montgomery",
+      "mlbamid": 682254,
+      "from": {
+        "team": "Pittsburgh Pirates",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Pittsburgh Pirates",
+        "role": "stopper"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Pittsburgh Pirates",
+      "role": "stopper",
+      "player": "Mason Montgomery",
+      "mlbamid": 682254,
+      "from": [
+        "Green"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Pittsburgh Pirates",
+      "role": "hybrid",
+      "player": "Brandan Bidois",
+      "mlbamid": 684049
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "San Diego Padres",
+      "role": "stealth",
+      "player": "Jeremiah Estrada",
+      "mlbamid": 669093
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Adrian Morejon",
+      "mlbamid": 670970,
+      "from": {
+        "team": "San Diego Padres",
+        "role": "hybrid"
+      },
+      "to": {
+        "team": "San Diego Padres",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "Erik Miller",
+      "mlbamid": 669062,
+      "from": {
+        "team": "San Francisco Giants",
+        "role": "stopper"
+      },
+      "to": {
+        "team": "San Francisco Giants",
+        "role": "stealth"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "San Francisco Giants",
+      "role": "stealth",
+      "player": "Erik Miller",
+      "mlbamid": 669062,
+      "from": [
+        "Blue"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "San Francisco Giants",
+      "role": "stealth",
+      "player": "Keaton Winn",
+      "mlbamid": 676775
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "San Francisco Giants",
+      "role": "hybrid",
+      "player": "Joel Peguero",
+      "mlbamid": 666711
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "St. Louis Cardinals",
+      "role": "hybrid",
+      "player": "Gordon Graceffo",
+      "mlbamid": 700669
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Washington Nationals",
+      "role": "closer",
+      "player": "Gus Varland",
+      "mlbamid": 681402
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_move",
+      "player": "PJ Poulin",
+      "mlbamid": 676571,
+      "from": {
+        "team": "Washington Nationals",
+        "role": "stealth"
+      },
+      "to": {
+        "team": "Washington Nationals",
+        "role": "hybrid"
+      }
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "color_change",
+      "team": "Washington Nationals",
+      "role": "hybrid",
+      "player": "PJ Poulin",
+      "mlbamid": 676571,
+      "from": [
+        "Blue"
+      ],
+      "to": []
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Washington Nationals",
+      "role": "hybrid",
+      "player": "Paxton Schultz",
+      "mlbamid": 687606
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_remove",
+      "team": "Washington Nationals",
+      "role": "hybrid",
+      "player": "Orl Ribalta",
+      "mlbamid": null
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Baltimore Orioles",
+      "role": "closer",
+      "player": "Ryan Helsley",
+      "mlbamid": 664854
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Baltimore Orioles",
+      "role": "stealth",
+      "player": "Andrew Kittredge",
+      "mlbamid": 552640
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Cleveland Guardians",
+      "role": "stealth",
+      "player": "Shawn Armstrong",
+      "mlbamid": 542888
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Cleveland Guardians",
+      "role": "hybrid",
+      "player": "Tim Herrin",
+      "mlbamid": 682120
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Detroit Tigers",
+      "role": "stopper",
+      "player": "Will Vest",
+      "mlbamid": 676684
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Houston Astros",
+      "role": "closer",
+      "player": "Josh Hader",
+      "mlbamid": 623352
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Kansas City Royals",
+      "role": "closer",
+      "player": "Alex Lange",
+      "mlbamid": 656638
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Los Angeles Angels",
+      "role": "hybrid",
+      "player": "Mitch Farris",
+      "mlbamid": 815083
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Minnesota Twins",
+      "role": "stopper",
+      "player": "Andrew Morris",
+      "mlbamid": 702193
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Seattle Mariners",
+      "role": "hybrid",
+      "player": "Gabe Speier",
+      "mlbamid": 642100
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "The Athletics",
+      "role": "closer",
+      "player": "Elvis Alvarado",
+      "mlbamid": 665660
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "The Athletics",
+      "role": "stealth",
+      "player": "Mason Barnett",
+      "mlbamid": 686930
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "The Athletics",
+      "role": "hybrid",
+      "player": "Luis Medina",
+      "mlbamid": 665622
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Texas Rangers",
+      "role": "stealth",
+      "player": "Peyton Gray",
+      "mlbamid": 682608
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Arizona Diamondbacks",
+      "role": "stopper",
+      "player": "Kevin Ginkel",
+      "mlbamid": 656464
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Atlanta Braves",
+      "role": "stopper",
+      "player": "Didier Fuentes",
+      "mlbamid": 800311
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Atlanta Braves",
+      "role": "hybrid",
+      "player": "Tyler Kinley",
+      "mlbamid": 641755
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Chicago Cubs",
+      "role": "stopper",
+      "player": "Caleb Thielbar",
+      "mlbamid": 573204
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Chicago Cubs",
+      "role": "hybrid",
+      "player": "Ryan Rolison",
+      "mlbamid": 669020
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Cincinnati Reds",
+      "role": "stealth",
+      "player": "Caleb Ferguson",
+      "mlbamid": 657571
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Colorado Rockies",
+      "role": "closer",
+      "player": "Jimmy Herget",
+      "mlbamid": 623474
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Colorado Rockies",
+      "role": "stealth",
+      "player": "Victor Vodnik",
+      "mlbamid": 680767
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Colorado Rockies",
+      "role": "hybrid",
+      "player": "Brennan Bernardino",
+      "mlbamid": 657514
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Miami Marlins",
+      "role": "stopper",
+      "player": "Michael Petersen",
+      "mlbamid": 656848
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Miami Marlins",
+      "role": "stealth",
+      "player": "Anthony Bender",
+      "mlbamid": 669622
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Milwaukee Brewers",
+      "role": "hybrid",
+      "player": "Chad Patrick",
+      "mlbamid": 694477
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Philadelphia Phillies",
+      "role": "hybrid",
+      "player": "Jonathan Bowlan",
+      "mlbamid": 680742
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Pittsburgh Pirates",
+      "role": "stealth",
+      "player": "Carmen Mlodzinski",
+      "mlbamid": 669387
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Pittsburgh Pirates",
+      "role": "hybrid",
+      "player": "Yohan Ramírez",
+      "mlbamid": 670990
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "San Diego Padres",
+      "role": "hybrid",
+      "player": "David Morgan",
+      "mlbamid": 688158
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "San Francisco Giants",
+      "role": "stopper",
+      "player": "Dylan Smith",
+      "mlbamid": 681916
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "San Francisco Giants",
+      "role": "hybrid",
+      "player": "Adrian Houser",
+      "mlbamid": 605288
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "St. Louis Cardinals",
+      "role": "hybrid",
+      "player": "Ryne Stanek",
+      "mlbamid": 592773
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Washington Nationals",
+      "role": "closer",
+      "player": "Clayton Beeter",
+      "mlbamid": 690925
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Washington Nationals",
+      "role": "stealth",
+      "player": "Orlando Ribalta",
+      "mlbamid": 687377
+    },
+    {
+      "ts": "2026-06-27T20:00:26.605Z",
+      "type": "chip_add",
+      "team": "Washington Nationals",
+      "role": "hybrid",
+      "player": "Brad Lord",
+      "mlbamid": 695418
+    },
+    {
       "ts": "2026-05-19T03:52:26.323Z",
       "type": "color_change",
       "team": "Colorado Rockies",
