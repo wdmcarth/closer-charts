@@ -7,13 +7,6 @@
     "division": "American League West",
     "pitchers": [
       {
-        "id": 666201,
-        "name": "Alek Manoah",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 690829,
         "name": "Ben Joyce",
         "posAbbr": "P",
@@ -26,6 +19,13 @@
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
+      },
+      {
+        "id": 695049,
+        "name": "Brett Kerry",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 702674,
@@ -42,13 +42,6 @@
         "status": "Active"
       },
       {
-        "id": 519141,
-        "name": "Drew Pomeranz",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Injured 15-Day"
-      },
-      {
         "id": 691946,
         "name": "George Klassen",
         "posAbbr": "P",
@@ -60,14 +53,14 @@
         "name": "Grayson Rodriguez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 686799,
         "name": "Jack Kochanowicz",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 820862,
@@ -130,13 +123,20 @@
         "name": "Sam Aldegheri",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 696147,
         "name": "Sam Bachman",
         "posAbbr": "P",
         "hand": "R",
+        "status": "Active"
+      },
+      {
+        "id": 696519,
+        "name": "Samy Natera Jr.",
+        "posAbbr": "P",
+        "hand": "L",
         "status": "Active"
       },
       {
@@ -158,7 +158,7 @@
         "name": "Yusei Kikuchi",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       }
     ]
   },
@@ -202,7 +202,7 @@
         "name": "Brandon Pfaadt",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 805299,
@@ -230,7 +230,7 @@
         "name": "Drey Jameson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 691009,
@@ -254,11 +254,18 @@
         "status": "Active"
       },
       {
+        "id": 703615,
+        "name": "Jose Cabrera",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 686228,
         "name": "Juan Burgos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 666661,
@@ -307,7 +314,7 @@
         "name": "Michael Soroka",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 683352,
@@ -342,7 +349,7 @@
         "name": "Ryne Nelson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 664199,
@@ -350,20 +357,6 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
-      },
-      {
-        "id": 688497,
-        "name": "Taylor Rashi",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 700270,
-        "name": "Yilber Díaz",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
       },
       {
         "id": 668678,
@@ -400,7 +393,7 @@
         "name": "Anthony Nunez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 687064,
@@ -414,7 +407,7 @@
         "name": "Cade Povich",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 671382,
@@ -424,11 +417,18 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 687721,
+        "name": "Cameron Weston",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 605135,
         "name": "Chris Bassitt",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 681882,
@@ -442,21 +442,7 @@
         "name": "Dean Kremer",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
-      },
-      {
-        "id": 608650,
-        "name": "Dietrich Enns",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Active"
-      },
-      {
-        "id": 674384,
-        "name": "Eduarniel Núñez",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 60-Day"
       },
       {
         "id": 642585,
@@ -470,7 +456,7 @@
         "name": "Grant Wolfram",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 677020,
@@ -512,7 +498,7 @@
         "name": "Ryan Helsley",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 669358,
@@ -533,7 +519,7 @@
         "name": "Trey Gibson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 669330,
@@ -591,7 +577,7 @@
         "name": "Brayan Bello",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 813349,
@@ -605,7 +591,7 @@
         "name": "Danny Coulombe",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 700842,
@@ -619,7 +605,7 @@
         "name": "Garrett Crochet",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 676477,
@@ -647,6 +633,13 @@
         "name": "Jake Bennett",
         "posAbbr": "P",
         "hand": "L",
+        "status": "Active"
+      },
+      {
+        "id": 686747,
+        "name": "Joe La Sorsa",
+        "posAbbr": "P",
+        "hand": "L",
         "status": "Reassigned to Minors"
       },
       {
@@ -661,7 +654,7 @@
         "name": "Jovani Morán",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 686580,
@@ -675,7 +668,7 @@
         "name": "Kutter Crawford",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 663776,
@@ -720,11 +713,18 @@
         "status": "Injured 60-Day"
       },
       {
+        "id": 592454,
+        "name": "Tommy Kahnle",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 701719,
         "name": "Tyler Samaniego",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 700413,
@@ -734,11 +734,18 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 594027,
+        "name": "Tyron Guerrero",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 677161,
         "name": "Zack Kelly",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -750,11 +757,25 @@
     "division": "National League Central",
     "pitchers": [
       {
+        "id": 681520,
+        "name": "Antoine Kelly",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 676962,
         "name": "Ben Brown",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
+      },
+      {
+        "id": 669060,
+        "name": "Bryse Wilson",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Not Yet Reported"
       },
       {
         "id": 690990,
@@ -771,13 +792,6 @@
         "status": "Active"
       },
       {
-        "id": 685005,
-        "name": "Christian Roa",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 607067,
         "name": "Colin Rea",
         "posAbbr": "P",
@@ -789,21 +803,21 @@
         "name": "Daniel Palencia",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
-        "id": 680951,
-        "name": "Doug Nikhazy",
+        "id": 656849,
+        "name": "David Peterson",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 665795,
         "name": "Edward Cabrera",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 681799,
@@ -845,14 +859,21 @@
         "name": "Jameson Taillon",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 665871,
         "name": "Javier Assad",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
+      },
+      {
+        "id": 681151,
+        "name": "Jayden Murray",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 696136,
@@ -869,13 +890,6 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 678821,
-        "name": "Luis Peralta",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 681432,
         "name": "Luke Little",
         "posAbbr": "P",
@@ -887,14 +901,14 @@
         "name": "Matthew Boyd",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 664208,
         "name": "Phil Maton",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 687863,
@@ -908,7 +922,7 @@
         "name": "Riley Martin",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 669020,
@@ -944,6 +958,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
+      },
+      {
+        "id": 592826,
+        "name": "Vince Velasquez",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       }
     ]
   },
@@ -987,7 +1008,7 @@
         "name": "Caleb Ferguson",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 695505,
@@ -1001,13 +1022,6 @@
         "name": "Chase Petty",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 663978,
-        "name": "Chris Paddack",
-        "posAbbr": "P",
-        "hand": "R",
         "status": "Active"
       },
       {
@@ -1015,7 +1029,7 @@
         "name": "Connor Phillips",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 641941,
@@ -1029,7 +1043,7 @@
         "name": "Graham Ashcraft",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 668881,
@@ -1043,7 +1057,7 @@
         "name": "Jose Franco",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 687924,
@@ -1053,11 +1067,11 @@
         "status": "Reassigned to Minors"
       },
       {
-        "id": 693312,
-        "name": "Kyle Nicolas",
+        "id": 670062,
+        "name": "Julian Garcia",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 682825,
@@ -1085,7 +1099,7 @@
         "name": "Rhett Lowder",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 594580,
@@ -1106,7 +1120,7 @@
         "name": "Tony Santillan",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 687209,
@@ -1114,6 +1128,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
+      },
+      {
+        "id": 685112,
+        "name": "Zach McCambley",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       }
     ]
   },
@@ -1150,7 +1171,7 @@
         "name": "Codi Heuer",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 670059,
@@ -1164,7 +1185,7 @@
         "name": "Daniel Espino",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 681870,
@@ -1223,13 +1244,6 @@
         "status": "Active"
       },
       {
-        "id": 688883,
-        "name": "Peyton Pallette",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Paternity List"
-      },
-      {
         "id": 542888,
         "name": "Shawn Armstrong",
         "posAbbr": "P",
@@ -1256,6 +1270,13 @@
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
+      },
+      {
+        "id": 702021,
+        "name": "Will Dion",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 691414,
@@ -1285,7 +1306,7 @@
         "name": "Blas Castaño",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 657514,
@@ -1295,18 +1316,18 @@
         "status": "Active"
       },
       {
-        "id": 687223,
-        "name": "Carson Palmquist",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 801403,
         "name": "Chase Dollander",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
+      },
+      {
+        "id": 682769,
+        "name": "Eiberson Castellano",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 687312,
@@ -1320,39 +1341,39 @@
         "name": "Jaden Hill",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 676105,
         "name": "Jeff Criswell",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 623474,
         "name": "Jimmy Herget",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
+      },
+      {
+        "id": 605154,
+        "name": "John Brebbia",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 500779,
         "name": "Jose Quintana",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 675848,
         "name": "Juan Mejia",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 624522,
-        "name": "Keegan Thompson",
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
@@ -1390,11 +1411,11 @@
         "name": "Ryan Feltner",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
-        "id": 671111,
-        "name": "Sammy Peralta",
+        "id": 807743,
+        "name": "Sean Sullivan",
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
@@ -1411,7 +1432,14 @@
         "name": "Tanner Gordon",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
+      },
+      {
+        "id": 669298,
+        "name": "TJ Shook",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 608372,
@@ -1421,25 +1449,18 @@
         "status": "Active"
       },
       {
-        "id": 678368,
-        "name": "Valente Bellozo",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 680767,
         "name": "Victor Vodnik",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 700327,
         "name": "Welinton Herrera",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Injured 60-Day"
       },
       {
         "id": 688642,
@@ -1469,14 +1490,14 @@
         "name": "Beau Brieske",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 676428,
         "name": "Brant Hurter",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 669724,
@@ -1490,18 +1511,11 @@
         "name": "Burch Smith",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 663554,
         "name": "Casey Mize",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 657756,
-        "name": "Connor Seabold",
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
@@ -1518,7 +1532,7 @@
         "name": "Drew Sommers",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 646241,
@@ -1539,7 +1553,7 @@
         "name": "Jack Flaherty",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 695549,
@@ -1547,6 +1561,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Injured 60-Day"
+      },
+      {
+        "id": 621097,
+        "name": "Jacob Waguespack",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 805725,
@@ -1609,21 +1630,21 @@
         "name": "Tarik Skubal",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 675512,
         "name": "Troy Melton",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 680744,
         "name": "Ty Madden",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 663947,
@@ -1638,6 +1659,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
+      },
+      {
+        "id": 700270,
+        "name": "Yilber Díaz",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -1654,6 +1682,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
+      },
+      {
+        "id": 695001,
+        "name": "Alimber Santa",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 656986,
@@ -1716,28 +1751,21 @@
         "name": "Hunter Brown",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 669920,
         "name": "Jason Alexander",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 681151,
-        "name": "Jayden Murray",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 623352,
         "name": "Josh Hader",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 678906,
@@ -1796,13 +1824,6 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 680802,
-        "name": "Ryan Weiss",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 681293,
         "name": "Spencer Arrighetti",
         "posAbbr": "P",
@@ -1847,10 +1868,10 @@
         "status": "Active"
       },
       {
-        "id": 663559,
-        "name": "Bailey Falter",
+        "id": 694360,
+        "name": "Beck Way",
         "posAbbr": "P",
-        "hand": "L",
+        "hand": "R",
         "status": "Active"
       },
       {
@@ -1865,14 +1886,21 @@
         "name": "Carlos Estévez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 666142,
         "name": "Cole Ragans",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
+      },
+      {
+        "id": 657756,
+        "name": "Connor Seabold",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 663738,
@@ -1886,14 +1914,14 @@
         "name": "Eli Morgan",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 672021,
         "name": "Eric Cerantola",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 663704,
@@ -1942,7 +1970,7 @@
         "name": "Matt Strahm",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 608379,
@@ -1963,7 +1991,7 @@
         "name": "Nick Mears",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 702070,
@@ -1971,6 +1999,13 @@
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
+      },
+      {
+        "id": 677976,
+        "name": "Randy Dobnak",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 686701,
@@ -1991,7 +2026,7 @@
         "name": "Stephen Kolek",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Paternity List"
       },
       {
         "id": 674444,
@@ -2035,14 +2070,14 @@
         "name": "Blake Snell",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 595014,
         "name": "Blake Treinen",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 676272,
@@ -2056,7 +2091,7 @@
         "name": "Brock Stewart",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 660813,
@@ -2126,7 +2161,7 @@
         "name": "Jack Dreyer",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 664776,
@@ -2171,11 +2206,18 @@
         "status": "Injured 60-Day"
       },
       {
+        "id": 693308,
+        "name": "Nick Frasso",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 801434,
         "name": "Paul Gervase",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 689981,
@@ -2210,7 +2252,7 @@
         "name": "Tyler Glasnow",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 694361,
@@ -2271,18 +2313,25 @@
         "status": "Active"
       },
       {
+        "id": 687223,
+        "name": "Carson Palmquist",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 690925,
         "name": "Clayton Beeter",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 669371,
         "name": "Cole Henry",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 687792,
@@ -2303,14 +2352,14 @@
         "name": "Gus Varland",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 663623,
         "name": "Jake Irvin",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 680686,
@@ -2320,11 +2369,11 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 642759,
-        "name": "Julian Fernández",
+        "id": 664875,
+        "name": "Justin Lawrence",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 686610,
@@ -2345,7 +2394,7 @@
         "name": "Max Kranick",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 571945,
@@ -2373,7 +2422,7 @@
         "name": "Paxton Schultz",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 676571,
@@ -2415,7 +2464,7 @@
         "name": "Zak Kent",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       }
     ]
   },
@@ -2431,20 +2480,13 @@
         "name": "A.J. Minter",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 692024,
         "name": "Alex Carrillo",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 644429,
-        "name": "Anderson Severino",
-        "posAbbr": "P",
-        "hand": "L",
         "status": "Reassigned to Minors"
       },
       {
@@ -2469,6 +2511,13 @@
         "status": "Active"
       },
       {
+        "id": 672335,
+        "name": "Cionel Pérez",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Active"
+      },
+      {
         "id": 605280,
         "name": "Clay Holmes",
         "posAbbr": "P",
@@ -2476,25 +2525,11 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 518886,
-        "name": "Craig Kimbrel",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
         "id": 650960,
         "name": "Daniel Duarte",
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
-      },
-      {
-        "id": 656849,
-        "name": "David Peterson",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Active"
       },
       {
         "id": 673380,
@@ -2564,7 +2599,7 @@
         "name": "Kodai Senga",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 596133,
@@ -2613,7 +2648,7 @@
         "name": "Zach Thornton",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -2650,7 +2685,7 @@
         "name": "Brooks Kriske",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 800018,
@@ -2664,7 +2699,21 @@
         "name": "Elvis Alvarado",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
+      },
+      {
+        "id": 695611,
+        "name": "Gage Jump",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Active"
+      },
+      {
+        "id": 664129,
+        "name": "Geoff Hartlieb",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 680684,
@@ -2706,20 +2755,13 @@
         "name": "Jacob Lopez",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 605488,
         "name": "Jeffrey Springs",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
-      },
-      {
-        "id": 669270,
-        "name": "Joel Kuhnel",
-        "posAbbr": "P",
-        "hand": "R",
         "status": "Active"
       },
       {
@@ -2744,6 +2786,13 @@
         "status": "Active"
       },
       {
+        "id": 695034,
+        "name": "Kade Morris",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 665622,
         "name": "Luis Medina",
         "posAbbr": "P",
@@ -2762,21 +2811,28 @@
         "name": "Luis Severino",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 643410,
         "name": "Mark Leiter Jr.",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 686930,
         "name": "Mason Barnett",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
+      },
+      {
+        "id": 640454,
+        "name": "Matt Krook",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Active"
       },
       {
         "id": 547184,
@@ -2784,13 +2840,6 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
-      },
-      {
-        "id": 605130,
-        "name": "Scott Barlow",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
       }
     ]
   },
@@ -2848,7 +2897,7 @@
         "name": "Chris Devenski",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 642701,
@@ -2879,6 +2928,13 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 676702,
+        "name": "Hunter Stratton",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 676755,
         "name": "Isaac Mattson",
         "posAbbr": "P",
@@ -2890,7 +2946,7 @@
         "name": "Jared Jones",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 664353,
@@ -2898,13 +2954,6 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
-      },
-      {
-        "id": 664875,
-        "name": "Justin Lawrence",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
       },
       {
         "id": 682254,
@@ -2939,7 +2988,7 @@
         "name": "Wilber Dotel",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 670990,
@@ -2976,7 +3025,7 @@
         "name": "Bradgley Rodriguez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 663773,
@@ -2990,7 +3039,7 @@
         "name": "David Morgan",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 678184,
@@ -3025,14 +3074,14 @@
         "name": "Jeremiah Estrada",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 666745,
         "name": "Jhony Brito",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 605397,
@@ -3046,21 +3095,21 @@
         "name": "JP Sears",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 606996,
         "name": "Kyle Hart",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 608337,
         "name": "Lucas Giolito",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 695243,
@@ -3095,7 +3144,7 @@
         "name": "Nick Pivetta",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 681190,
@@ -3110,13 +3159,6 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
-      },
-      {
-        "id": 686654,
-        "name": "Ty Adcock",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
       },
       {
         "id": 621111,
@@ -3153,7 +3195,7 @@
         "name": "Alex Hoppe",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 662253,
@@ -3195,14 +3237,7 @@
         "name": "Cooper Criswell",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 682445,
-        "name": "Domingo Gonzalez",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 660825,
@@ -3223,7 +3258,7 @@
         "name": "Gabe Speier",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 669923,
@@ -3237,7 +3272,7 @@
         "name": "Josh Simpson",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 678606,
@@ -3272,6 +3307,13 @@
         "name": "Matt Brash",
         "posAbbr": "P",
         "hand": "R",
+        "status": "Injured 15-Day"
+      },
+      {
+        "id": 621074,
+        "name": "Michael Rucker",
+        "posAbbr": "P",
+        "hand": "R",
         "status": "Active"
       },
       {
@@ -3291,13 +3333,6 @@
       {
         "id": 700187,
         "name": "Troy Taylor",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 691172,
-        "name": "Yosver Zulueta",
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
@@ -3351,7 +3386,7 @@
         "name": "Dylan Smith",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 669062,
@@ -3386,7 +3421,7 @@
         "name": "Joel Peguero",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 676130,
@@ -3407,7 +3442,7 @@
         "name": "Keaton Winn",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 694738,
@@ -3421,7 +3456,7 @@
         "name": "Logan Webb",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 657424,
@@ -3442,7 +3477,7 @@
         "name": "Reiver Sanmartin",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 60-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 592662,
@@ -3459,18 +3494,11 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 621366,
-        "name": "Ryan Borucki",
-        "posAbbr": "P",
-        "hand": "L",
-        "status": "Active"
-      },
-      {
         "id": 676254,
         "name": "Ryan Walker",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 656529,
@@ -3531,13 +3559,6 @@
         "status": "Reassigned to Minors"
       },
       {
-        "id": 688297,
-        "name": "Chris Roycroft",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 687309,
         "name": "Cooper Hjerpe",
         "posAbbr": "P",
@@ -3594,13 +3615,6 @@
         "status": "Active"
       },
       {
-        "id": 690155,
-        "name": "Matt Pushard",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
         "id": 694335,
         "name": "Matt Svanson",
         "posAbbr": "P",
@@ -3612,6 +3626,13 @@
         "name": "Matthew Liberatore",
         "posAbbr": "P",
         "hand": "L",
+        "status": "Active"
+      },
+      {
+        "id": 691008,
+        "name": "Max Rajcic",
+        "posAbbr": "P",
+        "hand": "R",
         "status": "Active"
       },
       {
@@ -3640,7 +3661,7 @@
         "name": "Ryan Fernandez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 592773,
@@ -3691,7 +3712,7 @@
         "name": "Cam Booser",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 668984,
@@ -3708,11 +3729,25 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 688297,
+        "name": "Chris Roycroft",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 642121,
         "name": "Cole Sulser",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
+      },
+      {
+        "id": 518886,
+        "name": "Craig Kimbrel",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 656876,
@@ -3747,7 +3782,7 @@
         "name": "Hunter Bigge",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 693855,
@@ -3761,7 +3796,7 @@
         "name": "Jesse Scholtens",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 671212,
@@ -3769,6 +3804,13 @@
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
+      },
+      {
+        "id": 669169,
+        "name": "Jonathan Heasley",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Injured 60-Day"
       },
       {
         "id": 687330,
@@ -3796,7 +3838,7 @@
         "name": "Michael Grove",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 607259,
@@ -3824,7 +3866,7 @@
         "name": "Steven Matz",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 621051,
@@ -3838,7 +3880,7 @@
         "name": "Trevor Martin",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -3861,14 +3903,14 @@
         "name": "Carter Baumler",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 455119,
         "name": "Chris Martin",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 674003,
@@ -3910,7 +3952,7 @@
         "name": "Jack Leiter",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 594798,
@@ -3938,6 +3980,13 @@
         "name": "Jalen Beeks",
         "posAbbr": "P",
         "hand": "L",
+        "status": "Injured 10-Day"
+      },
+      {
+        "id": 605452,
+        "name": "Joe Ross",
+        "posAbbr": "P",
+        "hand": "R",
         "status": "Active"
       },
       {
@@ -3983,13 +4032,6 @@
         "status": "Active"
       },
       {
-        "id": 671305,
-        "name": "Michel Otañez",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 543135,
         "name": "Nathan Eovaldi",
         "posAbbr": "P",
@@ -4004,11 +4046,18 @@
         "status": "Active"
       },
       {
+        "id": 695239,
+        "name": "Robby Ahlstrom",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Active"
+      },
+      {
         "id": 676395,
         "name": "Robert Garcia",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 641302,
@@ -4022,7 +4071,7 @@
         "name": "Winston Santos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       }
     ]
   },
@@ -4062,11 +4111,18 @@
         "status": "Reassigned to Minors"
       },
       {
+        "id": 689149,
+        "name": "Chad Dallas",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
         "id": 695445,
         "name": "Chase Lee",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 664074,
@@ -4101,14 +4157,14 @@
         "name": "Joe Mantiply",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 621244,
         "name": "José Berríos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 592332,
@@ -4122,7 +4178,7 @@
         "name": "Lazaro Estrada",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 686973,
@@ -4164,7 +4220,7 @@
         "name": "Shane Bieber",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Active"
       },
       {
         "id": 693686,
@@ -4178,7 +4234,7 @@
         "name": "Tommy Nance",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 702056,
@@ -4190,13 +4246,6 @@
       {
         "id": 643511,
         "name": "Tyler Rogers",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
-        "id": 684320,
-        "name": "Yariel Rodríguez",
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
@@ -4236,14 +4285,14 @@
         "name": "Bailey Ober",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 689520,
         "name": "Cody Laweryson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 663485,
@@ -4299,20 +4348,13 @@
         "name": "Kendry Rojas",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 681892,
         "name": "Kody Funderburk",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 472610,
-        "name": "Luis García",
-        "posAbbr": "P",
-        "hand": "R",
         "status": "Active"
       },
       {
@@ -4320,7 +4362,7 @@
         "name": "Marco Raya",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 690953,
@@ -4330,6 +4372,13 @@
         "status": "Injured 15-Day"
       },
       {
+        "id": 702474,
+        "name": "Mike Paredes",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 641154,
         "name": "Pablo López",
         "posAbbr": "P",
@@ -4337,18 +4386,18 @@
         "status": "Injured 60-Day"
       },
       {
-        "id": 680573,
-        "name": "Simeon Woods Richardson",
+        "id": 671737,
+        "name": "Taj Bradley",
         "posAbbr": "P",
         "hand": "R",
         "status": "Active"
       },
       {
-        "id": 671737,
-        "name": "Taj Bradley",
+        "id": 688497,
+        "name": "Taylor Rashi",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 573124,
@@ -4399,7 +4448,7 @@
         "name": "Alan Rangel",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 686934,
@@ -4413,14 +4462,14 @@
         "name": "Andrew Painter",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 641745,
         "name": "Brad Keller",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 663767,
@@ -4439,13 +4488,6 @@
       {
         "id": 680880,
         "name": "Grant Holman",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
-        "id": 671131,
-        "name": "Jackson Rutledge",
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
@@ -4490,14 +4532,14 @@
         "name": "Kyle Backhus",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 676661,
         "name": "Max Lazar",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 60-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 691330,
@@ -4525,14 +4567,14 @@
         "name": "Seth Johnson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 621383,
         "name": "Tanner Banks",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 641835,
@@ -4540,13 +4582,6 @@
         "posAbbr": "P",
         "hand": "L",
         "status": "Active"
-      },
-      {
-        "id": 647315,
-        "name": "Zach Pop",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Injured 15-Day"
       },
       {
         "id": 554430,
@@ -4642,25 +4677,25 @@
         "status": "Reassigned to Minors"
       },
       {
-        "id": 676702,
-        "name": "Hunter Stratton",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Reassigned to Minors"
-      },
-      {
         "id": 694462,
         "name": "Hurston Waldrep",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
-        "id": 702910,
-        "name": "Jhancarlos Lara",
+        "id": 641656,
+        "name": "Ian Hamilton",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
+      },
+      {
+        "id": 675916,
+        "name": "James Karinchak",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 641729,
@@ -4709,7 +4744,7 @@
         "name": "Robert Suarez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 691548,
@@ -4730,7 +4765,7 @@
         "name": "Spencer Strider",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 641755,
@@ -4744,7 +4779,7 @@
         "name": "Victor Mederos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -4781,7 +4816,7 @@
         "name": "Chris Murphy",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 689818,
@@ -4851,7 +4886,7 @@
         "name": "Jordan Leasure",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 60-Day"
       },
       {
         "id": 681066,
@@ -4872,7 +4907,7 @@
         "name": "Noah Schultz",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 672860,
@@ -4928,21 +4963,21 @@
         "name": "Tyler Davis",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 656457,
         "name": "Tyler Gilbert",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 805326,
         "name": "Tyler Schweitzer",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 682790,
@@ -4972,7 +5007,7 @@
         "name": "Andrew Nardi",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 60-Day"
       },
       {
         "id": 669622,
@@ -5028,7 +5063,7 @@
         "name": "Janson Junk",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 667463,
@@ -5042,7 +5077,7 @@
         "name": "Josh Ekness",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 60-Day"
       },
       {
         "id": 687985,
@@ -5084,7 +5119,7 @@
         "name": "Robby Snelling",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 678692,
@@ -5098,7 +5133,7 @@
         "name": "Ryan Gusto",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 645261,
@@ -5115,8 +5150,22 @@
         "status": "Active"
       },
       {
+        "id": 676604,
+        "name": "Tyler Zuber",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
+      },
+      {
         "id": 687531,
         "name": "William Kempner",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Reassigned to Minors"
+      },
+      {
+        "id": 694350,
+        "name": "Zach Brzykcy",
         "posAbbr": "P",
         "hand": "R",
         "status": "Reassigned to Minors"
@@ -5135,7 +5184,7 @@
         "name": "Angel Chivilli",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 694341,
@@ -5212,14 +5261,14 @@
         "name": "Gerrit Cole",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 656234,
         "name": "Jake Bird",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       },
       {
         "id": 665645,
@@ -5282,14 +5331,14 @@
         "name": "Yerry De los Santos",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Active"
       },
       {
         "id": 672442,
         "name": "Yovanny Cruz",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Reassigned to Minors"
       }
     ]
   },
@@ -5319,7 +5368,7 @@
         "name": "Angel Zerpa",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 687075,
@@ -5333,21 +5382,21 @@
         "name": "Brandon Woodruff",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Active"
       },
       {
         "id": 702153,
         "name": "Brian Fitzpatrick",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Reassigned to Minors"
+        "status": "Injured 60-Day"
       },
       {
         "id": 692230,
         "name": "Carlos Rodriguez",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 694477,
@@ -5361,7 +5410,7 @@
         "name": "Coleman Crow",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Reassigned to Minors"
+        "status": "Injured 15-Day"
       },
       {
         "id": 684974,
@@ -5375,7 +5424,14 @@
         "name": "DL Hall",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Active"
+        "status": "Injured 15-Day"
+      },
+      {
+        "id": 680723,
+        "name": "Drew Rom",
+        "posAbbr": "P",
+        "hand": "L",
+        "status": "Reassigned to Minors"
       },
       {
         "id": 668834,
@@ -5399,18 +5455,18 @@
         "status": "Active"
       },
       {
-        "id": 663765,
-        "name": "Jake Woodford",
-        "posAbbr": "P",
-        "hand": "R",
-        "status": "Active"
-      },
-      {
         "id": 657649,
         "name": "Jared Koenig",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 15-Day"
+        "status": "Active"
+      },
+      {
+        "id": 669270,
+        "name": "Joel Kuhnel",
+        "posAbbr": "P",
+        "hand": "R",
+        "status": "Active"
       },
       {
         "id": 690986,
@@ -5424,21 +5480,21 @@
         "name": "Logan Henderson",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Active"
+        "status": "Injured 15-Day"
       },
       {
         "id": 682990,
         "name": "Quinn Priester",
         "posAbbr": "P",
         "hand": "R",
-        "status": "Injured 15-Day"
+        "status": "Injured 60-Day"
       },
       {
         "id": 642239,
         "name": "Rob Zastryzny",
         "posAbbr": "P",
         "hand": "L",
-        "status": "Injured 60-Day"
+        "status": "Injured 15-Day"
       },
       {
         "id": 688107,
