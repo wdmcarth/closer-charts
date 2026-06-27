@@ -4,27 +4,18 @@
       "teamId": 110,
       "teamName": "Baltimore Orioles",
       "league": "AL",
-      "levcon": 4,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
-            "name": "Rico Garcia",
-            "mlbamid": 670329,
-            "colors": [],
+            "name": "Ryan Helsley",
+            "mlbamid": 664854,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
-          {
-            "name": "Anthony Nunez",
-            "mlbamid": 689296,
-            "colors": [],
-            "statusTag": null,
-            "other": null
-          }
-        ],
-        "stealth": [
           {
             "name": "Yennier Cano",
             "mlbamid": 666974,
@@ -33,7 +24,24 @@
             "other": null
           }
         ],
-        "upside": [],
+        "stealth": [
+          {
+            "name": "Andrew Kittredge",
+            "mlbamid": 552640,
+            "statusTag": null,
+            "colors": [],
+            "other": null
+          }
+        ],
+        "upside": [
+          {
+            "name": "Anthony Nunez",
+            "mlbamid": 689296,
+            "statusTag": null,
+            "colors": [],
+            "other": null
+          }
+        ],
         "hybrid": [
           {
             "name": "Tyler Wells",
@@ -89,15 +97,7 @@
             "other": null
           }
         ],
-        "hybrid": [
-          {
-            "name": "Zack Kelly",
-            "mlbamid": 677161,
-            "colors": [],
-            "statusTag": null,
-            "other": null
-          }
-        ]
+        "hybrid": []
       },
       "notes": ""
     },
@@ -105,25 +105,23 @@
       "teamId": 145,
       "teamName": "Chicago White Sox",
       "league": "AL",
-      "levcon": 5,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
-            "name": "Seranthony Domínguez",
-            "mlbamid": 622554,
-            "colors": [
-              "Orange"
-            ],
+            "name": "Grant Taylor",
+            "mlbamid": 691799,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Grant Taylor",
-            "mlbamid": 691799,
-            "colors": [],
+            "name": "Seranthony Domínguez",
+            "mlbamid": 622554,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -181,21 +179,20 @@
         ],
         "stopper": [
           {
-            "name": "Erik Sabrowski",
-            "mlbamid": 681870,
-            "colors": [],
+            "name": "Hunter Gaddis",
+            "mlbamid": 683769,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Colin Holdmerman",
-            "mlbamid": 670059,
-            "colors": [],
+            "name": "Shawn Armstrong",
+            "mlbamid": 542888,
             "statusTag": null,
-            "other": null,
-            "noMagenta": true
+            "colors": [],
+            "other": null
           }
         ],
         "upside": [
@@ -216,17 +213,17 @@
         ],
         "hybrid": [
           {
-            "name": "Hunter Gaddis",
-            "mlbamid": 683769,
-            "colors": [],
+            "name": "Tim Herrin",
+            "mlbamid": 682120,
             "statusTag": null,
+            "colors": [],
             "other": null
           },
           {
-            "name": "Matt Festa",
-            "mlbamid": 670036,
-            "colors": [],
+            "name": "Erik Sabrowski",
+            "mlbamid": 681870,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -237,7 +234,7 @@
       "teamId": 116,
       "teamName": "Detroit Tigers",
       "league": "AL",
-      "levcon": 2,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
@@ -251,19 +248,19 @@
         ],
         "stopper": [
           {
-            "name": "Kyle Finnegan",
-            "mlbamid": 640448,
-            "colors": [],
+            "name": "Will Vest",
+            "mlbamid": 676684,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Brant Hurter",
-            "mlbamid": 676428,
-            "colors": [],
+            "name": "Kyle Finnegan",
+            "mlbamid": 640448,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -299,18 +296,15 @@
       "teamId": 117,
       "teamName": "Houston Astros",
       "league": "AL",
-      "levcon": 3,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
-            "name": "Bryan Abreu",
-            "mlbamid": 650556,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Josh Hader",
+            "mlbamid": 623352,
             "statusTag": null,
-            "other": null,
-            "noMagenta": true
+            "colors": [],
+            "other": null
           }
         ],
         "stopper": [
@@ -354,17 +348,17 @@
         ],
         "hybrid": [
           {
-            "name": "Bennett Sousa",
-            "mlbamid": 656986,
+            "name": "A.J. Blubaugh",
+            "mlbamid": 805123,
             "colors": [],
             "statusTag": null,
             "other": null
           },
           {
-            "name": "A.J. Blubaugh",
-            "mlbamid": 805123,
-            "colors": [],
+            "name": "Bryan Abreu",
+            "mlbamid": 650556,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -375,34 +369,32 @@
       "teamId": 118,
       "teamName": "Kansas City Royals",
       "league": "AL",
-      "levcon": 5,
+      "levcon": 4,
       "roles": {
         "closer": [
           {
-            "name": "Lucas Erceg",
-            "mlbamid": 668674,
-            "colors": [
-              "Magenta"
-            ],
+            "name": "Alex Lange",
+            "mlbamid": 656638,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Matt Strahm",
-            "mlbamid": 621381,
-            "colors": [],
+            "name": "Daniel Lynch IV",
+            "mlbamid": 663738,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Daniel Lynch IV",
-            "mlbamid": 663738,
-            "colors": [],
+            "name": "Lucas Erceg",
+            "mlbamid": 668674,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -424,10 +416,10 @@
             "other": null
           },
           {
-            "name": "Nick Mears",
-            "mlbamid": 683232,
-            "colors": [],
+            "name": "Matt Strahm",
+            "mlbamid": 621381,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -438,32 +430,32 @@
       "teamId": 108,
       "teamName": "Los Angeles Angels",
       "league": "AL",
-      "levcon": 4,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
-            "name": "Ryan Zeferjahn",
-            "mlbamid": 666171,
-            "colors": [],
+            "name": "Sam Bachman",
+            "mlbamid": 696147,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Sam Bachman",
-            "mlbamid": 696147,
-            "colors": [],
+            "name": "Ryan Zeferjahn",
+            "mlbamid": 666171,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Kirby Yates",
-            "mlbamid": 489446,
-            "colors": [],
+            "name": "Chase Silseth",
+            "mlbamid": 681217,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -478,10 +470,17 @@
         ],
         "hybrid": [
           {
-            "name": "Chase Silseth",
-            "mlbamid": 681217,
-            "colors": [],
+            "name": "Kirby Yates",
+            "mlbamid": 489446,
             "statusTag": null,
+            "colors": [],
+            "other": null
+          },
+          {
+            "name": "Mitch Farris",
+            "mlbamid": 815083,
+            "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -506,12 +505,10 @@
         ],
         "stopper": [
           {
-            "name": "Luis García",
-            "mlbamid": 472610,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Andrew Morris",
+            "mlbamid": 702193,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -575,19 +572,19 @@
         ],
         "stopper": [
           {
-            "name": "Camilo Doval",
-            "mlbamid": 666808,
-            "colors": [],
+            "name": "Fernando Cruz",
+            "mlbamid": 518585,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Fernando Cruz",
-            "mlbamid": 518585,
-            "colors": [],
+            "name": "Camilo Doval",
+            "mlbamid": 666808,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -604,13 +601,6 @@
           {
             "name": "Paul Blackburn",
             "mlbamid": 621112,
-            "colors": [],
-            "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Jake Bird",
-            "mlbamid": 656234,
             "colors": [],
             "statusTag": null,
             "other": null
@@ -663,10 +653,17 @@
         ],
         "hybrid": [
           {
+            "name": "Gabe Speier",
+            "mlbamid": 642100,
+            "statusTag": null,
+            "colors": [],
+            "other": null
+          },
+          {
             "name": "Cooper Criswell",
             "mlbamid": 681867,
-            "colors": [],
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -690,10 +687,10 @@
         ],
         "stopper": [
           {
-            "name": "Cole Sulser",
-            "mlbamid": 642121,
-            "colors": [],
+            "name": "Kevin Kelly",
+            "mlbamid": 687330,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -717,17 +714,10 @@
         ],
         "hybrid": [
           {
-            "name": "Ian Seymour",
-            "mlbamid": 693855,
-            "colors": [],
+            "name": "Cole Sulser",
+            "mlbamid": 642121,
             "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Kevin Kelly",
-            "mlbamid": 687330,
             "colors": [],
-            "statusTag": null,
             "other": null
           }
         ]
@@ -738,16 +728,14 @@
       "teamId": 133,
       "teamName": "The Athletics",
       "league": "AL",
-      "levcon": 3,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
-            "name": "Jack Perkins",
-            "mlbamid": 678022,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Elvis Alvarado",
+            "mlbamid": 665660,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -764,12 +752,10 @@
         ],
         "stealth": [
           {
-            "name": "Joel Kuhnel",
-            "mlbamid": 669270,
+            "name": "Mason Barnett",
+            "mlbamid": 686930,
             "statusTag": null,
-            "colors": [
-              "Blue"
-            ],
+            "colors": [],
             "other": null
           }
         ],
@@ -791,10 +777,10 @@
             "other": null
           },
           {
-            "name": "Scott Barlow",
-            "mlbamid": 605130,
-            "colors": [],
+            "name": "Luis Medina",
+            "mlbamid": 665622,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -827,10 +813,10 @@
         ],
         "stealth": [
           {
-            "name": "Cole Winn",
-            "mlbamid": 668390,
-            "colors": [],
+            "name": "Peyton Gray",
+            "mlbamid": 682608,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -847,13 +833,6 @@
           {
             "name": "Cal Quantrill",
             "mlbamid": 615698,
-            "colors": [],
-            "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Jalen Beeks",
-            "mlbamid": 656222,
             "colors": [],
             "statusTag": null,
             "other": null
@@ -941,19 +920,19 @@
         ],
         "stopper": [
           {
-            "name": "Juan Morillo",
-            "mlbamid": 666661,
-            "colors": [],
+            "name": "Kevin Ginkel",
+            "mlbamid": 656464,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Taylor Clarke",
-            "mlbamid": 664199,
-            "colors": [],
+            "name": "Juan Morillo",
+            "mlbamid": 666661,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -995,10 +974,10 @@
         ],
         "stopper": [
           {
-            "name": "Robert Suarez",
-            "mlbamid": 663158,
-            "colors": [],
+            "name": "Didier Fuentes",
+            "mlbamid": 800311,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1029,10 +1008,10 @@
         ],
         "hybrid": [
           {
-            "name": "Reynaldo López",
-            "mlbamid": 625643,
-            "colors": [],
+            "name": "Tyler Kinley",
+            "mlbamid": 641755,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1043,23 +1022,23 @@
       "teamId": 112,
       "teamName": "Chicago Cubs",
       "league": "NL",
-      "levcon": 5,
+      "levcon": 3,
       "roles": {
         "closer": [
           {
-            "name": "Daniel Palencia",
-            "mlbamid": 694037,
-            "colors": [],
+            "name": "Jacob Webb",
+            "mlbamid": 657097,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Phil Maton",
-            "mlbamid": 664208,
-            "colors": [],
+            "name": "Caleb Thielbar",
+            "mlbamid": 573204,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1083,17 +1062,10 @@
         ],
         "hybrid": [
           {
-            "name": "Jacob Webb",
-            "mlbamid": 657097,
-            "colors": [],
+            "name": "Ryan Rolison",
+            "mlbamid": 669020,
             "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Hoby Milner",
-            "mlbamid": 571948,
             "colors": [],
-            "statusTag": null,
             "other": null
           }
         ]
@@ -1108,35 +1080,28 @@
       "roles": {
         "closer": [
           {
-            "name": "Graham Ashcraft",
-            "mlbamid": 668933,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Pierce Johnson",
+            "mlbamid": 572955,
             "statusTag": null,
-            "other": "HLR"
+            "colors": [],
+            "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Pierce Johnson",
-            "mlbamid": 572955,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Brock Burke",
+            "mlbamid": 656271,
             "statusTag": null,
-            "other": null,
-            "noMagenta": true
+            "colors": [],
+            "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Tony Santillan",
-            "mlbamid": 663574,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Caleb Ferguson",
+            "mlbamid": 657571,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1151,17 +1116,17 @@
         ],
         "hybrid": [
           {
-            "name": "Brock Burke",
-            "mlbamid": 656271,
+            "name": "Tejay Antone",
+            "mlbamid": 622088,
             "colors": [],
             "statusTag": null,
             "other": null
           },
           {
-            "name": "Tejay Antone",
-            "mlbamid": 622088,
-            "colors": [],
+            "name": "Chase Petty",
+            "mlbamid": 695534,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1176,36 +1141,29 @@
       "roles": {
         "closer": [
           {
-            "name": "Antonio Senzatela",
-            "mlbamid": 622608,
+            "name": "Jimmy Herget",
+            "mlbamid": 623474,
             "statusTag": null,
-            "colors": [
-              "Blue"
-            ],
-            "other": null,
-            "noMagenta": true
+            "colors": [],
+            "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Juan Mejia",
-            "mlbamid": 675848,
+            "name": "Antonio Senzatela",
+            "mlbamid": 622608,
             "statusTag": null,
-            "colors": [
-              "Blue"
-            ],
-            "other": null,
-            "noMagenta": true
+            "colors": [],
+            "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Jaden Hill",
-            "mlbamid": 677955,
+            "name": "Victor Vodnik",
+            "mlbamid": 680767,
             "statusTag": null,
             "colors": [],
-            "other": null,
-            "noMagenta": true
+            "other": null
           }
         ],
         "upside": [
@@ -1219,8 +1177,8 @@
         ],
         "hybrid": [
           {
-            "name": "Zach Agnos",
-            "mlbamid": 688642,
+            "name": "Brennan Bernardino",
+            "mlbamid": 657514,
             "statusTag": null,
             "colors": [],
             "other": null
@@ -1273,13 +1231,6 @@
         ],
         "hybrid": [
           {
-            "name": "Blake Treinen",
-            "mlbamid": 595014,
-            "colors": [],
-            "statusTag": null,
-            "other": null
-          },
-          {
             "name": "Will Klien",
             "mlbamid": 694361,
             "colors": [],
@@ -1307,19 +1258,19 @@
         ],
         "stopper": [
           {
-            "name": "Calvin Faucher",
-            "mlbamid": 676534,
-            "colors": [],
+            "name": "Michael Petersen",
+            "mlbamid": 656848,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "John King",
-            "mlbamid": 667463,
-            "colors": [],
+            "name": "Anthony Bender",
+            "mlbamid": 669622,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1334,17 +1285,17 @@
         ],
         "hybrid": [
           {
-            "name": "Andrew Nardi",
-            "mlbamid": 677053,
-            "colors": [],
+            "name": "Calvin Faucher",
+            "mlbamid": 676534,
             "statusTag": null,
+            "colors": [],
             "other": null
           },
           {
-            "name": "Tyler Phillips",
-            "mlbamid": 663969,
-            "colors": [],
+            "name": "John King",
+            "mlbamid": 667463,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1359,19 +1310,19 @@
       "roles": {
         "closer": [
           {
-            "name": "Abner Uribe",
-            "mlbamid": 682842,
-            "colors": [],
+            "name": "Trevor Megill",
+            "mlbamid": 656730,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stopper": [
           {
-            "name": "Trevor Megill",
-            "mlbamid": 656730,
-            "colors": [],
+            "name": "Abner Uribe",
+            "mlbamid": 682842,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1395,17 +1346,10 @@
         ],
         "hybrid": [
           {
-            "name": "DL Hall",
-            "mlbamid": 669084,
-            "colors": [],
+            "name": "Chad Patrick",
+            "mlbamid": 694477,
             "statusTag": null,
-            "other": null
-          },
-          {
-            "name": "Shane Drohan",
-            "mlbamid": 675660,
             "colors": [],
-            "statusTag": null,
             "other": null
           }
         ]
@@ -1493,10 +1437,10 @@
         ],
         "stopper": [
           {
-            "name": "Brad Keller",
-            "mlbamid": 641745,
-            "colors": [],
+            "name": "Orion Kerkering",
+            "mlbamid": 689147,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1527,10 +1471,10 @@
             "other": null
           },
           {
-            "name": "Orion Kerkering",
-            "mlbamid": 689147,
-            "colors": [],
+            "name": "Jonathan Bowlan",
+            "mlbamid": 680742,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1554,23 +1498,19 @@
         ],
         "stopper": [
           {
-            "name": "Dennis Santana",
-            "mlbamid": 642701,
-            "colors": [
-              "Orange"
-            ],
+            "name": "Mason Montgomery",
+            "mlbamid": 682254,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Mason Montgomery",
-            "mlbamid": 682254,
-            "colors": [
-              "Green"
-            ],
+            "name": "Carmen Mlodzinski",
+            "mlbamid": 669387,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1585,12 +1525,10 @@
         ],
         "hybrid": [
           {
-            "name": "Brandan Bidois",
-            "mlbamid": 684049,
-            "colors": [
-              "Green"
-            ],
+            "name": "Yohan Ramírez",
+            "mlbamid": 670990,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1624,10 +1562,10 @@
         ],
         "stealth": [
           {
-            "name": "Jeremiah Estrada",
-            "mlbamid": 669093,
-            "colors": [],
+            "name": "Adrian Morejon",
+            "mlbamid": 670970,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1642,10 +1580,10 @@
         ],
         "hybrid": [
           {
-            "name": "Adrian Morejon",
-            "mlbamid": 670970,
-            "colors": [],
+            "name": "David Morgan",
+            "mlbamid": 688158,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1671,21 +1609,19 @@
         ],
         "stopper": [
           {
-            "name": "Erik Miller",
-            "mlbamid": 669062,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Dylan Smith",
+            "mlbamid": 681916,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
         "stealth": [
           {
-            "name": "Keaton Winn",
-            "mlbamid": 676775,
-            "colors": [],
+            "name": "Erik Miller",
+            "mlbamid": 669062,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1700,17 +1636,17 @@
         ],
         "hybrid": [
           {
-            "name": "Joel Peguero",
-            "mlbamid": 666711,
+            "name": "S Hentges",
+            "mlbamid": 656529,
             "colors": [],
             "statusTag": null,
             "other": null
           },
           {
-            "name": "S Hentges",
-            "mlbamid": 656529,
-            "colors": [],
+            "name": "Adrian Houser",
+            "mlbamid": 605288,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1769,10 +1705,10 @@
         ],
         "hybrid": [
           {
-            "name": "Gordon Graceffo",
-            "mlbamid": 700669,
-            "colors": [],
+            "name": "Ryne Stanek",
+            "mlbamid": 592773,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
@@ -1787,12 +1723,10 @@
       "roles": {
         "closer": [
           {
-            "name": "Gus Varland",
-            "mlbamid": 681402,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Clayton Beeter",
+            "mlbamid": 690925,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1809,12 +1743,10 @@
         ],
         "stealth": [
           {
-            "name": "PJ Poulin",
-            "mlbamid": 676571,
-            "colors": [
-              "Blue"
-            ],
+            "name": "Orlando Ribalta",
+            "mlbamid": 687377,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ],
@@ -1829,17 +1761,17 @@
         ],
         "hybrid": [
           {
-            "name": "Paxton Schultz",
-            "mlbamid": 687606,
-            "colors": [],
+            "name": "Brad Lord",
+            "mlbamid": 695418,
             "statusTag": null,
+            "colors": [],
             "other": null
           },
           {
-            "name": "Orl Ribalta",
-            "mlbamid": null,
-            "colors": [],
+            "name": "PJ Poulin",
+            "mlbamid": 676571,
             "statusTag": null,
+            "colors": [],
             "other": null
           }
         ]
