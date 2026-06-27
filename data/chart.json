@@ -1076,7 +1076,7 @@
       "teamId": 113,
       "teamName": "Cincinnati Reds",
       "league": "NL",
-      "levcon": 2,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
@@ -1137,7 +1137,7 @@
       "teamId": 115,
       "teamName": "Colorado Rockies",
       "league": "NL",
-      "levcon": 3,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
@@ -1245,7 +1245,7 @@
       "teamId": 146,
       "teamName": "Miami Marlins",
       "league": "NL",
-      "levcon": 4,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
@@ -1306,7 +1306,7 @@
       "teamId": 158,
       "teamName": "Milwaukee Brewers",
       "league": "NL",
-      "levcon": 3,
+      "levcon": 5,
       "roles": {
         "closer": [
           {
@@ -1594,7 +1594,7 @@
       "teamId": 137,
       "teamName": "San Francisco Giants",
       "league": "NL",
-      "levcon": 1,
+      "levcon": 4,
       "roles": {
         "closer": [
           {
@@ -1719,7 +1719,7 @@
       "teamId": 120,
       "teamName": "Washington Nationals",
       "league": "NL",
-      "levcon": 3,
+      "levcon": 1,
       "roles": {
         "closer": [
           {
