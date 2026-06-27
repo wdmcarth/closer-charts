@@ -1,5 +1,22 @@
 [
   {
+    "date": "2026-06-27",
+    "league": "NL",
+    "entries": {}
+  },
+  {
+    "date": "2026-06-27",
+    "league": "AL",
+    "entries": {
+      "111": [
+        "Securing his 16th save while preserving a three-run margin, <a class=\"player-link\" data-pid=\"547973\" href=\"https://www.mlb.com/player/547973?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Aroldis Chapman</a> worked a scoreless top of the ninth, navigating around an 11-pitch two-out walk by Cody Bellinger by inducing a game-ending pop-out by Jasson Domínguez. Chapman threw 20 pitches (70 Strike%) and produced three whiffs (15 SwStr%) while recording one strikeout. This was only his sixth appearance in June, and he’s converted four of five save chances with a 2.60 WHIP through five innings. <a class=\"player-link\" data-pid=\"676477\" href=\"https://www.mlb.com/player/676477?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Garrett Whitlock</a> retired the side at the top of the eighth for his 12th hold. <a class=\"player-link\" data-pid=\"686580\" href=\"https://www.mlb.com/player/686580?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Justin Slaten</a> stranded both inherited runners while striking out both batters in the seventh, notching his ninth hold. "
+      ],
+      "147": [
+        "Appearing in a loss, <a class=\"player-link\" data-pid=\"687396\" href=\"https://www.mlb.com/player/687396?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Brent Headrick</a> issued a walk and recorded three strikeouts across the sixth and seventh innings. <a class=\"player-link\" data-pid=\"666808\" href=\"https://www.mlb.com/player/666808?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Camilo Doval</a> retired both batters in the seventh, one via strikeout. <a class=\"player-link\" data-pid=\"621112\" href=\"https://www.mlb.com/player/621112?stats=gamelogs-r-pitching-mlb\" target=\"_blank\" rel=\"noopener noreferrer\" data-bound=\"1\" title=\"Open MLB stats — Alt+click to unlink\">Paul Blackburn</a> tossed a clean eighth. "
+      ]
+    }
+  },
+  {
     "date": "2026-05-18",
     "league": "NL",
     "entries": {
